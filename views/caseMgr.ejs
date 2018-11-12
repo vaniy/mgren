@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/management/plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/management/css/adminlte.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/management/plugins/iCheck/flat/blue.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="/management/plugins/morris/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="/management/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="/management/plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="/management/plugins/daterangepicker/daterangepicker-bs3.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="/management/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="/management/css/common.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- /.navbar -->
+        <div class="tlinks">Collect from <a href="#">手机网站模板</a></div>
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="/management" class="brand-link">
+                <img src="/management/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
+                <span class="brand-text font-weight-light">后台管理</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="/management/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">Admin</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-tree"></i>
+                                <p>
+                                    商品管理
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/management/categoryMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>创建分类</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/partsMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>创建配置</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>创建商品</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/partsMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>配置管理</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/productMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>商品管理</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/categoryMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>分类管理</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-edit"></i>
+                                <p>
+                                    用户管理
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/management/userMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>用户管理</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>用户询价</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>用户建议</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>用户培训</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/roleMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>规则管理</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-table"></i>
+                                <p>
+                                    订单管理
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/management/orderMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>订单列表</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>修改订单</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/customServiceMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>售后管理</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-tree"></i>
+                                <p>
+                                    案例管理
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/management/caseMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>案例列表</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>案例修改</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/caseMgr" class="nav-link active">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>创建案例</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/casePartsMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>创建分类</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/casePartsMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>分类管理</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-edit"></i>
+                                <p>
+                                    视频管理
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/management/videoMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>视频列表</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>视频修改</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/videoMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>创建视频</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-table"></i>
+                                <p>
+                                    集成伙伴
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                  <a href="/management/integratorMgrM" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>集成伙伴列表</p>
+                                  </a>
+                                </li>
+                                <!-- <li class="nav-item">
+                                  <a href="#" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>修改集成伙伴</p>
+                                  </a>
+                                </li> -->
+                                <li class="nav-item">
+                                  <a href="/management/integratorMgr" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>创建集成伙伴</p>
+                                  </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- <li class="nav-header">LABELS</li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-circle-o text-danger"></i>
+              <p class="text">Important</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-circle-o text-warning"></i>
+              <p>Warning</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-circle-o text-info"></i>
+              <p>Informational</p>
+            </a>
+          </li> -->
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">案例管理</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v2</li> -->
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="col-md-12">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <%=title %>
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form role="form">
+                                <div class="card-body">
+                                    <input class="caseId" type="text" hidden value="<%=casee.caseId || '' %>">
+                                    <div class="form-group">
+                                        <label for="title">案例分类</label>
+                                        <select class="form-control category">
+                                            <%if(casee && casee.storeName && casee.storeName != ''){ %>
+                                            <option data-target="<%=casee.storeId %>">
+                                                <%=casee.storeName %>
+                                            </option>
+                                            <%}else{ %>
+                                            <option>请选择</option>
+                                            <%} %>
+                                            <%if(stores && stores.length > 0){ stores.forEach(function(child){ %>
+                                            <%if(casee && casee.storeName && casee.storeName != ''){ %>
+                                            <%if(child.storeId != casee.storeId){ %>
+                                            <option data-target="<%=child.storeId %>">
+                                                <%=child.storeName %>
+                                            </option>
+                                            <%} %>
+                                            <%}else{ %>
+                                            <option data-target="<%=child.storeId %>">
+                                                <%=child.storeName %>
+                                            </option>
+                                            <%} %>
+                                            <%})} %>
+                                            <!-- <option data-target="1">箱式输送机</option> -->
+                                            <!-- <option data-target="2">托盘输送机</option> -->
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="title">案例标题</label>
+                                        <input value="<%=casee.title %>" class="form-control title" type="text"
+                                            placeholder="例如：电商行业1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="important">案例研究重点</label>
+                                        <input value="<%=casee.important %>" class="form-control important" type="text"
+                                            placeholder="例如：时尚配饰履行中心">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="plan">关键系统解决方案</label>
+                                        <input value="<%=casee.plan %>" class="form-control plan" type="text"
+                                            placeholder="例如：订单拣选，分拣和垃圾处理">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="handle">产品处理</label>
+                                        <input value="<%=casee.handle %>" class="form-control handle" type="text"
+                                            placeholder="例如：服装，配饰，鞋子">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="structure">项目背景与需求分析</label>
+                                        <%if(casee.background){ %>
+                                        <%-casee.background %>
+                                        <%} %>
+                                        <textarea id="background" name="background" style="width: 100%; display: none;"></textarea>
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label for="configure">解决方案</label>
+                                        <%if(casee.solution){ %>
+                                        <%-casee.solution %>
+                                        <%} %>
+                                        <textarea id="solution" name="solution" style="width: 100%; display: none;"></textarea>
+                                    </div>
+
+                                    <%if(casee.products && casee.products.length > 0){ casee.products.forEach(function(cld, inx){%>
+                                    <div class="form-group productsDom">
+                                        <label for="products">选择产品配置</label>
+                                        <%if(inx == 0){%>
+                                        <label class="addProducts addBlue" for="onSale"> +</label>
+                                        <%} %>
+                                        <select class="form-control products">
+                                            <option data-target="<%=cld.pid %>">
+                                                <%=cld.title %>
+                                            </option>
+                                            <%if(products && products.length > 0){ products.forEach(function(child, index){%>
+                                            <option data-target="<%=child.pid %>">
+                                                <%=child.title %>
+                                            </option>
+                                            <%})} %>
+                                        </select>
+                                    </div>
+                                    <%})}else{%>
+                                    <div class="form-group productsDom">
+                                        <label for="products">选择产品配置</label>
+                                        <label class="addProducts addBlue" for="onSale"> +</label>
+                                        <select class="form-control products">
+                                            <option>请选择</option>
+                                            <%if(products && products.length > 0){ products.forEach(function(child, index){%>
+                                            <option data-target="<%=child.pid %>">
+                                                <%=child.title %>
+                                            </option>
+                                            <%})} %>
+                                        </select>
+                                    </div>
+                                    <%} %>
+
+
+
+                                    <!-- <div class="mb-3">
+                                        <label for="description">商品描述</label>
+                                        <textarea id="description" name="description" style="width: 100%; display: none;"></textarea>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="structure">商品结构</label>
+                                        <textarea id="structure" name="structure" style="width: 100%; display: none;"></textarea>
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label for="configure">配置说明</label>
+                                        <textarea id="configure" name="configure" style="width: 100%; display: none;"></textarea>
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label for="help">常见问题帮助</label>
+                                        <textarea id="help" name="help" style="width: 100%; display: none;"></textarea>
+                                    </div> -->
+
+
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">案例图片</label>
+                                        <div class="input-group" data-provides="fileinput">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input caseImg" id="exampleInputFile"
+                                                    accept="image/gif,image/jpeg,image/x-png">
+                                                <label class="custom-file-label" for="exampleInputFile">选择图片</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <!-- <span class="input-group-text" id="">Upload</span> -->
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                                                <% if(casee.imgs && casee.imgs.length >= 1){%>
+                                                <img style="width: 200px;height:150px" src="<%=casee.imgs[0] %>" alt="">
+                                                <%} %>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <!-- <strong>Copyright &copy; 2014-2018 <a href="#">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.0.0-alpha
+    </div> -->
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="/management/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="/management/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Morris.js charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="/management/plugins/morris/morris.min.js"></script>
+    <!-- Sparkline -->
+    <script src="/management/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!-- jvectormap -->
+    <script src="/management/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="/management/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="/management/plugins/knob/jquery.knob.js"></script>
+    <!-- daterangepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="/management/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- datepicker -->
+    <script src="/management/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="/management/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="/management/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="/management/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/management/js/adminlte.js"></script>
+    <script src="/management/plugins/ckeditor/ckeditor.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <!-- <script src="/management/js/pages/dashboard.js"></script> -->
+    <!-- AdminLTE for demo purposes -->
+    <script src="/management/js/demo.js"></script>
+    <script src="/js/bootstrap-fileinput.js"></script>
+    <script>
+        $(function () {
+
+            $('.addProducts').click(function (E) {
+                var productsDom = $('.productsDom').clone();
+                productsDom.find('.addProducts').remove();
+                $($('.productsDom')[0]).after($(productsDom[0]))
+            })
+
+            $('.addPropertyDom').click((function (e) {
+                var properyDom = $('.propertyDom').clone();
+                properyDom.find('.addPropertyDom').remove();
+                $($('.propertyDom')[0]).after($(properyDom[0]))
+            }))
+
+            var backgroundEditor = null;
+            var solutionEditor = null;
+            // var configureEditor = null;
+            // var helpEditor = null;
+            var caseId = 'caseId_' + new Date().getTime();
+            var ccid = $('input.caseId').val();
+            ClassicEditor
+                .create(document.querySelector('#background'), {
+                    ckfinder: {
+                        uploadUrl: '/api/uploadImages?command=background&caseId=' + ccid && ccid.trim() != '' ? ccid : caseId + '&type=Files&responseType=json'
+                    }
+                })
+                .then(function (editor) {
+                    backgroundEditor = editor;
+                    // The editor instance
+                })
+                .catch(function (error) {
+                    console.error(error)
+                });
+
+            ClassicEditor
+                .create(document.querySelector('#solution'), {
+                    ckfinder: {
+                        uploadUrl: '/api/uploadImages?command=solution&caseId=' + ccid && ccid.trim() != '' ? ccid : caseId + '&type=Files&responseType=json'
+                    }
+                })
+                .then(function (editor) {
+                    solutionEditor = editor;
+                    // The editor instance
+                })
+                .catch(function (error) {
+                    console.error(error)
+                })
+
+            $('.btn.btn-primary').click(function (e) {
+                e.preventDefault();
+                // debugger
+                var data = new FormData();
+                var background = backgroundEditor.getData();
+                data.append("background", background);
+                var solution = solutionEditor.getData();
+                data.append("solution", solution);
+                // var configure = descriptionEditor.getData();
+                // data.append("configure", configure);
+                // var help = helpEditor.getData();
+                // data.append("help", help);
+                // var title = $('input.title').val();
+                // data.append("title", title);
+                // var identifier = $('input.identifier').val();
+                // data.append("identifier", identifier);
+                var title = $('input.title').val();
+                data.append("title", title);
+                var important = $('input.important').val();
+                data.append("important", important);
+                var plan = $('input.plan').val();
+                data.append("plan", plan);
+                var handle = $('input.handle').val();
+                data.append("handle", handle);
+                // var weight = $('input.weight').val();
+                // data.append("weight", weight);
+                // var promotion = $('input.promotion').val();
+                // data.append("promotion", promotion);
+                // var onSale = 1;
+                let storeId = -1;
+                let storeName = '';
+                // if (jQuery(".onSale  option:selected").text() == '是') {
+                //     onSale = 1;
+                // }
+                // else {
+                //     onSale = 0;
+                // }
+                // data.append("onSale", onSale);
+                if (jQuery(".category  option:selected").attr('data-target')) {
+                    storeId = parseInt(jQuery(".category  option:selected").attr('data-target'));
+                    storeName = jQuery(".category  option:selected").text();
+                    data.append("storeId", storeId);
+                    data.append("storeName", storeName);
+                }
+
+                var productsDom = $('.productsDom');
+                let products = [];
+                for (let t = 0; t < productsDom.length; t++) {
+                    // $(partsDom[0]).find('option:selected').text()
+                    if ($(productsDom[t]).find('option:selected').attr('data-target')) {
+                        products.push($(productsDom[t]).find('option:selected').attr('data-target'))
+                    }
+                }
+                data.append("products", products);
+
+
+                if (document.getElementsByClassName('caseImg')[0].files[0]) {
+                    data.append("caseImg", document.getElementsByClassName('caseImg')[0].files[0])
+                }
+                // if (document.getElementsByClassName('product2')[0].files[0]) {
+                //     data.append("product2", document.getElementsByClassName('product2')[0].files[0])
+                // }
+                // if (document.getElementsByClassName('product3')[0].files[0]) {
+                //     data.append("product3", document.getElementsByClassName('product3')[0].files[0])
+                // }
+                data.append('caseId', ccid && ccid.trim() != '' ? ccid : caseId)
+                // for (var i = 0; i < ddom.length; i++) {
+                //   if (ddom[i] && ddom[i].value && ddom[i].value.length > 0) {
+                //     data.append(ddom[i].getAttribute('data-target'), ddom[i].value)
+                //   }
+                // }
+
+                // if(jQuery(".category  option:selected"))
+
+                $.ajax({
+                    url: ccid && ccid.trim() != '' ? '/api/updateCase' : '/api/createCase',
+                    type: 'POST',
+                    data: data,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        console.log(data);
+                        if (data.status && data.status === 'success') {
+                            location.href = '/management/caseMgrM'
+                        } else if (data.msg) {
+                            alert(data.msg)
+                            // console.log(data.message);
+                        }
+                    },
+                    error: function (data) {
+                        console.log(data.status);
+                    }
+                });
+            })
+        })
+    </script>
+</body>
+
+</html>

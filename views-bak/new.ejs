@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://vars.hotjar.com/rcj-99d43ead6bdf30da8ed5ffcb4f17100c.html -->
+<html lang=<%=language.common.languageCode %>>
+
+<head>
+    <link rel="alternate" hreflang="zh" href="" />
+    <link rel="alternate" hreflang="en" href="" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>腾中焊割科技</title>
+    <link rel="shortcut icon" type="image/png" href="<!-- title-logo.png -->">
+    <link class="main-stylesheet" href="/css/productdetails.css" rel="stylesheet" type="text/css">
+    <link class="main-stylesheet" href="/css/menu.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <meta name="keywords" content="">
+    <script type="text/javascript" async="" src="//munchkin.marketo.net/151/munchkin.js"></script>
+</head>
+
+<body class="lang-zh windows desktop pace-done">
+    <!-- <div class="pace pace-inactive">
+    <div class="pace-progress" data-progress-text="100%"></div> </div>-->
+    <!-- begin header -->
+    <%- include header.ejs %>
+        <!-- end header-->
+
+        <!-- 开始大屏幕 -->
+        <section class="hero size-large" style="background-image:url(/img/product_details_page_1.jpg);background-position:center 100%;">
+            <div class="vertical-content">
+                <div class="container">
+                    <div class="row row-centered">
+                        <div class="col-xs-12 col-sm-9 col-md-7">
+                            <h2 class="heading">
+                                <%=data.newsTitle %>
+                            </h2>
+                            <h4 class="title">
+                                <%=data.newsShortDescription %>
+                            </h4>
+                            <h1 class="description">
+                                <%=data.newsDescription %>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 结束大屏幕 -->
+
+        <!-- 内容1——主页文字+文字介绍 -->
+        <section class="line-text">
+            <div class="container">
+                <!-- 文字介绍 -->
+                <div class="rich-text text-content">
+                    <div class="col-xs-12 col-sm-9 col-md-7">
+                        <p class="description">
+                            <%=data.newsLongDescriptionTop %>
+                        </p>
+                        <br/>
+                        <p class="description">
+                            <%=data.newsLongDescriptionBottom %>
+                        </p>
+                        <br/>
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 优势 -->
+        <section class="benefits">
+            <div class="container benefit-story">
+                <div class="row">
+                    <div class="col-sm-11">
+                        <div class="row row-centered">
+                            <div class="col-xs-4 col-sm-6 benefit-story-image">
+                                <img src="<%=data.newsImages %>" alt="" class="img-responsive img-circle lazyloaded">
+                            </div>
+
+                            <div class="col-xs-8 col-sm-6 benefit-story-content">
+                                <h3><%=data.newsTitle %></h3>
+                                <p><%=data.newsContent %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+</body>
+
+</html>

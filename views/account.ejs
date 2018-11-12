@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>index</title>
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/swiper.min.css" rel="stylesheet">
+    <link href="/css/account.css" rel="stylesheet">
+
+</head>
+<body>
+	<div class="header">
+		<div class="container clearfix">
+			<div class="pull-right langer-a"><a href="">中文</a>/<a href="">英文</a></div>
+			<ul class="pull-right header-list clearfix">
+				<li><a href="/index"><img src="images/01.png"></a></li>
+				<li><a href="/download">资料下载</a></li>
+				<li><a href="">购物指南</a></li>
+				<li><a href="/productlist">在线购买</a></li>
+				<li><a href="/cart">购物车</a></li>
+				<li><a href="/account">会员</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container nav-c clearfix">
+		<div class="pull-left logo"><a href=""><img src="images/logo.png"></a></div>
+		<ul class="pull-right nav-list clearfix">
+			<li><a href="/index">首页</a></li>
+			<li><a href="/productlist">产品</a></li>
+			<li>
+				<a href="/case">方案</a><span class="phone-i"><i class="glyphicon glyphicon-menu-down"></i></span>
+				<ul class="nav-down">
+					<!-- <li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li> -->
+				</ul>
+			</li>
+			<li><a href="/support">支持</a></li>
+			<li><a href="/video">培训</a></li>
+			<li><a href="/contact">联系我们</a></li>
+			<li class="last"><a href="/integrator">查找集成伙伴</a></li>
+		</ul>
+      <button type="button" class="navbar-toggle collapsed">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	</div>
+	
+	<div class="container">
+		<div class="user-title">经销商中心</div>
+		<div class="clearfix">
+			<div class="pull-left cp-left">
+				<div class="user-nav-box">
+					<div class="cp-left-tt">业务管理<span class="caret"></span></div>
+					<ul class="cp-left-list">
+						<li><a href="/myOrder">我的订单</a></li>
+						<!-- <li><a href="">询价管理</a></li> -->
+						<li><a href="/customServiceList">售后服务</a></li>
+						<!-- <li><a href="">我的建议</a></li> -->
+						<!-- <li><a href="">培训申请</a></li> -->
+						<!-- <li><a href="">我的收藏</a></li> -->
+					</ul>
+				</div>
+				<div class="user-nav-box">
+					<div class="cp-left-tt cp-left-tt-b">账户设置<span class="caret"></span></div>
+					<ul class="cp-left-list">
+						<li><a href="/myOrder">我的订单</a></li>
+						<li><a href="/accountInfo">个人信息</a></li>
+						<li><a href="/addressInfo">收货地址</a></li>
+						<li><a href="/billInfo">开票信息</a></li>
+						<li><a href="/password">账户安全</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="cp-right pull-right">
+				<div class="clearfix">
+					<div class="pull-left user-img"><a href=""><img src="/company/<%=user.uid %>_avator.jpg"></a></div>
+					<div class="pull-left user-name">
+						<div><span><%=user.name %></span><%=user.levelString %></div>
+						<div>公司名称：<%=user.companyName %></div>
+					</div>
+					<div class="pull-right user-a">
+						<a href="/accountInfo" class="red">修改账户信息 ></a>
+						<a href="/password" class="red">修改密码 ></a><br>
+						<a href="/addressInfo">设置收货地址 ></a>
+						<a href="/billInfo">设置开票信息 ></a>
+					</div>
+				</div>
+				<div class="row user-row">
+					<div class="col-xs-3"><span>当前会员等级：</span> <%=user.levelString %></div>
+					<div class="col-xs-3"><span>我的付款方式：</span><%=user.payInfo.payDay %></div>
+					<div class="col-xs-3"><span>我的支付方式：</span><%=user.payInfo.payMethod %></div>
+					<div class="col-xs-3"><span>我的消费金额：</span><%=user.totalConsume %>元</div>
+				</div>
+				<div class="user-gg">系统公告：</div>
+				<ul class="user-gg-list">
+					<li><a href=""><span>[06.06]</span>我的付款方式我的付款方式</a></li>
+					<li><a href=""><span>[06.06]</span>我的付款方式我的付款方式</a></li>
+					<li><a href=""><span>[06.06]</span>我的付款方式我的付款方式</a></li>
+					<li><a href=""><span>[06.06]</span>我的付款方式我的付款方式</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">客户服务</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/integrator">查找集成伙伴</a></li>
+							<li><a href="/productlist">在线购买输送机</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">信息中心</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="col-xs-3 pull-right">
+					<div class="footer-link">
+						<a href=""><img src="images/footer03.png"></a>
+						<a href=""><img src="images/footer04.png"></a>
+						<a href=""><img src="images/footer05.png"></a>
+					</div>
+					<div class="bottom-phone">400-880-5180</div>
+					<div class="bottom-phone bottom-phone-b">成为集成伙伴成为集成伙伴</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer text-center">
+		<div class="container">成为集成伙伴成为集成伙伴</div>
+	</div>
+</body>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/swiper.min.js"></script>
+<!-- Initialize Swiper -->
+<script type="text/javascript">
+//右侧悬浮
+$(document).ready(function(){
+
+	$(document).on("click", ".zi-fdTel .up", function(){
+		$("html,body").animate({scrollTop: 0});
+	});
+	$(window).scroll(function(){
+		var st = $(document).scrollTop();
+		var $top = $(".zi-fdTel");
+		if(st > 400){
+			$top.css({display: 'block'});
+		}else{
+			if ($top.is(":visible")) {
+				$top.hide();
+			}
+		}
+	});
+	
+});	
+ $(function () {
+            var winWide = window.screen.width;
+            
+            var wideScreen = false;
+            if (winWide >= 768) {
+
+            } else {
+			   $(".cp-left-tt").click(function(){
+			   	$(".cp-left-list").slideUp("slow");
+			          if($(this).parents(".user-nav-box").find(".cp-left-list").is(":hidden"))
+			          {
+			            $(this).parents(".user-nav-box").find(".cp-left-list").slideDown("slow");  
+			          }else{
+			            $(this).parents(".user-nav-box").find(".cp-left-list").slideUp("slow");
+			              }
+			  }); 
+            }
+})
+   $(".navbar-toggle").click(function(){
+   			$(".nav-down").slideUp("slow");
+          if($(".nav-list").is(":hidden"))
+          {
+            $(".nav-list").slideDown("slow");  
+          }else{
+            $(".nav-list").slideUp("slow");
+              }
+  }); 
+   $(".phone-i").click(function(){
+          if($(this).parents("li").find(".nav-down").is(":hidden"))
+          {
+          	$(".nav-down").slideUp("slow");
+            $(this).parents("li").find(".nav-down").slideDown("slow");  
+          }else{
+            $(this).parents("li").find(".nav-down").slideUp("slow");
+              }
+  }); 
+</script>
+</html>

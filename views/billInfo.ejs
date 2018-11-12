@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>index</title>
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/account.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="header">
+		<div class="container clearfix">
+			<div class="pull-right langer-a"><a href="">中文</a>/<a href="">英文</a></div>
+			<ul class="pull-right header-list clearfix">
+				<li><a href="/index"><img src="images/01.png"></a></li>
+				<li><a href="/download">资料下载</a></li>
+				<li><a href="">购物指南</a></li>
+				<li><a href="/productlist">在线购买</a></li>
+				<li><a href="/cart">购物车</a></li>
+				<li><a href="/account">会员</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container nav-c clearfix">
+		<div class="pull-left logo"><a href=""><img src="images/logo.png"></a></div>
+		<ul class="pull-right nav-list clearfix">
+			<li><a href="/index">首页</a></li>
+			<li><a href="/productlist">产品</a></li>
+			<li>
+				<a href="/case">方案</a><span class="phone-i"><i class="glyphicon glyphicon-menu-down"></i></span>
+				<ul class="nav-down">
+					<!-- <li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li> -->
+				</ul>
+			</li>
+			<li><a href="/support">支持</a></li>
+			<li><a href="/video">培训</a></li>
+			<li><a href="/contact">联系我们</a></li>
+			<li class="last"><a href="/integrator">查找集成伙伴</a></li>
+		</ul>
+		<button type="button" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+
+	<div class="container">
+		<div class="user-title">经销商中心</div>
+		<div class="clearfix">
+			<div class="pull-left cp-left">
+				<div class="user-nav-box">
+					<div class="cp-left-tt">业务管理<span class="caret"></span></div>
+					<ul class="cp-left-list">
+						<li><a href="/myOrder">我的订单</a></li>
+						<!-- <li><a href="">询价管理</a></li> -->
+						<li><a href="/customServiceList">售后服务</a></li>
+						<!-- <li><a href="">我的建议</a></li> -->
+						<!-- <li><a href="">培训申请</a></li> -->
+						<!-- <li><a href="">我的收藏</a></li> -->
+					</ul>
+				</div>
+				<div class="user-nav-box">
+					<div class="cp-left-tt cp-left-tt-b">账户设置<span class="caret"></span></div>
+					<ul class="cp-left-list">
+						<li><a href="/myOrder">我的订单</a></li>
+						<li><a href="/accountInfo">个人信息</a></li>
+						<li><a href="/addressInfo">收货地址</a></li>
+						<li class="active"><a href="/billInfo">开票信息</a></li>
+						<li><a href="/password">账户安全</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="cp-right pull-right">
+				<div class="cp-right-tt cp-right-tt-sm">账户设置</div>
+				<ul class="sz-list clearfix">
+					<li><a href="/accountInfo">账户信息</a></li>
+					<li><a href="/addressInfo">收货地址</a></li>
+					<li class="active"><a href="/billInfo">开票信息</a></li>
+					<li><a href="/password">账户安全</a></li>
+				</ul>
+				<ul class=" address-list user-address-list fp-list clearfix">
+					<%if(billInfos && billInfos.length > 0){ billInfos.forEach(function(child){ %>
+					<li>
+						<div class="address-li address-li-lg">
+							<div class="address-txt">
+								<p>收件信息：<%=child.name %> <%=child.phone %></p>
+								<p>收票地址：<%=child.address %></p>
+								<!-- <p>吴中路1079号405室(200016)</p> -->
+							</div>
+							<div class="address-txt address-txt-b">
+								<p>公司名称：<%=child.companyName %></p>
+								<!-- <p>信用代码：ASASDDFSDS2356SDFDSF</p> -->
+								<p>地址/电话：<%=child.address %>/<%=child.phone %></p>
+								<p>开户银行：<%=child.companyOpenAddress %></p>
+								<p>银行账户：<%=child.companyBankAccount %></p>
+							</div>
+						</div>
+					</li>
+					<%})} %>
+					<!-- <li>
+						<div class="address-li address-li-lg">
+							<div class="address-txt">
+								<p>收件信息：吴敏 13918240494</p>
+								<p>收票地址：上海市闵行区 吴中路1079号405室</p>
+								<p>吴中路1079号405室(200016)</p>
+							</div>
+							<div class="address-txt address-txt-b">
+								<p>公司名称：上海亨路网络科技有限公司</p>
+								<p>信用代码：ASASDDFSDS2356SDFDSF</p>
+								<p>地址/电话：上海市吴中路1079号405室/021 63235645</p>
+								<p>开户银行：工商银行漕河泾开发支行</p>
+								<p>银行账户：6223 2233 1546 562</p>
+							</div>
+						</div>
+					</li> -->
+					<li>
+						<a role="button" class="address-a address-a-lg tc-open">增加新发票</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="mask tc-box"></div>
+	<div class="address-modal address-modal-sm tc-box">
+		<div class="tc-box-tt">请您完善以下发票信息</div>
+		<a role="button" class="close tc-open"></a>
+		<div class="clearfix">
+			<div class="address-left pull-left">*发票类型：</div>
+			<div class="citys clearfix">
+				<select class="form-control address-width">
+					<option>普通发票</option>
+					<!-- <option>请选择</option>
+					<option>请选择</option>
+					<option>请选择</option>
+					<option>请选择</option> -->
+				</select>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="address-left pull-left">*公司名称：</div>
+			<div class="citys clearfix">
+				<input type="text" class="form-control address-width companyName" placeholder="" />
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="address-left pull-left">*发票税号：</div>
+			<div class="citys clearfix">
+				<input type="text" class="form-control address-width invoiceTaxNumber" placeholder="" />
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="address-left pull-left">*开户地址：</div>
+			<div class="citys clearfix">
+				<input type="text" class="form-control address-width companyOpenAddress" placeholder="" />
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="address-left pull-left">*公司电话：</div>
+			<div class="citys clearfix">
+				<input type="text" class="form-control address-width companyPhone" placeholder="" />
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="address-left pull-left">*开户银行：</div>
+			<div class="citys clearfix">
+				<input type="text" class="form-control address-width companyOpenBank" placeholder="" />
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="address-left pull-left">*银行账户：</div>
+			<div class="citys clearfix">
+				<input type="text" class="form-control address-width companyBankAccount" placeholder="" />
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="address-left pull-left">*收票人姓名：</div>
+			<div class="citys clearfix">
+				<input type="text" class="form-control address-width name" placeholder="" />
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="address-left pull-left">*收票人手机号：</div>
+			<div class="citys clearfix">
+				<input type="text" class="form-control address-width phone" placeholder="" />
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="address-left pull-left">*收票人详细地址：</div>
+			<div class="citys clearfix">
+				<input type="text" class="form-control address-width address" placeholder="" />
+			</div>
+		</div>
+		<div class="citys clearfix">
+			<button type="submit" class="btn btn-car btn-car-sm">提交</button>
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">客户服务</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/integrator">查找集成伙伴</a></li>
+							<li><a href="/productlist">在线购买输送机</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">信息中心</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-xs-3 pull-right">
+					<div class="footer-link">
+						<a href=""><img src="images/footer03.png"></a>
+						<a href=""><img src="images/footer04.png"></a>
+						<a href=""><img src="images/footer05.png"></a>
+					</div>
+					<div class="bottom-phone">400-880-5180</div>
+					<div class="bottom-phone bottom-phone-b">成为集成伙伴成为集成伙伴</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer text-center">
+		<div class="container">成为集成伙伴成为集成伙伴</div>
+	</div>
+</body>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.citys.js"></script>
+<!-- Initialize Swiper -->
+<script type="text/javascript">
+	$('#demo').citys({ code: 350206 });
+
+	$('.btn.btn-car.btn-car-sm').click(function (e) {
+		$.ajax({
+			url: '/api/addBill',
+			type: 'POST',
+			data: {
+				companyName: $('.companyName').val(),
+				invoiceTaxNumber: $('.invoiceTaxNumber').val(),
+				companyOpenAddress: $('.companyOpenAddress').val(),
+				companyPhone: $('.companyPhone').val(),
+				companyOpenBank: $('.companyOpenBank').val(),
+				companyBankAccount: $('.companyBankAccount').val(),
+				name: $('.name').val(),
+				phone: $('.phone').val(),
+				address: $('.address').val()
+			},
+			async: false,
+			cache: false,
+			success: function (data) {
+				console.log(data);
+				if (data && data.status && data.status == 'success') {
+					// debugger
+					location.href = '/billInfo'
+				} else if (data.msg) {
+					alert(data.msg)
+					// console.log(data.message);
+				}
+			},
+			error: function (data) {
+				console.log(data.status);
+			}
+		});
+		$(".tc-box").hide();
+	})
+	//弹窗JS
+	$(".tc-open").click(function () {
+		if ($(".tc-box").is(":hidden")) {
+			$(".tc-box").show();
+		} else {
+			$(".tc-box").hide();
+		}
+	});
+	$(function () {
+		var winWide = window.screen.width;
+
+		var wideScreen = false;
+		if (winWide >= 768) {
+
+		} else {
+			$(".cp-left-tt").click(function () {
+				$(".cp-left-list").slideUp("slow");
+				if ($(this).parents(".user-nav-box").find(".cp-left-list").is(":hidden")) {
+					$(this).parents(".user-nav-box").find(".cp-left-list").slideDown("slow");
+				} else {
+					$(this).parents(".user-nav-box").find(".cp-left-list").slideUp("slow");
+				}
+			});
+		}
+	})
+	$(".navbar-toggle").click(function () {
+		$(".nav-down").slideUp("slow");
+		if ($(".nav-list").is(":hidden")) {
+			$(".nav-list").slideDown("slow");
+		} else {
+			$(".nav-list").slideUp("slow");
+		}
+	});
+	$(".phone-i").click(function () {
+		if ($(this).parents("li").find(".nav-down").is(":hidden")) {
+			$(".nav-down").slideUp("slow");
+			$(this).parents("li").find(".nav-down").slideDown("slow");
+		} else {
+			$(this).parents("li").find(".nav-down").slideUp("slow");
+		}
+	}); 
+</script>
+
+</html>

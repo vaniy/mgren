@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://vars.hotjar.com/rcj-99d43ead6bdf30da8ed5ffcb4f17100c.html -->
+<html lang=<%=language.common.languageCode %>>
+
+<head>
+  <link rel="alternate" hreflang="zh" href="" />
+  <link rel="alternate" hreflang="en" href="" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>
+    <<%=language.common.title %>>
+  </title>
+  <link rel="shortcut icon" type="image/png" href="<!-- title-logo.png -->">
+  <link class="main-stylesheet" href="/css/product.css" rel="stylesheet" type="text/css">
+  <link class="main-stylesheet" href="/css/menu.css" rel="stylesheet" type="text/css">
+  <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <meta name="keywords" content="">
+  <script type="text/javascript" async="" src="//munchkin.marketo.net/151/munchkin.js"></script>
+</head>
+
+<body class="lang-zh windows desktop pace-done">
+  <!-- <div class="pace pace-inactive">
+    <div class="pace-progress" data-progress-text="100%"></div> </div>-->
+  <!-- begin header -->
+
+  <%- include header.ejs %>
+    <!-- end header-->
+
+    <!-- 开始大屏幕 -->
+    <section class="hero full-width" style="background-image:url(/img/market_product.jpg);background-position:center 100%;">
+      <div class="vertical-content">
+        <div class="container">
+          <div class="row row-centered">
+            <div class="col-sm-9 col-md-7">
+              <h2 class="heading">
+                <%=data.headTitle %>
+              </h2>
+              <h1 class="description">
+                <%=data.headDescription %>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 结束大屏幕 -->
+
+    <!-- 内容1——主页文字+文字介绍 -->
+    <section class="line-text">
+      <div class="container">
+        <!-- 主页 -->
+        <ol class="breadcrumb">
+          <li itemprop="itemListElement" itemscope="" itemtype="#">
+            <a href="#" itemprop="item">
+                <span itemporop="name"><%=language.product.home %></span>
+              </a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li itemprop="itemListElement" itemscope="" itemtype="#">
+            <a itemprop="item" href="#"> 
+                <span itemprop="name"><%=data.tab.tabName %></span> 
+              </a>
+            <meta itemprop="position" content="2">
+          </li>
+          <li itemprop="itemListElement" itemscope="" itemtype="#">
+            <a class="not-link" itemprop="item" href="#"> 
+                <span itemprop="name"><%=data.category.categoryName %></span> 
+              </a>
+            <meta itemprop="position" content="3">
+          </li>
+        </ol>
+        <!-- 文字介绍 -->
+        <div class="rich-text text-content">
+          <div class="col-xs-12 col-sm-9 col-md-7">
+            <p class="description">
+              <%=data.subcategoryDescriptionTop %>
+            </p>
+            <br/>
+            <hr/>
+          </div>
+        </div>
+        <h4 class="overview-heading">
+          <%=data.subcategroyTitle %>
+        </h4>
+      </div>
+    </section>
+
+
+    <section class="product-groups">
+      <div id="mig" data-heading="MIG" class="group group-accordion active">
+        <!-- MIG背景长图 -->
+        <div class="group-heading accordion-heading" style="background-image:url(/img/accordion_01.jpg)">
+          <div class="vertical-content">
+            <div class="container">
+              <h2>
+                  <%=data.subcategoryName %>
+                <a href="#" class="indicator">
+                      <span class="glyphicon glyphicon-plus">
+                      </span>
+                    </a>
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="group-content accordion-body collapse in">
+          <div class="overview">
+            <div class="rich-text text-content text-width">
+              <div class="container">
+                <p>
+                  <%=data.subcategoryDescriptionBottom %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="tab-element double-tab">
+            <div class="row">
+              <!-- <div id="mig_" class="tab-header">
+                    <div class="container">
+                      <div class="technology-heading">
+                          <p>K7 - 集专业和智能于一体</p>
+                      </div>
+                    </div>
+                    
+                  </div> -->
+              <div id="mig_" class="tab-content col-sm-12 active">
+                <div class="container">
+                  <div class="level-group" style="overflow: hidden;">
+                    <div class="technology-heading">
+                      <p><%=data.subcategoryProductTitle %></p>
+                    </div>
+                    <%-dom.featureItem %>
+                  </div>
+
+                  <div class="level-group" style="overflow: hidden;">
+                    <div class="technology-heading">
+                      <p><%=data.subcategoryProductTitle %></p>
+                    </div>
+
+                    
+                    <%-dom.normalItem %>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+</body>
+
+
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>index</title>
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/swiper.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="header">
+		<div class="container clearfix">
+			<div class="pull-right langer-a"><a href="">中文</a>/<a href="">英文</a></div>
+			<ul class="pull-right header-list clearfix">
+				<li><a href="/index"><img src="images/01.png"></a></li>
+				<li><a href="/download">资料下载</a></li>
+				<li><a href="">购物指南</a></li>
+				<li><a href="/productlist">在线购买</a></li>
+				<li class="active"><a href="/cart">购物车</a></li>
+				<li><a href="/account">会员</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container nav-c clearfix">
+		<div class="pull-left logo"><a href=""><img src="images/logo.png"></a></div>
+		<ul class="pull-right nav-list clearfix">
+			<li><a href="/index">首页</a></li>
+			<li class="active"><a href="/productlist">产品</a></li>
+			<li>
+				<a href="/case">方案</a><span class="phone-i"><i class="glyphicon glyphicon-menu-down"></i></span>
+				<ul class="nav-down">
+					<!-- <li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li> -->
+				</ul>
+			</li>
+			<li><a href="/support">支持</a></li>
+			<li><a href="/video">培训</a></li>
+			<li><a href="/contact">联系我们</a></li>
+			<li class="last"><a href="/integrator">查找集成伙伴</a></li>
+		</ul>
+		<button type="button" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+	<div class="container">
+		<div class="car-tt"><span>我的购物车</span> 温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</div>
+		<div class="qr-title">添加并核对订单信息</div>
+		<div class="sh-box clearfix">
+			<div class="pull-left sh-tt">收货信息</div>
+			<ul class=" address-list clearfix">
+				<%if(addresses && addresses.length > 0){ addresses.forEach(function(child){ %>
+				<li>
+					<div id="<%=child.index %>" class="address-li addressInfo">
+						<div class="address-name">
+							<%=child.name %>
+						</div>
+						<div class="address-txt">
+							<p>
+								<%=child.phone %>
+							</p>
+							<p>
+								<%=child.province + ' ' + child.city + ' ' + child.area %>
+							</p>
+							<p>
+								<%=child.address %>(
+								<%=child.zipCode %>)</p>
+						</div>
+					</div>
+				</li>
+				<%})} %>
+				<!-- <li>
+					<div class="address-li">
+						<input type="radio" name="inlineRadioOptions">
+						<div class="address-name">购物车</div>
+						<div class="address-txt">
+							<p>13918240494</p>
+							<p>上海 上海市 闵行区 </p>
+							<p>吴中路1079号405室(200016)</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="address-li">
+						<input type="radio" name="inlineRadioOptions">
+						<div class="address-name">购物车</div>
+						<div class="address-txt">
+							<p>13918240494</p>
+							<p>上海 上海市 闵行区 </p>
+							<p>吴中路1079号405室(200016)</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="address-li">
+						<input type="radio" name="inlineRadioOptions">
+						<div class="address-name">购物车</div>
+						<div class="address-txt">
+							<p>13918240494</p>
+							<p>上海 上海市 闵行区 </p>
+							<p>吴中路1079号405室(200016)</p>
+						</div>
+					</div>
+				</li> -->
+				<li>
+					<a href="/addressInfo" class="address-a"><span>添加新地址</span></a>
+				</li>
+
+			</ul>
+		</div>
+		<div class="hk-box clearfix">
+			<div class="pull-left hk-tt">货款支付</div>
+			<div class="hk-right">
+				<p>付款方式：<span>
+						<%=user.payInfo.payDay %></span></p>
+				<p>支付方式：<span>
+						<%=user.payInfo.payMethod %></span></p>
+			</div>
+		</div>
+		<div class="hk-box clearfix">
+			<div class="pull-left hk-tt hk-tt-b">配送方式</div>
+			<div class="hk-right hk-right-sm pull-left">
+				<div class="ps-txt clearfix"><a id="0" role="button" class="active">用户自提</a></div>
+				<div class="ps-txt clearfix"><a id="1" role="button">德玛配送</a>由卖方核实运费，并与您确认后修改订单价格。</div>
+			</div>
+		</div>
+		<div class="hk-box clearfix">
+			<div class="pull-left hk-tt">配送时间</div>
+			<div class="hk-right hk-right-sm pull-left">
+				<ul class="ps-date clearfix">
+					<li><a id="0" role="button" class="active">不限送货时间</a></li>
+					<li><a id="1" role="button">工作日送货：周一至周五</a></li>
+					<li><a id="2" role="button">双休日，节假日：周六至周日</a></li>
+					<li>
+						<div class="ps-sm">* 具体达到时间由物流公司和您确认</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="sh-box fp-box">
+			<div class="clearfix">
+				<div class="pull-left sh-tt fp-tt">发票信息</div>
+				<ul class=" address-list clearfix">
+					<%if(billInfos && billInfos.length > 0){ billInfos.forEach(function(child){ %>
+					<li>
+						<div id="<%=child.index %>" class="address-li address-li-lg billInfo">
+							<div class="address-txt">
+								<p>收件信息：
+									<%=child.name %>
+									<%=child.phone %>
+								</p>
+								<p>收票地址：
+									<%=child.address %>
+								</p>
+								<!-- <p>吴中路1079号405室(200016)</p> -->
+							</div>
+							<div class="address-txt address-txt-b">
+								<p>公司名称：
+									<%=child.companyName %>
+								</p>
+								<!-- <p>信用代码：ASASDDFSDS2356SDFDSF</p> -->
+								<p>地址/电话：
+									<%=child.address %>/
+									<%=child.phone %>
+								</p>
+								<p>开户银行：
+									<%=child.companyOpenAddress %>
+								</p>
+								<p>银行账户：
+									<%=child.companyBankAccount %>
+								</p>
+							</div>
+						</div>
+					</li>
+					<%})} %>
+					<!-- <li>
+						<div class="address-li address-li-lg">
+							<input type="radio" name="fapiao">
+							<div class="address-txt">
+								<p>收件信息：吴敏 13918240494</p>
+								<p>收票地址：上海市闵行区 吴中路1079号405室</p>
+								<p>吴中路1079号405室(200016)</p>
+							</div>
+							<div class="address-txt address-txt-b">
+								<p>公司名称：上海亨路网络科技有限公司</p>
+								<p>信用代码：ASASDDFSDS2356SDFDSF</p>
+								<p>地址/电话：上海市吴中路1079号405室/021 63235645</p>
+								<p>开户银行：工商银行漕河泾开发支行</p>
+								<p>银行账户：6223 2233 1546 562</p>
+							</div>
+						</div>
+					</li> -->
+					<li>
+						<a href="/billInfo" class="address-a address-a-lg">增加新发票</a>
+					</li>
+				</ul>
+			</div>
+			<div class="fp-txt"><span>*</span> 当您选择当前发票信息时，需要使用该银行账户支付货款</div>
+		</div>
+		<div class="qr-money text-right clearfix">
+			<div class="pull-right">
+				<div class="pull-left">
+					<p>
+						<%=orders.carts.length %>件商品，总价：</p>
+					<p>会员等级折扣：</p>
+				</div>
+				<div class="pull-right pull-right-r">
+					<p>
+						<%=totalMount %>元</p>
+					<p>
+						<%=discouont*10 %>折</p>
+				</div>
+			</div>
+		</div>
+		<div class="qr-z text-right">商品金额：<span>
+				<%=totalMount * discouont %></span>元</div>
+		<div class="text-right"><button type="button" class="btn btn-car">提交订单</button></div>
+	</div>
+	<div class="bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">客户服务</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/integrator">查找集成伙伴</a></li>
+							<li><a href="/productlist">在线购买输送机</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">信息中心</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-xs-3 pull-right">
+					<div class="footer-link">
+						<a href=""><img src="images/footer03.png"></a>
+						<a href=""><img src="images/footer04.png"></a>
+						<a href=""><img src="images/footer05.png"></a>
+					</div>
+					<div class="bottom-phone">400-880-5180</div>
+					<div class="bottom-phone bottom-phone-b">成为集成伙伴成为集成伙伴</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer text-center">
+		<div class="container">成为集成伙伴成为集成伙伴</div>
+	</div>
+	<section class="zi-fdTel">
+		<a href="" target="_onlineqq" class="tel">
+			<span class="hide-txt">ＱＱ<br>交谈</span>
+			<img class="" src="images/a-14.png">
+		</a>
+		<a href="javascript:;" class="tel">
+			<span class="hide-txt">微信<br>咨询</span>
+			<div><img class="" src="images/a-15.png"></div>
+			<div class="hide-ewm"><img src="images/fdTel-wx.jpg"><br>扫码微信轻松聊</div>
+		</a>
+		<a href="" target="_onlinekf" class="tel">
+			<span class="hide-txt">在线<br>客服</span>
+			<img class="" src="images/a-05.png">
+		</a>
+		<a href="javascript:;" class="up"><img class="" src="images/a-06.png"><br>顶部</a>
+	</section>
+	<input hidden type="text" class="oid" value="<%=orders.oid %>" placeholder="" />
+	<input hidden class="addressInput" />
+	<input hidden class="billInfoInput" />
+	<input hidden class="deliverInput" value="0" />
+	<input hidden class="deliverTimeInput" value="0" />
+</body>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/swiper.min.js"></script>
+<!-- Initialize Swiper -->
+<script type="text/javascript">
+	//右侧悬浮
+	$(document).ready(function () {
+
+		$(document).on("click", ".zi-fdTel .up", function () {
+			$("html,body").animate({ scrollTop: 0 });
+		});
+		$(window).scroll(function () {
+			var st = $(document).scrollTop();
+			var $top = $(".zi-fdTel");
+			if (st > 400) {
+				$top.css({ display: 'block' });
+			} else {
+				if ($top.is(":visible")) {
+					$top.hide();
+				}
+			}
+		});
+
+	});
+	$('.btn.btn-car').click(function (e) {
+		var addressIndex = $('.addressInput').val();
+		var billIndex = $('.billInfoInput').val();
+		var deliverTypeIndex = $('.deliverInput').val();
+		var deliverTimeIndex = $('.deliverTimeInput').val();
+		if (addressIndex == '') {
+			alert('请选择地址');
+			return;
+		}
+		if (billIndex == '') {
+			alert('请选择发票');
+			return;
+		}
+		$.ajax({
+			url: '/api/confirmOrder',
+			type: 'POST',
+			data: {
+				oid: $('.oid').val(),
+				addressIndex: $('.addressInput').val(),
+				billIndex: $('.billInfoInput').val(),
+				deliverTypeIndex: $('.deliverInput').val(),
+				deliverTimeIndex: $('.deliverTimeInput').val()
+			},
+			async: false,
+			cache: false,
+			// contentType: false,
+			// processData: false,
+			success: function (data) {
+				console.log(data);
+				if (data && data.status && data.status == 'success') {
+					// location.href
+					// debugger
+					// $('.cp-tj-list.hidden-xs').html(data)
+					location.href = '/createOrder?oid=' + $('.oid').val()
+				} else if (data.msg) {
+					alert(data.msg)
+					// console.log(data.message);
+				}
+			},
+			error: function (data) {
+				console.log(data.status);
+			}
+		});
+	})
+	$(".address-li").click(function () {
+		if (this.className.indexOf('addressInfo') >= 0) {
+			$('.addressInput').val(this.id)
+		}
+		else if (this.className.indexOf('billInfo') >= 0) {
+			$('.billInfoInput').val(this.id)
+		}
+		$(this).parents("ul").find("li").find(".address-li").removeClass("active");
+		$(this).addClass("active");
+
+	})
+	$(".ps-date li a").click(function () {
+		$('.deliverTimeInput').val(this.id)
+		$(this).parents("ul").find("li").find("a").removeClass("active");
+		$(this).addClass("active");
+
+	})
+	$(".ps-txt a").click(function () {
+		$('.deliverInput').val(this.id)
+		$(".ps-txt a").removeClass("active");
+		$(this).addClass("active");
+
+	})
+
+	$(".navbar-toggle").click(function () {
+		$(".nav-down").slideUp("slow");
+		if ($(".nav-list").is(":hidden")) {
+			$(".nav-list").slideDown("slow");
+		} else {
+			$(".nav-list").slideUp("slow");
+		}
+	});
+	$(".phone-i").click(function () {
+		if ($(this).parents("li").find(".nav-down").is(":hidden")) {
+			$(".nav-down").slideUp("slow");
+			$(this).parents("li").find(".nav-down").slideDown("slow");
+		} else {
+			$(this).parents("li").find(".nav-down").slideUp("slow");
+		}
+	}); 
+</script>
+
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>index</title>
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/swiper.min.css" rel="stylesheet">
+	<link href="css/account.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="header">
+		<div class="container clearfix">
+			<div class="pull-right langer-a"><a href="">中文</a>/<a href="">英文</a></div>
+			<ul class="pull-right header-list clearfix">
+				<li><a href="/index"><img src="images/01.png"></a></li>
+				<li><a href="/download">资料下载</a></li>
+				<li><a href="">购物指南</a></li>
+				<li><a href="/productlist">在线购买</a></li>
+				<li><a href="/cart">购物车</a></li>
+				<li><a href="/account">会员</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container nav-c clearfix">
+		<div class="pull-left logo"><a href=""><img src="images/logo.png"></a></div>
+		<ul class="pull-right nav-list clearfix">
+			<li><a href="/index">首页</a></li>
+			<li><a href="/productlist">产品</a></li>
+			<li>
+				<a href="/case">方案</a><span class="phone-i"><i class="glyphicon glyphicon-menu-down"></i></span>
+				<ul class="nav-down">
+					<!-- <li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li> -->
+				</ul>
+			</li>
+			<li><a href="/support">支持</a></li>
+			<li><a href="/video">培训</a></li>
+			<li><a href="/contact">联系我们</a></li>
+			<li class="last"><a href="/integrator">查找集成伙伴</a></li>
+		</ul>
+		<button type="button" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+
+	<div class="container">
+		<div class="user-title">经销商中心</div>
+		<div class="clearfix">
+			<div class="pull-left cp-left">
+				<div class="user-nav-box">
+					<div class="cp-left-tt">业务管理<span class="caret"></span></div>
+					<ul class="cp-left-list">
+						<li class="active"><a href="/myOrder">我的订单</a></li>
+						<!-- <li><a href="">询价管理</a></li> -->
+						<li><a href="/customServiceList">售后服务</a></li>
+						<!-- <li><a href="">我的建议</a></li> -->
+						<!-- <li><a href="">培训申请</a></li> -->
+						<!-- <li><a href="">我的收藏</a></li> -->
+					</ul>
+				</div>
+				<div class="user-nav-box">
+					<div class="cp-left-tt cp-left-tt-b">账户设置<span class="caret"></span></div>
+					<ul class="cp-left-list">
+						<li><a href="/myOrder">我的订单</a></li>
+						<li><a href="/accountInfo">个人信息</a></li>
+						<li><a href="/addressInfo">收货地址</a></li>
+						<li><a href="/billInfo">开票信息</a></li>
+						<li><a href="/password">账户安全</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="cp-right pull-right">
+				<div class="cp-right-tt cp-right-tt-sm">我的订单</div>
+				<div class="clearfix">
+					<div class="pull-right search-c">
+						<!-- <input type="text" class="form-control user-input" placeholder="输入商品名称，商品编号，订单号" />
+						<button type="button" class="btn btn-sear"></button> -->
+					</div>
+				</div>
+				<ul class="user-label clearfix">
+					<li><a href="/myOrder" role="button" class="<%=status == '999' ? 'active':''%>">全部订单</a></li>
+					<li><a href="/myOrder?status=1" class="<%=status == '1' ? 'active':''%>" role="button">待受理</a></li>
+					<li><a href="/myOrder?status=0" class="<%=status == '0' ? 'active':''%>" role="button">待确认</a></li>
+					<li><a href="/myOrder?status=2" class="<%=status == '2' ? 'active':''%>" role="button">待支付</a></li>
+					<li><a href="/myOrder?status=3" class="<%=status == '3' ? 'active':''%>" role="button">待发货</a></li>
+					<li><a href="/myOrder?status=4" class="<%=status == '4' ? 'active':''%>" role="button">待收货</a></li>
+					<li><a href="/myOrder?status=5" class="<%=status == '5' ? 'active':''%>" role="button">待开票</a></li>
+					<li><a href="/myOrder?status=6" class="<%=status == '6' ? 'active':''%>" role="button">已完成</a></li>
+					<li><a href="/myOrder?status=-1" class="<%=status == '-1' ? 'active':''%>" role="button">已取消</a></li>
+				</ul>
+				<%if(orders && orders.length > 0){ orders.forEach(function(child){ %>
+				<div class="dd-header clearfix">
+					<div class="pull-left">
+						<%=child.inDate.toISOString() %> | 订单号：
+						<%=child.oid %> | <a class="red" href="<%=status == '0' ? '/confirmOrder?oid=' +child.oid : '/orderDetail?oid='+child.oid %>">详情</a></div>
+					<div class="pull-right"><span>
+							<%=child.statusType %></span><a href="/customService?oid=<%=child.oid %>">售后服务</a></div>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-bordered table-car margin-no">
+						<tbody>
+							<%if(child.carts && child.carts.length > 0){ child.carts.forEach(function(cld, idx){ %>
+							<%if(cld.product && cld.product.pid){ %>
+							<tr>
+								<td style="width: 250px;">
+									<div class="car-box">
+										<div class="car-img text-center"><img src="<%=cld.product.imgs && cld.product.imgs.length > 0 ? cld.product.imgs[0] : 'images/car01.png' %>"></div>
+										<div class="car-txt">
+											<p>名称：
+												<%=cld.product.title %>
+											</p>
+											<p>货号：
+												<%=cld.product.identifier %>
+											</p>
+											<p>规格：
+												<%=cld.size %>
+											</p>
+										</div>
+									</div>
+								</td>
+								<td>
+									<ul class="car-list">
+										<%if(cld.parts && cld.parts.length > 0){ cld.parts.forEach(function(cd, ix){ %>
+										<li>
+											<%=cd.partName %>：
+											<%=cd.name %>
+										</li>
+										<%})}%>
+										<!-- <li>输送速度(m/min)：60</li>
+										<li>承载(kg/m)：20</li>
+										<li>电机(kw)：Nord0.75</li>
+										<li>电机电压(v)：AC380V/3Ph/50Hz</li>
+										<li>皮带类型：Siegling E8/2 U0</li>
+										<li>支腿高度（mm)：G5001/H345-445</li>
+										<li>护栏：单边GR80(H800mm)</li>
+										<li>光电：侧架上安装-经济型</li>
+										<li>阻挡装置：端部阻挡</li>
+										<li class="border-no">其它备注</li> -->
+									</ul>
+								</td>
+								<td class="text-center">
+									<div class="car-number">
+										<%=cld.qty %>
+									</div>
+								</td>
+								<td class="text-center" style="min-width: 60px;">
+									<%=cld.product.weight %>
+								</td>
+								<td class="text-center">￥
+									<%=cld.totalAmoumt %>
+								</td>
+							</tr>
+							<%} %>
+							<%})} %>
+							<!-- <tr>
+								<td style="width: 250px;">
+									<div class="car-box">
+										<div class="car-img text-center"><img src="images/car01.png"></div>
+										<div class="car-txt">
+											<p>名称：D10-GC610 无动力输送机</p>
+											<p>货号：GC61075656</p>
+											<p>规格：517*2280</p>
+										</div>
+									</div>
+								</td>
+								<td>
+									<ul class="car-list">
+										<li>输送速度(m/min)：60</li>
+										<li>承载(kg/m)：20</li>
+										<li>电机(kw)：Nord0.75</li>
+										<li>电机电压(v)：AC380V/3Ph/50Hz</li>
+										<li>皮带类型：Siegling E8/2 U0</li>
+										<li>支腿高度（mm)：G5001/H345-445</li>
+										<li>护栏：单边GR80(H800mm)</li>
+										<li>光电：侧架上安装-经济型</li>
+										<li>阻挡装置：端部阻挡</li>
+										<li class="border-no">其它备注</li>
+									</ul>
+								</td>
+								<td class="text-center">
+									<div class="car-number">1</div>
+								</td>
+								<td class="text-center" style="min-width: 60px;">500</td>
+								<td class="text-center">￥12500</td>
+							</tr>
+							<tr>
+								<td style="width: 250px;">
+									<div class="car-box">
+										<div class="car-img text-center"><img src="images/car01.png"></div>
+										<div class="car-txt">
+											<p>名称：D10-GC610 无动力输送机</p>
+											<p>货号：GC61075656</p>
+											<p>规格：517*2280</p>
+										</div>
+									</div>
+								</td>
+								<td>
+									<ul class="car-list">
+										<li>输送速度(m/min)：60</li>
+										<li>承载(kg/m)：20</li>
+										<li>电机(kw)：Nord0.75</li>
+										<li>电机电压(v)：AC380V/3Ph/50Hz</li>
+										<li>皮带类型：Siegling E8/2 U0</li>
+										<li>支腿高度（mm)：G5001/H345-445</li>
+										<li>护栏：单边GR80(H800mm)</li>
+										<li>光电：侧架上安装-经济型</li>
+										<li>阻挡装置：端部阻挡</li>
+										<li class="border-no">其它备注</li>
+									</ul>
+								</td>
+								<td class="text-center">
+									<div class="car-number">1</div>
+								</td>
+								<td class="text-center" style="min-width: 60px;">500</td>
+								<td class="text-center">￥12500</td>
+							</tr>
+							<tr>
+								<td style="width: 250px;">
+									<div class="car-box">
+										<div class="car-img text-center"><img src="images/car01.png"></div>
+										<div class="car-txt">
+											<p>名称：D10-GC610 无动力输送机</p>
+											<p>货号：GC61075656</p>
+											<p>规格：517*2280</p>
+										</div>
+									</div>
+								</td>
+								<td>
+									<ul class="car-list">
+										<li>输送速度(m/min)：60</li>
+										<li>承载(kg/m)：20</li>
+										<li>电机(kw)：Nord0.75</li>
+										<li>电机电压(v)：AC380V/3Ph/50Hz</li>
+										<li>皮带类型：Siegling E8/2 U0</li>
+										<li>支腿高度（mm)：G5001/H345-445</li>
+										<li>护栏：单边GR80(H800mm)</li>
+										<li>光电：侧架上安装-经济型</li>
+										<li>阻挡装置：端部阻挡</li>
+										<li class="border-no">其它备注</li>
+									</ul>
+								</td>
+								<td class="text-center">
+									<div class="car-number">1</div>
+								</td>
+								<td class="text-center" style="min-width: 60px;">500</td>
+								<td class="text-center">￥12500</td>
+							</tr> -->
+						</tbody>
+					</table>
+				</div>
+				<div class="user-table-b">运费合计：￥
+					<%=child.trackingInfo.payInfo && child.trackingInfo.payInfo.shippingChargeAmount ?  child.trackingInfo.payInfo.shippingChargeAmount : 0%><span>商品总价：￥
+						<%=child.totalAmoumt %></span></div>
+				<%})} %>
+				<!-- <div class="page-center text-center">
+					<ul class="pagination">
+						<li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+						<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+					</ul>
+				</div> -->
+			</div>
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">客户服务</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/integrator">查找集成伙伴</a></li>
+							<li><a href="/productlist">在线购买输送机</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">信息中心</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-xs-3 pull-right">
+					<div class="footer-link">
+						<a href=""><img src="images/footer03.png"></a>
+						<a href=""><img src="images/footer04.png"></a>
+						<a href=""><img src="images/footer05.png"></a>
+					</div>
+					<div class="bottom-phone">400-880-5180</div>
+					<div class="bottom-phone bottom-phone-b">成为集成伙伴成为集成伙伴</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer text-center">
+		<div class="container">成为集成伙伴成为集成伙伴</div>
+	</div>
+</body>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/swiper.min.js"></script>
+<!-- Initialize Swiper -->
+<script type="text/javascript">
+	//订单类型选择
+	$(".user-label li a").click(function () {
+		$(".user-label li a").removeClass("active");
+		$(this).addClass("active");
+	});
+	$(function () {
+		var winWide = window.screen.width;
+
+		var wideScreen = false;
+		if (winWide >= 768) {
+
+		} else {
+			$(".cp-left-tt").click(function () {
+				$(".cp-left-list").slideUp("slow");
+				if ($(this).parents(".user-nav-box").find(".cp-left-list").is(":hidden")) {
+					$(this).parents(".user-nav-box").find(".cp-left-list").slideDown("slow");
+				} else {
+					$(this).parents(".user-nav-box").find(".cp-left-list").slideUp("slow");
+				}
+			});
+		}
+	})
+	$(".navbar-toggle").click(function () {
+		$(".nav-down").slideUp("slow");
+		if ($(".nav-list").is(":hidden")) {
+			$(".nav-list").slideDown("slow");
+		} else {
+			$(".nav-list").slideUp("slow");
+		}
+	});
+	$(".phone-i").click(function () {
+		if ($(this).parents("li").find(".nav-down").is(":hidden")) {
+			$(".nav-down").slideUp("slow");
+			$(this).parents("li").find(".nav-down").slideDown("slow");
+		} else {
+			$(this).parents("li").find(".nav-down").slideUp("slow");
+		}
+	}); 
+</script>
+
+</html>

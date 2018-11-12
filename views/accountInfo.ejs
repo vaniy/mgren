@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>index</title>
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-fileinput.css" rel="stylesheet">
+	<link href="css/account.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="header">
+		<div class="container clearfix">
+			<div class="pull-right langer-a"><a href="">中文</a>/<a href="">英文</a></div>
+			<ul class="pull-right header-list clearfix">
+				<li><a href="/index"><img src="images/01.png"></a></li>
+				<li><a href="/download">资料下载</a></li>
+				<li><a href="">购物指南</a></li>
+				<li><a href="/productlist">在线购买</a></li>
+				<li><a href="/cart">购物车</a></li>
+				<li><a href="/account">会员</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container nav-c clearfix">
+		<div class="pull-left logo"><a href=""><img src="images/logo.png"></a></div>
+		<ul class="pull-right nav-list clearfix">
+			<li><a href="/index">首页</a></li>
+			<li><a href="/productlist">产品</a></li>
+			<li>
+				<a href="/case">方案</a><span class="phone-i"><i class="glyphicon glyphicon-menu-down"></i></span>
+				<ul class="nav-down">
+					<!-- <li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li> -->
+				</ul>
+			</li>
+			<li><a href="/support">支持</a></li>
+			<li><a href="/video">培训</a></li>
+			<li><a href="/contact">联系我们</a></li>
+			<li class="last"><a href="/integrator">查找集成伙伴</a></li>
+		</ul>
+		<button type="button" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+
+	<div class="container">
+		<div class="user-title">经销商中心</div>
+		<div class="clearfix">
+			<div class="pull-left cp-left">
+				<div class="user-nav-box">
+					<div class="cp-left-tt">业务管理<span class="caret"></span></div>
+					<ul class="cp-left-list">
+						<li><a href="/myOrder">我的订单</a></li>
+						<!-- <li><a href="">询价管理</a></li> -->
+						<li><a href="/customServiceList">售后服务</a></li>
+						<!-- <li><a href="">我的建议</a></li> -->
+						<!-- <li><a href="">培训申请</a></li> -->
+						<!-- <li><a href="">我的收藏</a></li> -->
+					</ul>
+				</div>
+				<div class="user-nav-box">
+					<div class="cp-left-tt cp-left-tt-b">账户设置<span class="caret"></span></div>
+					<ul class="cp-left-list">
+						<li><a href="/myOrder">我的订单</a></li>
+						<li class="active"><a href="/accountInfo">个人信息</a></li>
+						<li><a href="/addressInfo">收货地址</a></li>
+						<li><a href="/billInfo">开票信息</a></li>
+						<li><a href="/password">账户安全</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="cp-right pull-right">
+				<div class="cp-right-tt cp-right-tt-sm">账户设置</div>
+				<ul class="sz-list clearfix">
+					<li class="active"><a href="/accountInfo">账户信息</a></li>
+					<li><a href="/addressInfo">收货地址</a></li>
+					<li><a href="/billInfo">开票信息</a></li>
+					<li><a href="/password">账户安全</a></li>
+				</ul>
+				<div class="sz-ts"><span>请完善以下信息,方便我们更好的为您服务</span></div>
+				<div class="clearfix">
+					<div class="pull-left sz-tx">
+						<div class="form-group">
+							<div class="fileinput fileinput-new" data-provides="fileinput" id="exampleInputUpload">
+								<div class="fileinput-preview fileinput-exists thumbnail sz-img"></div>
+								<div class="clearfix"></div>
+								<span class="btn btn-primary btn-file btn-file-sm sz-btn-file-sm">
+									<span class="fileinput-new">设置头像</span>
+									<span class="fileinput-exists">设置头像</span>
+									<input type="file" class='avator' name="pic1" id="picID" accept="image/gif,image/jpeg,image/x-png" />
+								</span>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div class="register-box sz-register-box pull-left">
+						<div class="register-tt">个人信息</div>
+						<div class="relative">
+							<input value='<%=user.userName %>' type="text" data-target="userName" class=" form-control register-input" placeholder="用户名：" />
+							<span>*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.password %>' type="password" data-target="password" class=" form-control register-input" placeholder="密码：" />
+							<span>*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.name %>' type="text" data-target="name" class=" form-control register-input" placeholder="姓名：" />
+							<span>*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.sex %>' type="text" data-target="sex" class=" form-control register-input" placeholder="性别：" />
+							<span>*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.phone %>' type="text" data-target="phone" class=" form-control register-input" placeholder="手机：" />
+							<span>*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.email %>' type="text" data-target="email" class=" form-control register-input" placeholder="Email：" />
+							<span>*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.education %>' type="text" data-target="education" class=" form-control register-input" placeholder="学历：" />
+							<span>*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.major %>' type="text" data-target="major" class=" form-control register-input" placeholder="专业：" />
+							<span>*</span>
+						</div>
+						<div class="register-tt">公司信息</div>
+						<div class="relative">
+							<input value='<%=user.companyName %>' type="text" data-target="companyName" class=" form-control register-input" placeholder="公司名称：" />
+							<span>*</span>
+						</div>
+						<div class="relative relative-sm">
+							<!-- <select class="form-control register-input register-select">
+								<option>请选择省/直辖市</option>
+								<option>请选择省/直辖市</option>
+								<option>请选择省/直辖市</option>
+							</select> -->
+							<input value='<%=user.companyAddress %>' type="text" data-target="companyAddress" class=" form-control register-input" placeholder="公司地址：" />
+							<span>*</span>
+							<span class="xs">*</span>
+						</div>
+						<div class="form-group">
+							<div class="fileinput fileinput-new" data-provides="fileinput" id="exampleInputUpload">
+								<span class="btn btn-primary btn-file">
+									<span class="fileinput-new">上传营业执照</span>
+									<span class="fileinput-exists">换一张</span>
+									<input type="file" name="pic1" class="photo" id="picID" accept="image/gif,image/jpeg,image/x-png" />
+								</span>
+								<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+								<div class="clearfix"></div>
+							</div>
+							<span class="r">*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.department %>' type="text" data-target="department" class=" form-control register-input" placeholder="部门：" />
+							<span>*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.position %>' type="text" data-target="position" class=" form-control register-input" placeholder="职位：" />
+							<span>*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.tel %>' type="text" data-target="tel" class=" form-control register-input" placeholder="固定电话：" />
+							<span>*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.fax %>' type="text" data-target="fax" class=" form-control register-input" placeholder="传真：" />
+							<span>*</span>
+						</div>
+						<div class="relative">
+							<input value='<%=user.website %>' type="text" data-target="website" class=" form-control register-input" placeholder="官网：" />
+							<span>*</span>
+						</div>
+						<button id='uploadSubmit' type="submit" class="btn btn-car btn-car-sm">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">客户服务</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/integrator">查找集成伙伴</a></li>
+							<li><a href="/productlist">在线购买输送机</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">信息中心</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-xs-3 pull-right">
+					<div class="footer-link">
+						<a href=""><img src="images/footer03.png"></a>
+						<a href=""><img src="images/footer04.png"></a>
+						<a href=""><img src="images/footer05.png"></a>
+					</div>
+					<div class="bottom-phone">400-880-5180</div>
+					<div class="bottom-phone bottom-phone-b">成为集成伙伴成为集成伙伴</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer text-center">
+		<div class="container">成为集成伙伴成为集成伙伴</div>
+	</div>
+</body>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/bootstrap-fileinput.js"></script>
+<!-- Initialize Swiper -->
+<script type="text/javascript">
+	$(".fw-xz li").click(function () {
+		$(".fw-xz li").removeClass("active");
+		$(this).addClass("active");
+	});
+	$(function () {
+		//比较简洁，细节可自行完善
+		$('#uploadSubmit').click(function () {
+			// var data = new FormData($('#uploadForm')[0]);
+			var ddom = jQuery('.register-input')
+			var data = new FormData();
+			if (document.getElementsByClassName('photo')[0].files[0]) {
+				data.append("businessLicense", document.getElementsByClassName('photo')[0].files[0])
+			}
+			if (document.getElementsByClassName('avator')[0].files[0]) {
+				data.append("avator", document.getElementsByClassName('avator')[0].files[0])
+			}
+			for (var i = 0; i < ddom.length; i++) {
+				if (ddom[i] && ddom[i].value && ddom[i].value.length > 0) {
+					data.append(ddom[i].getAttribute('data-target'), ddom[i].value)
+				}
+			}
+			$.ajax({
+				url: '/api/update',
+				type: 'POST',
+				data: data,
+				async: false,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function (data) {
+					console.log(data);
+					if (data.status && data.status === 'success') {
+						location.href = '/accountInfo'
+					} else if (data.msg) {
+						alert(data.msg)
+						// console.log(data.message);
+					}
+				},
+				error: function (data) {
+					console.log(data.status);
+				}
+			});
+		});
+
+	})
+	$(function () {
+		var winWide = window.screen.width;
+
+		var wideScreen = false;
+		if (winWide >= 768) {
+
+		} else {
+			$(".cp-left-tt").click(function () {
+				$(".cp-left-list").slideUp("slow");
+				if ($(this).parents(".user-nav-box").find(".cp-left-list").is(":hidden")) {
+					$(this).parents(".user-nav-box").find(".cp-left-list").slideDown("slow");
+				} else {
+					$(this).parents(".user-nav-box").find(".cp-left-list").slideUp("slow");
+				}
+			});
+		}
+	})
+	$(".navbar-toggle").click(function () {
+		$(".nav-down").slideUp("slow");
+		if ($(".nav-list").is(":hidden")) {
+			$(".nav-list").slideDown("slow");
+		} else {
+			$(".nav-list").slideUp("slow");
+		}
+	});
+	$(".phone-i").click(function () {
+		if ($(this).parents("li").find(".nav-down").is(":hidden")) {
+			$(".nav-down").slideUp("slow");
+			$(this).parents("li").find(".nav-down").slideDown("slow");
+		} else {
+			$(this).parents("li").find(".nav-down").slideUp("slow");
+		}
+	}); 
+</script>
+
+</html>

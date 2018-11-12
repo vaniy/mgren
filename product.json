@@ -1,0 +1,154 @@
+{
+    "pid": "pid_138858923984",
+    "priority": 1,
+    "title": "托辊式中驱皮带机G5102",
+    "identifier": "G5102_517*2280",
+    "size": "宽度B/B X 总长度L（mm)",
+    "weight": "500kg",
+    "store": {
+        "storeId": 1,
+        "storeName": "箱式输送机"
+    },
+    "promotion": {
+        "promotionText": "「赠送价值2999元的高品质手推车1辆，赠送价值2999元的高品质手推车1辆"
+    },
+    "onSale": 1,
+    "imgs": [
+        "images/s1.jpg",
+        "images/s1.jpg"
+    ],
+    "property": [
+        {
+            "name": "517*2280",
+            "amount": 10000,
+            "qty": 10
+        },
+        {
+            "name": "518*2280",
+            "amount": 12000,
+            "qty": 10
+        },
+        {
+            "name": "519*2280",
+            "amount": 14000,
+            "qty": 10
+        }
+    ],
+    "parts": [
+        "psId_13984500430034",
+        "psId_13984500430035"
+    ],
+    "description": "D10-GC610 无动力输送机是一种简单、灵活、省力、低成本的搬运工具，广泛应用于车间、农场、仓库及物流中心，是应用最普遍的物流设备。 德马无动力输送机系列由于采用了标准化、模块化的设计，及工业化大批量制造，因此，质量稳定、性价比高、组装方便，而且采用了平板化 包装，对运输和存储都非常便利，德马还对这些标准模块安排了一定的库存，可以快速交货",
+    "structure": "结构XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "configure": "配置说明XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx",
+    "help": "常见问题帮助XXXXXXXXXXXXXXXXXXXXXXXXXX"
+}{
+    "pid": "pid_138858923985",
+    "priority": 2,
+    "title": "托辊式中驱皮带机G5103",
+    "identifier": "G5102_518*2280",
+    "size": "宽度B/B X 总长度L（mm)",
+    "weight": "600kg",
+    "store": {
+        "storeId": 1,
+        "storeName": "箱式输送机"
+    },
+    "promotion": {
+        "promotionText": "「赠送价值3999元的高品质手推车1辆，赠送价值2999元的高品质手推车1辆"
+    },
+    "onSale": 1,
+    "imgs": [
+        "images/s1.jpg",
+        "images/s1.jpg"
+    ],
+    "property": [
+        {
+            "name": "517*2280",
+            "amount": 10000,
+            "qty": 10
+        },
+        {
+            "name": "518*2280",
+            "amount": 12000,
+            "qty": 10
+        },
+        {
+            "name": "519*2280",
+            "amount": 14000,
+            "qty": 10
+        },
+        {
+            "name": "527*2280",
+            "amount": 15000,
+            "qty": 10
+        },
+        {
+            "name": "537*2280",
+            "amount": 6000,
+            "qty": 10
+        }
+    ],
+    "parts": [
+        "psId_13984500430034",
+        "psId_13984500430035"
+    ],
+    "description": "D10-GC610 无动力输送机是一种简单、灵活、省力、低成本的搬运工具，广泛应用于车间、农场、仓库及物流中心，是应用最普遍的物流设备。 德马无动力输送机系列由于采用了标准化、模块化的设计，及工业化大批量制造，因此，质量稳定、性价比高、组装方便，而且采用了平板化 包装，对运输和存储都非常便利，德马还对这些标准模块安排了一定的库存，可以快速交货",
+    "structure": "结构XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "configure": "配置说明XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx",
+    "help": "常见问题帮助XXXXXXXXXXXXXXXXXXXXXXXXXX"
+}
+{
+    "pid": "pid_138858923986",
+    "priority": 3,
+    "title": "托盘输送机G5203",
+    "identifier": "G5102_518*2280",
+    "size": "宽度B/B X 总长度L（mm)",
+    "weight": "700kg",
+    "store": {
+        "storeId": 2,
+        "storeName": "托盘输送机"
+    },
+    "promotion": {
+        "promotionText": "「赠送价8999元的高品质手推车1辆，赠送价值2999元的高品质手推车1辆"
+    },
+    "onSale": 1,
+    "imgs": [
+        "images/s1.jpg",
+        "images/s1.jpg"
+    ],
+    "property": [
+        {
+            "name": "517*2280",
+            "amount": 10000,
+            "qty": 10
+        },
+        {
+            "name": "518*2280",
+            "amount": 12000,
+            "qty": 10
+        },
+        {
+            "name": "519*2280",
+            "amount": 14000,
+            "qty": 10
+        },
+        {
+            "name": "520*2280",
+            "amount": 15000,
+            "qty": 10
+        },
+        {
+            "name": "521*2280",
+            "amount": 6000,
+            "qty": 10
+        }
+    ],
+    "parts": [
+        "psId_13984500430034",
+        "psId_13984500430035"
+    ],
+    "description": "D10-GC610 无动力输送机是一种简单、灵活、省力、低成本的搬运工具，广泛应用于车间、农场、仓库及物流中心，是应用最普遍的物流设备。 德马无动力输送机系列由于采用了标准化、模块化的设计，及工业化大批量制造，因此，质量稳定、性价比高、组装方便，而且采用了平板化 包装，对运输和存储都非常便利，德马还对这些标准模块安排了一定的库存，可以快速交货",
+    "structure": "结构XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "configure": "配置说明XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx",
+    "help": "常见问题帮助XXXXXXXXXXXXXXXXXXXXXXXXXX"
+}

@@ -1,0 +1,61 @@
+{
+    "partsId": "psId_13984500430034",
+    "name": "输送速度(m/min)",
+    "property": [
+        {
+            "name": "600",
+            "amount": 500,
+            "qty": 200
+        },
+        {
+            "name": "610",
+            "amount": 600,
+            "qty": 200
+        },
+        {
+            "name": "620",
+            "amount": 700,
+            "qty": 200
+        },
+        {
+            "name": "630",
+            "amount": 800,
+            "qty": 200
+        },
+        {
+            "name": "640",
+            "amount": 900,
+            "qty": 200
+        }
+    ]
+}{
+    "partsId": "psId_13984500430035",
+    "name": "承载(kg/m)",
+    "property": [
+        {
+            "name": "60",
+            "amount": 500,
+            "qty": 200
+        },
+        {
+            "name": "61",
+            "amount": 600,
+            "qty": 200
+        },
+        {
+            "name": "62",
+            "amount": 700,
+            "qty": 200
+        },
+        {
+            "name": "63",
+            "amount": 800,
+            "qty": 200
+        },
+        {
+            "name": "64",
+            "amount": 900,
+            "qty": 200
+        }
+    ]
+}

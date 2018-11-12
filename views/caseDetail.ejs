@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>index</title>
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/swiper.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="header">
+		<div class="container clearfix">
+			<div class="pull-right langer-a"><a href="">中文</a>/<a href="">英文</a></div>
+			<ul class="pull-right header-list clearfix">
+				<li><a href="/index"><img src="images/01.png"></a></li>
+				<li><a href="/download">资料下载</a></li>
+				<li><a href="">购物指南</a></li>
+				<li><a href="/productlist">在线购买</a></li>
+				<li><a href="/cart">购物车</a></li>
+				<li><a href="/account">会员</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container nav-c clearfix">
+		<div class="pull-left logo"><a href=""><img src="images/logo.png"></a></div>
+		<ul class="pull-right nav-list clearfix">
+			<li><a href="/index">首页</a></li>
+			<li><a href="/productlist">产品</a></li>
+			<li class="active">
+				<a href="/case">方案</a><span class="phone-i"><i class="glyphicon glyphicon-menu-down"></i></span>
+				<ul class="nav-down">
+					<!-- <li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li>
+					<li><a href="/integrator">查找集成伙伴</a></li> -->
+				</ul>
+			</li>
+			<li><a href="/support">支持</a></li>
+			<li><a href="/video">培训</a></li>
+			<li><a href="/contact">联系我们</a></li>
+			<li class="last"><a href="/integrator">查找集成伙伴</a></li>
+		</ul>
+		<button type="button" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+	<div class="cp-banner"></div>
+	<div class="container clearfix">
+		<div class="pull-left cp-left">
+			<div class="cp-left-tt">方案<span class="caret"></span></div>
+			<ul class="cp-left-list">
+				<%if(store&&store.length > 0){ store.forEach(function(child, index){%>
+				<li><a class="<%=cstoreId == child.storeId ? 'active':'' %>" href="/case?storeId=<%=child.storeId %>">
+						<%=child.storeName %></a></li>
+				<%})} %>
+				<!-- <li><a href="">电商行业</a></li>
+				<li><a href="">医药行业</a></li>
+				<li class="active">
+					<a href="">鞋服行业</a>
+					<ul class="nav-down-left">
+						<li class="active"><a href="">鞋服行业1</a></li>
+						<li><a href="">鞋服行业2</a></li>
+					</ul>
+				</li>
+				<li><a href="">图书行业</a></li>
+				<li><a href="">电子电器</a></li>
+				<li><a href="">智能制造</a></li>
+				<li><a href="">其它行业</a></li> -->
+			</ul>
+		</div>
+		<div class="cp-right pull-right">
+			<div class="cp-right-tt">
+				<%=storeName %>
+			</div>
+			<div class="fa-header">
+				<div class="fa-header-img"><img src="<%=casee.imgs && casee.imgs.length > 0 ? casee.imgs[0] : 'images/fa02.png' %>"></div>
+				<div class="fa-header-back">
+					<div class="fa-header-tt">案例研究重点</div>
+					<div class="fa-header-txt">
+						<%=casee.important %>
+					</div>
+					<div class="fa-header-tt">关键系统解决方案</div>
+					<div class="fa-header-txt">
+						<%=casee.plan %>
+					</div>
+					<div class="fa-header-tt">产品处理</div>
+					<div class="fa-header-txt">
+						<%=casee.handle %>
+					</div>
+				</div>
+			</div>
+			<div class="fa-xq-title">项目背景与需求分析</div>
+			<div class="xq-text clearfix">
+				<%-casee.background %>
+				<!-- <div class="pull-left xq-left-txt">
+					<p>天士力控股集团是以大健康产业为主线，以生物医药产业为核心，以保健品、功能食品等健康产业以及健康管理与服务业为两翼的高科技跨国企业集团。天津天士力医药有限公司，隶属于天士力集团，其下属的商务分公司是其核心业务公司，下设经营管理部、物流配送中心、财务结算中心三个部门以及26个驻外商务办事处。</p>
+					<p>天士力医药天津配送中心，整体建筑占地面积9335平方米，局部三层建筑，一层为收货仓储及分拣发货区，二层为拆零拣选及包装复核区，三层预留。底层建筑层高7.8米，二层高度7.8米，三层高度6.4米，顶部有管道照明等配套设备，总建筑高度为23.8米。立库净高不超过20.8米。</p>
+					<p>需要完成药品的存储、分拣、配送等相关任务。2013年满足年配送额25亿元人民币，系统远景能支撑年配送额100亿元人民币；力争成为当前医药行业输送分拣系统标杆。</p>
+					<p>天士力控股集团是以大健康产业为主线，以生物医药产业为核心，以保健品、功能食品等健康产业以及健康管理与服务业为两翼的高科技跨国企业集团。天津天士力医药有限公司，隶属于天士力集团，其下属的商务分公司是其核心业务公司，下设经营管理部、物流配送中心、财务结算中心三个部门以及26个驻外商务办事处。</p>
+					<p>天士力医药天津配送中心，整体建筑占地面积9335平方米，局部三层建筑，一层为收货仓储及分拣发货区，二层为拆零拣选及包装复核区，三层预留。底层建筑层高7.8米，二层高度7.8米，三层高度6.4米，顶部有管道照明等配套设备，总建筑高度为23.8米。立库净高不超过20.8米。</p>
+					<p>需要完成药品的存储、分拣、配送等相关任务。2013年满足年配送额25亿元人民币，系统远景能支撑年配送额100亿元人民币；力争成为当前医药行业输送分拣系统标杆。</p>
+				</div>
+				<div class="pull-right xq-text-img"><img src="images/xq03.png"></div> -->
+			</div>
+			<div class="fa-xq-title">解决方案</div>
+			<div class="xq-text clearfix">
+				<%-casee.solution %>
+				<!-- <div class="pull-left xq-left-txt">
+					<p>天士力控股集团是以大健康产业为主线，以生物医药产业为核心，以保健品、功能食品等健康产业以及健康管理与服务业为两翼的高科技跨国企业集团。天津天士力医药有限公司，隶属于天士力集团，其下属的商务分公司是其核心业务公司，下设经营管理部、物流配送中心、财务结算中心三个部门以及26个驻外商务办事处。</p>
+					<p>天士力医药天津配送中心，整体建筑占地面积9335平方米，局部三层建筑，一层为收货仓储及分拣发货区，二层为拆零拣选及包装复核区，三层预留。底层建筑层高7.8米，二层高度7.8米，三层高度6.4米，顶部有管道照明等配套设备，总建筑高度为23.8米。立库净高不超过20.8米。</p>
+					<p>需要完成药品的存储、分拣、配送等相关任务。2013年满足年配送额25亿元人民币，系统远景能支撑年配送额100亿元人民币；力争成为当前医药行业输送分拣系统标杆。</p>
+				</div>
+				<div class="pull-right xq-text-img"><img src="images/xq04.png"></div> -->
+			</div>
+			<div class="fa-xq-title">产品配置</div>
+			<ul class="pz-list">
+				<%if(casee.products && casee.products.length > 0){ casee.products.forEach(function(child, index){%>
+					<li class="clearfix">
+						<div class="pull-left pz-img"><a href="/productDetail?pid=<%=child.pid %>"><img src="<%=child.imgs && child.imgs.length > 0 ? child.imgs[0] : 'images/pz01.png' %>"></a></div>
+						<div class="pz-right">
+							<div class="pz-tt"><a href=""><%=child.title %></a></div>
+							<div class="pz-txt"><%=child.description %></div>
+						</div>
+					</li>
+				<%})} %>
+				<!-- <li class="clearfix">
+					<div class="pull-left pz-img"><a href=""><img src="images/pz01.png"></a></div>
+					<div class="pz-right">
+						<div class="pz-tt"><a href="">D10-GC610 无动力输送机</a></div>
+						<div class="pz-txt">D10-GC610
+							无动力输送机是一种简单、灵活、省力、低成本的搬运工具，广泛应用于车间、农场、仓库及物流中心，是应用最普遍的物流设备。德马无动力输送机系列由于采用了标准化、模块化的设计，及工业化大批量制造，因此，质量稳定、性价比高、组装方便，而且采用了...</div>
+					</div>
+				</li>
+				<li class="clearfix">
+					<div class="pull-left pz-img"><a href=""><img src="images/pz01.png"></a></div>
+					<div class="pz-right">
+						<div class="pz-tt"><a href="">D10-GC610 无动力输送机</a></div>
+						<div class="pz-txt">D10-GC610
+							无动力输送机是一种简单、灵活、省力、低成本的搬运工具，广泛应用于车间、农场、仓库及物流中心，是应用最普遍的物流设备。德马无动力输送机系列由于采用了标准化、模块化的设计，及工业化大批量制造，因此，质量稳定、性价比高、组装方便，而且采用了...</div>
+					</div>
+				</li>
+				<li class="clearfix">
+					<div class="pull-left pz-img"><a href=""><img src="images/pz01.png"></a></div>
+					<div class="pz-right">
+						<div class="pz-tt"><a href="">D10-GC610 无动力输送机</a></div>
+						<div class="pz-txt">D10-GC610
+							无动力输送机是一种简单、灵活、省力、低成本的搬运工具，广泛应用于车间、农场、仓库及物流中心，是应用最普遍的物流设备。德马无动力输送机系列由于采用了标准化、模块化的设计，及工业化大批量制造，因此，质量稳定、性价比高、组装方便，而且采用了...</div>
+					</div>
+				</li> -->
+			</ul>
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">客户服务</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/integrator">查找集成伙伴</a></li>
+							<li><a href="/productlist">在线购买输送机</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="dis-table">
+						<div class="bottom-tt">信息中心</div>
+						<ul class="bottom-list">
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-xs-3 pull-right">
+					<div class="footer-link">
+						<a href=""><img src="images/footer03.png"></a>
+						<a href=""><img src="images/footer04.png"></a>
+						<a href=""><img src="images/footer05.png"></a>
+					</div>
+					<div class="bottom-phone">400-880-5180</div>
+					<div class="bottom-phone bottom-phone-b">成为集成伙伴成为集成伙伴</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer text-center">
+		<div class="container">成为集成伙伴成为集成伙伴</div>
+	</div>
+	<section class="zi-fdTel">
+		<a href="" target="_onlineqq" class="tel">
+			<span class="hide-txt">ＱＱ<br>交谈</span>
+			<img class="" src="images/a-14.png">
+		</a>
+		<a href="javascript:;" class="tel">
+			<span class="hide-txt">微信<br>咨询</span>
+			<div><img class="" src="images/a-15.png"></div>
+			<div class="hide-ewm"><img src="images/fdTel-wx.jpg"><br>扫码微信轻松聊</div>
+		</a>
+		<a href="" target="_onlinekf" class="tel">
+			<span class="hide-txt">在线<br>客服</span>
+			<img class="" src="images/a-05.png">
+		</a>
+		<a href="javascript:;" class="up"><img class="" src="images/a-06.png"><br>顶部</a>
+	</section>
+</body>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/swiper.min.js"></script>
+<!-- Initialize Swiper -->
+
+<script type="text/javascript">
+	//右侧悬浮
+	$(document).ready(function () {
+
+		$(document).on("click", ".zi-fdTel .up", function () {
+			$("html,body").animate({ scrollTop: 0 });
+		});
+		$(window).scroll(function () {
+			var st = $(document).scrollTop();
+			var $top = $(".zi-fdTel");
+			if (st > 400) {
+				$top.css({ display: 'block' });
+			} else {
+				if ($top.is(":visible")) {
+					$top.hide();
+				}
+			}
+		});
+
+	});
+	$(function () {
+		var winWide = window.screen.width;
+
+		var wideScreen = false;
+		if (winWide >= 768) {
+
+		} else {
+			$(".cp-left-tt").click(function () {
+				if ($(".cp-left-list").is(":hidden")) {
+					$(".cp-left-list").slideDown("slow");
+				} else {
+					$(".cp-left-list").slideUp("slow");
+				}
+			});
+		}
+	})
+	$(".navbar-toggle").click(function () {
+		$(".nav-down").slideUp("slow");
+		if ($(".nav-list").is(":hidden")) {
+			$(".nav-list").slideDown("slow");
+		} else {
+			$(".nav-list").slideUp("slow");
+		}
+	});
+	$(".phone-i").click(function () {
+		if ($(this).parents("li").find(".nav-down").is(":hidden")) {
+			$(".nav-down").slideUp("slow");
+			$(this).parents("li").find(".nav-down").slideDown("slow");
+		} else {
+			$(this).parents("li").find(".nav-down").slideUp("slow");
+		}
+	}); 
+</script>
+
+</html>
