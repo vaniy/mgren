@@ -223,7 +223,7 @@
 						<%=order.discount ?  order.totalAmoumt/order.discount : order.totalAmoumt %>元</p>
 					<p>
 						<%=order.discount ? order.discount*10 : '10' %>折</p>
-					<p><%=order.trackingInfo.payInfo.shippingChargeAmount %>元</p>
+					<p><%=order.trackingInfo.payInfo ? order.trackingInfo.payInfo.shippingChargeAmount : 0 %>元</p>
 				</div>
 			</div>
 		</div>

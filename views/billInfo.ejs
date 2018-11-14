@@ -199,6 +199,7 @@
 				<input type="text" class="form-control address-width address" placeholder="" />
 			</div>
 		</div>
+		<input hidden value="<%=oid %>" type="text" class="oid" />
 		<div class="citys clearfix">
 			<button type="submit" class="btn btn-car btn-car-sm">提交</button>
 		</div>
@@ -270,7 +271,13 @@
 				console.log(data);
 				if (data && data.status && data.status == 'success') {
 					// debugger
-					location.href = '/billInfo'
+					var oid = $('.oid').val();
+					if(oid && oid != ''){
+						location.href = '/confirmOrder?oid='+oid.trim();
+					}
+					else{
+						location.href = '/billInfo'
+					}
 				} else if (data.msg) {
 					alert(data.msg)
 					// console.log(data.message);

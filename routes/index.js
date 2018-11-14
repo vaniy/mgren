@@ -101,7 +101,7 @@ router.get('/account', function (req, res) {
 router.get('/billInfo', function (req, res) {
     if (req.cookies && req.cookies.user) {
         dbHandler.getUserInfo(req, res, (user) => {
-            res.render('billInfo', { title: '', user, billInfos: user.billInfos });
+            res.render('billInfo', { title: '', user, billInfos: user.billInfos, oid: req.query.oid || '' });
         })
     }
     else {
@@ -112,7 +112,7 @@ router.get('/billInfo', function (req, res) {
 router.get('/addressInfo', function (req, res) {
     if (req.cookies && req.cookies.user) {
         dbHandler.getUserInfo(req, res, (user) => {
-            res.render('addressInfo', { title: '', user, addresses: user.addresses });
+            res.render('addressInfo', { title: '', user, addresses: user.addresses, oid: req.query.oid || '' });
         })
     }
     else {

@@ -340,6 +340,9 @@ router.post('/createProduct', function (req, res, next) {
                 case 'image/x-png':
                     extName = 'jpg';
                     break;
+                case 'application/pdf':
+                    extName = 'pdf';
+                    break;
             }
             if (files[key].size == 0) {
                 fs.unlinkSync(files[key].path);
@@ -696,6 +699,9 @@ router.post('/updateProduct', function (req, res, next) {
                         break;
                     case 'image/x-png':
                         extName = 'jpg';
+                        break;
+                    case 'application/pdf':
+                        extName = 'pdf';
                         break;
                 }
                 if (files[key].size == 0) {

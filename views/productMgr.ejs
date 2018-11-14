@@ -529,21 +529,45 @@
 
                   
                   <div class="form-group">
-                      <label for="selectionAddress">商品选型文件地址</label>
-                      <input value="<%=product.selectionAddress %>" class="form-control selectionAddress" type="text"
-                        placeholder="例如：http://xxx.xxx.xxx/xxx.pdf">
+                      <label for="selectionAddress">商品选型文件(pdf)</label>
+                      <div class="input-group" data-provides="fileinput">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input selectionPdf" id="exampleInputFile" accept="pdf">
+                          <label class="custom-file-label" for="exampleInputFile">选择商品选型文件</label>
+                        </div>
+                        <div class="input-group-append">
+                          <!-- <span class="input-group-text" id="">Upload</span> -->
+                        </div>
+  
+                      </div>
                     </div>
   
                     <div class="form-group">
                       <label for="applicationAddress">商品应用文件地址</label>
-                      <input value="<%=product.applicationAddress %>" class="form-control applicationAddress" type="text"
-                        placeholder="例如：http://xxx.xxx.xxx/xxx.pdf">
+                      <div class="input-group" data-provides="fileinput">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input applicationPdf" id="exampleInputFile" accept="pdf">
+                          <label class="custom-file-label" for="exampleInputFile">选择商品选型文件</label>
+                        </div>
+                        <div class="input-group-append">
+                          <!-- <span class="input-group-text" id="">Upload</span> -->
+                        </div>
+  
+                      </div>
                     </div>
   
                     <div class="form-group">
                       <label for="installAddress">商品安装维护文件地址</label>
-                      <input value="<%=product.installAddress %>" class="form-control installAddress" type="text"
-                        placeholder="例如：http://xxx.xxx.xxx/xxx.pdf">
+                      <div class="input-group" data-provides="fileinput">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input installPdf" id="exampleInputFile" accept="pdf">
+                          <label class="custom-file-label" for="exampleInputFile">选择商品选型文件</label>
+                        </div>
+                        <div class="input-group-append">
+                          <!-- <span class="input-group-text" id="">Upload</span> -->
+                        </div>
+  
+                      </div>
                     </div>
 
                   <div class="mb-3">
@@ -982,12 +1006,14 @@
         data.append("produtType", produtType);
         // var identifier = $('input.identifier').val();
         // data.append("identifier", identifier);
-        var selectionAddress = $('input.selectionAddress').val();
-        data.append("selectionAddress", selectionAddress);
-        var applicationAddress = $('input.applicationAddress').val();
-        data.append("applicationAddress", applicationAddress);
-        var installAddress = $('input.installAddress').val();
-        data.append("installAddress", installAddress);
+        
+        // var selectionAddress = $('input.selectionAddress').val();
+        // data.append("selectionAddress", selectionAddress);
+        // var applicationAddress = $('input.applicationAddress').val();
+        // data.append("applicationAddress", applicationAddress);
+        // var installAddress = $('input.installAddress').val();
+        // data.append("installAddress", installAddress);
+        
         var productSEO = $('input.productSEO').val();
         data.append("productSEO", productSEO);
         var weight = $('input.weight').val();
@@ -1031,15 +1057,20 @@
         }
         data.append('propertys', propertys)
 
-
-        if (document.getElementsByClassName('product1')[0].files[0]) {
-          data.append("product1", document.getElementsByClassName('product1')[0].files[0])
+        for(var i = 1;i<=9; i++){
+          if (document.getElementsByClassName('product'+i)[0].files[0]) {
+            data.append("product"+i, document.getElementsByClassName('product'+i)[0].files[0])
+          }
         }
-        if (document.getElementsByClassName('product2')[0].files[0]) {
-          data.append("product2", document.getElementsByClassName('product2')[0].files[0])
+        
+        if (document.getElementsByClassName('selectionPdf')[0].files[0]) {
+          data.append("selectionPdf", document.getElementsByClassName('selectionPdf')[0].files[0])
         }
-        if (document.getElementsByClassName('product3')[0].files[0]) {
-          data.append("product3", document.getElementsByClassName('product3')[0].files[0])
+        if (document.getElementsByClassName('applicationPdf')[0].files[0]) {
+          data.append("applicationPdf", document.getElementsByClassName('applicationPdf')[0].files[0])
+        }
+        if (document.getElementsByClassName('installPdf')[0].files[0]) {
+          data.append("installPdf", document.getElementsByClassName('installPdf')[0].files[0])
         }
         data.append('pid', cpid && cpid.trim() != '' ? cpid : pid)
         // for (var i = 0; i < ddom.length; i++) {
