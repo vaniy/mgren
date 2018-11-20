@@ -15,7 +15,19 @@ var formidable = require('formidable'),
 
 router.get('/index', function (req, res) {
     dbHandler.getHomePage(req, res, (home) => {
-        res.render('index', { title: '', home });
+        dbHandler.getAllCaseCategory(req, res, (store) => {
+            let q = [];
+            if (store && store.length > 0) {
+                q = store.map((child, index) => {
+                    return {
+                        storeId: child.storeId+''
+                    }
+                })
+            }
+            dbHandler.getCase(req, res, (cases) => {
+                res.render('index', { title: '', home, cases });
+            }, { $or: q })
+        })
     })
 });
 

@@ -106,36 +106,21 @@
 		<div class="title-back text-center">Application Solution</div>
 		<div class="swiper-container swiper-container02">
 			<div class="swiper-wrapper">
+
+				<%if(cases && cases.length > 0){ cases.forEach(function(child, index){%>
 				<div class="swiper-slide">
 					<div class="design-list clearfix">
-						<div class="design-img"><img src="images/solution_1.jpg"></div>
+						<div class="design-img"><img src="<%=child.imgs && child.imgs.length > 0 ? child.imgs[0] : images/solution_1.jpg %>"></div>
 						<div class="design-box">
-							<!--<div class="design-tt text-center">分拣应用Solution</div>
-							<div class="design-txt">出库的货物通过靠边，调整货物间距，扫码后从相应的分拣口分出，末端分拣口一般作为异常剔除口使用。分拣口可以定义为快递公司，地点，门店等，可根据需求从新定义分拣口信息</div>
-							<div class="text-center"><a href="" class="list-btn btn">查看详情></a></div>-->
+							<div class="design-tt text-center">
+								<%=child.title %>
+							</div>
+							<!-- <div class="design-txt">出库的货物通过靠边，调整货物间距，扫码后从相应的分拣口分出，末端分拣口一般作为异常剔除口使用。分拣口可以定义为快递公司，地点，门店等，可根据需求从新定义分拣口信息</div> -->
+							<!-- <div class="text-center"><a href="" class="list-btn btn">查看详情></a></div> -->
 						</div>
 					</div>
 				</div>
-				<div class="swiper-slide">
-					<div class="design-list clearfix">
-						<div class="design-img"><img src="images/solution_2.jpg"></div>
-						<div class="design-box">
-							<!--<div class="design-tt text-center">弯道应用Solution</div>
-							<div class="design-txt">圆带弯道机分为30°，45°，60°，90°四种角度。可根据项目需求进行组合</div>
-							<div class="text-center"><a href="" class="list-btn btn">查看详情></a></div>-->
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="design-list clearfix">
-						<div class="design-img"><img src="images/solution_3.jpg"></div>
-						<div class="design-box">
-							<!--<div class="design-tt text-center">斜坡应用Solution</div>
-							<div class="design-txt">通过爬坡和下坡可预留出项目现场需要的通道</div>
-							<div class="text-center"><a href="" class="list-btn btn">查看详情></a></div>-->
-						</div>
-					</div>
-				</div>
+				<%})} %>
 
 			</div>
 			<!-- Add Arrows -->
