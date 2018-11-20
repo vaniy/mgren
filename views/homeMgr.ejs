@@ -71,7 +71,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
+                        <li class="nav-item has-treeview ">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-tree"></i>
                                 <p>
@@ -87,7 +87,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/management/partsMgr" class="nav-link active">
+                                    <a href="/management/partsMgr" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>创建配置</p>
                                     </a>
@@ -289,40 +289,40 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item has-treeview">
-                          <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-table"></i>
-                            <p>
-                              页面管理
-                              <i class="fa fa-angle-left right"></i>
-                            </p>
-                          </a>
-                          <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                              <a href="/management/homeMgr" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>首页管理</p>
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="/management/supportMgr" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>支持管理</p>
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="/management/whoMgr" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>我们是谁</p>
-                              </a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="/management/contractMgr" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>联系我们</p>
-                              </a>
-                            </li>
-                          </ul>
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-table"></i>
+                                <p>
+                                    页面管理
+                                    <i class="fa fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/management/homeMgr" class="nav-link active">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>首页管理</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/supportMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>支持管理</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/whoMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>我们是谁</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/management/contractMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>联系我们</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <!-- <li class="nav-header">LABELS</li>
           <li class="nav-item">
@@ -385,64 +385,86 @@
                             <!-- form start -->
                             <form role="form">
                                 <div class="card-body">
-                                    <input class="partsId" type="text" hidden value="<%=part.partsId || '' %>">
-                                    <div class="form-group">配置分类(只提供区分)</label>
-                                        <input value="<%=part.pName ? part.pName : '' %>" class="form-control pName"
-                                            type="text" placeholder="例如：XX产品">
-                                    </div>
                                     <div class="form-group">
-                                        <label for="priority">排序</label>
-                                        <input value="<%=part.priority ? part.priority : '' %>" class="form-control priority" type="text"
-                                            placeholder="例如：1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="name">配置名称</label>
-                                        <input value="<%=part.name ? part.name : '' %>" class="form-control name" type="text"
-                                            placeholder="例如：输送速度(m/min)">
+                                        <label for="exampleInputFile">首页图片</label>
+                                        <%for(var j = 0; j < 6; j++){%>
+                                        <div class="input-group" data-provides="fileinput">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input home<%=j+1 %>" id="exampleInputFile"
+                                                    accept="image/gif,image/jpeg,image/x-png">
+                                                <label class="custom-file-label" for="exampleInputFile">选择图片</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <!-- <span class="input-group-text" id="">Upload</span> -->
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+
+                                                <img style="width: 200px;height:150px" src="/home/home<%=j+1 %>.jpg"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <%}%>
                                     </div>
 
                                     <div class="form-group ">
-                                        <label for="onSale">配置规格 </label>
-                                        <%if(part.property && part.property.length > 0){ part.property.forEach(function(child, index){ %>
+                                        <label for="onSale">用户代表 </label>
+                                        <%if(home.propertys && home.propertys.length > 0){ home.propertys.forEach(function(child, index){ %>
                                         <%if(index === 0){ %>
                                         <label class="addPropertyDom addBlue " for="onSale"> +</label>
                                         <%} %>
                                         <div class="row propertyDom">
-                                            <div class="col-5">
-                                                <input type="text" value="<%=child.name %>" class="form-control"
-                                                    placeholder="例如：600mm">
-                                            </div>
-                                            <div class="col-4">
-                                                <input type="text" value="<%=child.amount %>" class="form-control"
-                                                    placeholder="金额">
-                                            </div>
                                             <div class="col-2">
-                                                <input type="text" value="<%=child.qty %>" class="form-control"
-                                                    placeholder="库存">
+                                                <input type="text" value="<%=child.name %>" class="form-control"
+                                                    placeholder="名称">
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="text" value="<%=child.link %>" class="form-control"
+                                                    placeholder="链接">
+                                            </div>
+                                            <div class="col-3" data-provides="fileinput">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input representative" id="exampleInputFile"
+                                                        accept="image/gif,image/jpeg,image/x-png">
+                                                    <label class="custom-file-label" for="exampleInputFile">选择图片</label>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <!-- <span class="input-group-text" id="">Upload</span> -->
+                                                </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                                                    <img style="width: 200px;height:150px" src="/home/<%=child.name %>.jpg" alt="">
+                                                </div>
                                             </div>
                                             <div class="col-1">
                                                 <button type="button" class="btn btn-danger deleteParts">X</button>
                                             </div>
                                         </div>
                                         <%})}else{%>
-                                        <!-- <div class="form-group "> -->
-                                            <!-- <label for="onSale">配置规格 </label> -->
-                                            <label class="addPropertyDom addBlue " for="onSale"> +</label>
-                                            <div class="row propertyDom">
-                                                <div class="col-5">
-                                                    <input type="text" class="form-control" placeholder="例如：600mm">
+                                        <label class="addPropertyDom addBlue " for="onSale"> +</label>
+                                        <div class="row propertyDom">
+                                            <div class="col-2">
+                                                <input type="text" class="form-control" placeholder="名称">
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="text" class="form-control" placeholder="链接">
+                                            </div>
+                                            <div class="col-3" data-provides="fileinput">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input representative" id="exampleInputFile"
+                                                        accept="image/gif,image/jpeg,image/x-png">
+                                                    <label class="custom-file-label" for="exampleInputFile">选择图片</label>
                                                 </div>
-                                                <div class="col-4">
-                                                    <input type="text" class="form-control" placeholder="金额">
+                                                <div class="input-group-append">
+                                                    <!-- <span class="input-group-text" id="">Upload</span> -->
                                                 </div>
-                                                <div class="col-2">
-                                                    <input type="text" class="form-control" placeholder="库存">
-                                                </div>
-                                                <div class="col-1">
-                                                    <button type="button" class="btn btn-danger deleteParts">X</button>
+                                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+
                                                 </div>
                                             </div>
-                                            <%} %>
+                                            <div class="col-1">
+                                                <button type="button" class="btn btn-danger deleteParts">X</button>
+                                            </div>
+                                        </div>
+                                        <%} %>
                                         <!-- </div> -->
 
                                     </div>
@@ -547,40 +569,55 @@
 
             $('.btn.btn-primary').click(function (e) {
                 e.preventDefault();
-                
-                var name = $('input.name').val();
-                var priority = $('input.priority').val();
-                var partsId = $('input.partsId').val();
-                var pName = $('input.pName').val();
+
+                var data = new FormData();
+                // var name = $('input.name').val();
+                // var priority = $('input.priority').val();
+                // var partsId = $('input.partsId').val();
+                // var pName = $('input.pName').val();
 
                 var propertyDom = $('.propertyDom');
                 let propertys = [];
                 for (let k = 0; k < propertyDom.length; k++) {
                     let property = $(propertyDom[k]).find('input');
+                    let img = $(propertyDom[k]).find('.representative');
                     if (property && property.length >= 3) {
-                        propertys.push({
-                            "name": property[0].value,
-                            "amount": parseInt(property[1].value),
-                            "qty": parseInt(property[2].value)
-                        })
+                        // propertys.push({
+                        //     "name": property[0].value,
+                        //     "link": parseInt(property[1].value)
+                        // });
+                        propertys.push(property[0].value + '-' + property[1].value);
+
+                        if (img[0].files[0]) {
+                            data.append(property[0].value, img[0].files[0])
+                        }
                     }
                 }
+                var homeImgCount = 0;
+                let imgs = [];
+                for (let h = 0; h < 6; h++) {
+                    if (document.getElementsByClassName('home' + (h + 1))[0].files[0]) {
+                        data.append("home" + (h + 1), document.getElementsByClassName('home' + (h + 1))[0].files[0]);
+                        homeImgCount++;
+                        imgs.push(h + 1);
+                    }
+                }
+                data.append("homeImgCount", homeImgCount);
+                data.append("imgs", imgs.join(','));
+                data.append("propertys", propertys.join(','));
                 $.ajax({
-                    url: partsId && partsId.trim() != '' ? '/api/updateParts?partsId=' + partsId.trim() : '/api/createParts',
+                    url: '/api/updateHomePage',
                     type: 'POST',
-                    data: {
-                        propertys,
-                        pName,
-                        name,
-                        priority
-                    },
+                    data: data,
                     async: false,
                     cache: false,
+                    contentType: false,
+                    processData: false,
                     success: function (data) {
                         console.log(data);
                         if (data.status && data.status === 'success') {
                             alert(data.msg)
-                            location.href = '/management/partsMgrM'
+                            location.href = '/management/homeMgr'
                         } else if (data.msg) {
                             alert(data.msg)
                             // console.log(data.message);

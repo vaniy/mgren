@@ -14,7 +14,9 @@ var formidable = require('formidable'),
 
 
 router.get('/index', function (req, res) {
-    res.render('index', { title: '' });
+    dbHandler.getHomePage(req, res, (home) => {
+        res.render('index', { title: '', home });
+    })
 });
 
 router.get('/', function (req, res) {
@@ -297,7 +299,7 @@ router.get('/integrator', function (req, res) {
 
 router.get('/productlist', function (req, res) {
     dbHandler.getListPage(req, res, (store) => {
-        res.render('productlist', { title: '', store: req.query.storeId != undefined ? store.filter((x)=>{return x.storeId == req.query.storeId}) : store});
+        res.render('productlist', { title: '', store: req.query.storeId != undefined ? store.filter((x) => { return x.storeId == req.query.storeId }) : store });
     })
 });
 

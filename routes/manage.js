@@ -231,6 +231,16 @@ router.get('/partsMgr', function (req, res) {
     }
 })
 
+router.get('/homeMgr', function (req, res) {
+    dbHandler.getHomePage(req, res, (home) => {
+        // let output = {};
+        // output.imgs = home.imgs;
+        // output.homeImgCount = home.homeImgCount;
+        // output.propertys
+        res.render('homeMgr', { title: '首页', home: home })
+    })
+})
+
 router.get('/partsMgrM', function (req, res) {
     dbHandler.getAllParts(req, res, (parts) => {
         res.render('partsMgrM', { parts })
@@ -355,19 +365,19 @@ router.get('/deleteManage', function (req, res) {
             res.redirect('/management/categoryMgrM')
         }, 'category', { categoryId: req.query.categoryId.trim() })
     }
-    else if(req.query.caseId && req.query.caseId.trim() != ''){
+    else if (req.query.caseId && req.query.caseId.trim() != '') {
         dbHandler.deleteManage(req, res, (order) => {
             // if (orders && orders.length > 0) {
             res.redirect('/management/caseMgrM')
         }, 'case', { caseId: req.query.caseId.trim() })
     }
-    else if(req.query.pid && req.query.pid.trim() != ''){
+    else if (req.query.pid && req.query.pid.trim() != '') {
         dbHandler.deleteManage(req, res, (p) => {
             // if (orders && orders.length > 0) {
             res.redirect('/management/productMgrM')
         }, 'product', { pid: req.query.pid.trim() })
     }
-    else if(req.query.uid && req.query.uid.trim() != ''){
+    else if (req.query.uid && req.query.uid.trim() != '') {
         dbHandler.deleteManage(req, res, (p) => {
             // if (orders && orders.length > 0) {
             res.redirect('/management/userMgrM')

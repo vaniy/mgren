@@ -1,16 +1,18 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>index</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/swiper.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>index</title>
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/swiper.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 
 </head>
+
 <body>
 	<div class="header">
 		<div class="container clearfix">
@@ -45,29 +47,28 @@
 			<li><a href="/contact">Contact</a></li>
 			<li class="last"><a href="/integrator">Integrated partner</a></li>
 		</ul>
-      <button type="button" class="navbar-toggle collapsed">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+		<button type="button" class="navbar-toggle collapsed">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
 	</div>
-    <div class="banner">
-        <!-- Swiper -->
-        <div class="swiper-container swiper-container01">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
-                <div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
-                <div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
-                <div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
-            </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination swiper-pagination01"></div>
-	        <!-- Add Arrows -->
-	        <div class="swiper-button-next"></div>
-	        <div class="swiper-button-prev"></div>
-        </div>
-    </div>
-    <div class="container">
+	<div class="banner">
+		<!-- Swiper -->
+		<div class="swiper-container swiper-container01">
+			<div class="swiper-wrapper">
+				<%if(home.imgs && home.imgs.length > 0){ home.imgs.forEach(function(child, index){%>
+				<div class="swiper-slide"><a href="#"><img src="/home/home<%=child %>.jpg"></a></div>
+				<%})} %>
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination swiper-pagination01"></div>
+			<!-- Add Arrows -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div>
+	</div>
+	<div class="container">
 		<div class="search-box">
 			<input type="text" class="form-control" placeholder="Search products" />
 			<button type="button" class="btn btn-search"><i class="glyphicon glyphicon-search"></i>search</button>
@@ -86,8 +87,8 @@
 					<div class="list-tt">Train</div>
 					<div class="cp-img"><img src="images/list02.png"><img class="hover" src="images/list02-1.png"></div>
 					<div class="list-txt">
-					  分享产品与行业应用经验，赋能行业与顾客，帮助您更快获得成功
-				  </div>
+						分享产品与行业应用经验，赋能行业与顾客，帮助您更快获得成功
+					</div>
 					<a href="/video" class="list-btn btn">More+</a>
 				</div>
 			</div>
@@ -100,12 +101,12 @@
 				</div>
 			</div>
 		</div>
-    </div>
-    <div class="container">
+	</div>
+	<div class="container">
 		<div class="title-back text-center">Application Solution</div>
-	    <div class="swiper-container swiper-container02">
-	        <div class="swiper-wrapper">
-	            <div class="swiper-slide">
+		<div class="swiper-container swiper-container02">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
 					<div class="design-list clearfix">
 						<div class="design-img"><img src="images/solution_1.jpg"></div>
 						<div class="design-box">
@@ -115,7 +116,7 @@
 						</div>
 					</div>
 				</div>
-	            <div class="swiper-slide">
+				<div class="swiper-slide">
 					<div class="design-list clearfix">
 						<div class="design-img"><img src="images/solution_2.jpg"></div>
 						<div class="design-box">
@@ -125,7 +126,7 @@
 						</div>
 					</div>
 				</div>
-	            <div class="swiper-slide">
+				<div class="swiper-slide">
 					<div class="design-list clearfix">
 						<div class="design-img"><img src="images/solution_3.jpg"></div>
 						<div class="design-box">
@@ -135,20 +136,20 @@
 						</div>
 					</div>
 				</div>
-	            
-	        </div>
-	        <!-- Add Arrows -->
-	        <div class="swiper-button-next swiper-button-next02"></div>
-	        <div class="swiper-button-prev swiper-button-prev02"></div>
-	    </div>
-    </div>
-<div class="container">
+
+			</div>
+			<!-- Add Arrows -->
+			<div class="swiper-button-next swiper-button-next02"></div>
+			<div class="swiper-button-prev swiper-button-prev02"></div>
+		</div>
+	</div>
+	<div class="container">
 		<div class="clearfix fw-c">
 			<div class="fw-icon"></div>
 			<div class="pull-left fw-back">
 				<div class="fw-tt">Support</div>
 				<div class="fw-txt">Support for pre sale, sale and after sales</div>
-				<a href="">+More</a>
+				<a href="/support">+More</a>
 			</div>
 			<div class="pull-left fw-back zc-back">
 				<div class="fw-tt">Integrated partner</div>
@@ -156,38 +157,23 @@
 				<a href="">+More</a>
 			</div>
 		</div>
-    </div>
-    <div class="container">
+	</div>
+	<div class="container">
 		<div class="title-back text-center">Our customers</div>
 		<div class="db-c">
-		    <div class="swiper-container swiper-container03">
-		        <div class="swiper-wrapper">
-		            <div class="swiper-slide">
-						<a href="" class="hb-logo"><img src="images/logo_1.jpg"><span>意慧包装</span></a>
+			<div class="swiper-container swiper-container03">
+				<div class="swiper-wrapper">
+					<%if(home.propertys && home.propertys.length > 0){ home.propertys.forEach(function(child, index){%>
+					<div class="swiper-slide">
+						<a href="<%=child.link %>" class="hb-logo"><img src="/home/<%=child.name %>.jpg"><span>
+								<%=child.name %></span></a>
 					</div>
-		            <div class="swiper-slide">
-						<a href="" class="hb-logo"><img src="images/logo_2.jpg"><span>哈工大机器人</span></a>
-					</div>
-		            <div class="swiper-slide">
-						<a href="" class="hb-logo"><img src="images/logo_3.jpg"><span>艾吉威机器人
-</span></a>
-					</div>
-		            <div class="swiper-slide">
-						<a href="" class="hb-logo"><img src="images/logo_4.jpg"><span>海康机器人
-</span></a>
-					</div>
-		            <div class="swiper-slide">
-						<a href="" class="hb-logo"><img src="images/logo_5.jpg"><span>音飞集团</span></a>
-					</div>
-		            <div class="swiper-slide">
-						<a href="" class="hb-logo"><img src="images/logo_6.jpg"><span>六维智能物流
-</span></a>
-					</div>
-		        </div>
-		    </div>
-	        <div class="swiper-button-next swiper-button-next03"></div>
-	        <div class="swiper-button-prev swiper-button-prev03"></div>
-	    </div>
+					<%})}%>
+				</div>
+			</div>
+			<div class="swiper-button-next swiper-button-next03"></div>
+			<div class="swiper-button-prev swiper-button-prev03"></div>
+		</div>
 	</div>
 	<div class="bottom">
 		<div class="container">
@@ -213,7 +199,7 @@
 						</ul>
 					</div>
 				</div>
-				
+
 				<div class="col-xs-3 pull-right">
 					<div class="footer-link">
 						<a href=""><img src="images/footer03.png"></a>
@@ -227,7 +213,7 @@
 		</div>
 	</div>
 	<div class="footer text-center">
-		<div class="container">COPYRIGHT © 2018 conveyormart.net ALL RIGHTS RESERVED 备案号：沪ICP备11037079号  support：henroad</div>
+		<div class="container">COPYRIGHT © 2018 conveyormart.net ALL RIGHTS RESERVED 备案号：沪ICP备11037079号 support：henroad</div>
 	</div>
 	<section class="zi-fdTel">
 		<a href="" target="_onlineqq" class="tel">
@@ -251,139 +237,138 @@
 <script src="js/swiper.min.js"></script>
 <!-- Initialize Swiper -->
 <script type="text/javascript">
-//右侧悬浮
-$(document).ready(function(){
+	//右侧悬浮
+	$(document).ready(function () {
 
-	$(document).on("click", ".zi-fdTel .up", function(){
-		$("html,body").animate({scrollTop: 0});
-	});
-	$(window).scroll(function(){
-		var st = $(document).scrollTop();
-		var $top = $(".zi-fdTel");
-		if(st > 400){
-			$top.css({display: 'block'});
-		}else{
-			if ($top.is(":visible")) {
-				$top.hide();
+		$(document).on("click", ".zi-fdTel .up", function () {
+			$("html,body").animate({ scrollTop: 0 });
+		});
+		$(window).scroll(function () {
+			var st = $(document).scrollTop();
+			var $top = $(".zi-fdTel");
+			if (st > 400) {
+				$top.css({ display: 'block' });
+			} else {
+				if ($top.is(":visible")) {
+					$top.hide();
+				}
 			}
+		});
+
+	});
+
+	var aaa = new Swiper('.swiper-container01', {
+		pagination: '.swiper-pagination',
+		paginationClickable: true,
+		speed: 1000,
+		loop: true,
+		nextButton: '.swiper-button-next01',
+		prevButton: '.swiper-button-prev01',
+		observer: true,
+		observeParents: true,
+		autoplayDisableOnInteraction: false,
+		autoplay: 2000
+	});
+	$('.swiper-container01').mouseover(function () {
+		aaa.stopAutoplay();
+	})
+	$('.swiper-container01').mouseout(function () {
+		aaa.startAutoplay();
+	})
+	$(function () {
+		if (screen.width >= 767) {
+			var anli = new Swiper('.swiper-container02', {
+				slidesPerView: 3,
+				speed: 1000,
+				autoplay: 2000,
+				loop: true,
+				observer: true,
+				observeParents: true,
+				paginationClickable: true,
+				nextButton: '.swiper-button-next02',
+				prevButton: '.swiper-button-prev02',
+				spaceBetween: 5
+			});
+			$('.swiper-container02').mouseover(function () {
+				anli.stopAutoplay();
+			})
+			$('.swiper-container02').mouseout(function () {
+				anli.startAutoplay();
+			})
+			var huoban = new Swiper('.swiper-container03', {
+				slidesPerView: 5,
+				speed: 1000,
+				autoplay: 2000,
+				loop: true,
+				observer: true,
+				observeParents: true,
+				paginationClickable: true,
+				nextButton: '.swiper-button-next03',
+				prevButton: '.swiper-button-prev03',
+				spaceBetween: 30
+			});
+			$('.swiper-container03').mouseover(function () {
+				huoban.stopAutoplay();
+			})
+			$('.swiper-container03').mouseout(function () {
+				huoban.startAutoplay();
+			})
+		} else {
+			var anli = new Swiper('.swiper-container02', {
+				slidesPerView: 1,
+				speed: 1000,
+				autoplay: 2000,
+				loop: true,
+				observer: true,
+				observeParents: true,
+				paginationClickable: true,
+				nextButton: '.swiper-button-next02',
+				prevButton: '.swiper-button-prev02',
+				spaceBetween: 5
+			});
+			$('.swiper-container02').mouseover(function () {
+				anli.stopAutoplay();
+			})
+			$('.swiper-container02').mouseout(function () {
+				anli.startAutoplay();
+			})
+			var huoban = new Swiper('.swiper-container03', {
+				slidesPerView: 2,
+				speed: 1000,
+				autoplay: 2000,
+				loop: true,
+				observer: true,
+				nextButton: '.swiper-button-next03',
+				prevButton: '.swiper-button-prev03',
+				observeParents: true,
+				paginationClickable: true,
+				paginationClickable: true,
+				spaceBetween: 30
+			});
+			$('.swiper-container03').mouseover(function () {
+				huoban.stopAutoplay();
+			})
+			$('.swiper-container03').mouseout(function () {
+				huoban.startAutoplay();
+			})
+		}
+	})
+	$(".navbar-toggle").click(function () {
+		$(".nav-down").slideUp("slow");
+		if ($(".nav-list").is(":hidden")) {
+			$(".nav-list").slideDown("slow");
+		} else {
+			$(".nav-list").slideUp("slow");
 		}
 	});
-	
-});	
-
-var aaa = new Swiper('.swiper-container01', {
-        pagination: '.swiper-pagination',
-        paginationClickable: true,
-        speed: 1000,
-        loop: true,
-        nextButton: '.swiper-button-next01',
-        prevButton: '.swiper-button-prev01',
-        observer:true,
-        observeParents:true,
-        autoplayDisableOnInteraction : false,
-        autoplay:2000
-});
-    $('.swiper-container01').mouseover(function(){
-        aaa.stopAutoplay();
-    })
-    $('.swiper-container01').mouseout(function(){
-        aaa.startAutoplay();
-    })
- $(function () {
-            if (screen.width >= 767){
-			    var anli = new Swiper('.swiper-container02', {
-			        slidesPerView: 3,
-			        speed: 1000,
-			        autoplay:2000,
-			        loop: true,
-			        observer:true,
-			        observeParents:true,
-			        paginationClickable: true,
-			        nextButton: '.swiper-button-next02',
-			        prevButton: '.swiper-button-prev02',
-			        spaceBetween: 5
-			    });
-     $('.swiper-container02').mouseover(function(){
-        anli.stopAutoplay();
-    })
-    $('.swiper-container02').mouseout(function(){
-        anli.startAutoplay();
-    })
-			    var huoban = new Swiper('.swiper-container03', {
-			        slidesPerView: 5,
-			        speed: 1000,
-			        autoplay:2000,
-			        loop: true,
-			        observer:true,
-			        observeParents:true,
-			        paginationClickable: true,
-			        nextButton: '.swiper-button-next03',
-			        prevButton: '.swiper-button-prev03',
-			        spaceBetween: 30
-			    });
-     $('.swiper-container03').mouseover(function(){
-        huoban.stopAutoplay();
-    })
-    $('.swiper-container03').mouseout(function(){
-        huoban.startAutoplay();
-    })
-          }else {
-			    var anli = new Swiper('.swiper-container02', {
-			        slidesPerView: 1,
-			        speed: 1000,
-			        autoplay:2000,
-			        loop: true,
-			        observer:true,
-			        observeParents:true,
-			        paginationClickable: true,
-			        nextButton: '.swiper-button-next02',
-			        prevButton: '.swiper-button-prev02',
-			        spaceBetween: 5
-			    });
-     $('.swiper-container02').mouseover(function(){
-        anli.stopAutoplay();
-    })
-    $('.swiper-container02').mouseout(function(){
-        anli.startAutoplay();
-    })
-			    var huoban = new Swiper('.swiper-container03', {
-			        slidesPerView: 2,
-			        speed: 1000,
-			        autoplay:2000,
-			        loop: true,
-			        observer:true,
-			        nextButton: '.swiper-button-next03',
-			        prevButton: '.swiper-button-prev03',
-			        observeParents:true,
-			        paginationClickable: true,
-			        paginationClickable: true,
-			        spaceBetween: 30
-			    });
-     $('.swiper-container03').mouseover(function(){
-        huoban.stopAutoplay();
-    })
-    $('.swiper-container03').mouseout(function(){
-        huoban.startAutoplay();
-    })
-         }
-})
-   $(".navbar-toggle").click(function(){
-   			$(".nav-down").slideUp("slow");
-          if($(".nav-list").is(":hidden"))
-          {
-            $(".nav-list").slideDown("slow");  
-          }else{
-            $(".nav-list").slideUp("slow");
-              }
-  }); 
-   $(".phone-i").click(function(){
-          if($(this).parents("li").find(".nav-down").is(":hidden"))
-          {
-          	$(".nav-down").slideUp("slow");
-            $(this).parents("li").find(".nav-down").slideDown("slow");  
-          }else{
-            $(this).parents("li").find(".nav-down").slideUp("slow");
-              }
-  }); 
+	$(".phone-i").click(function () {
+		if ($(this).parents("li").find(".nav-down").is(":hidden")) {
+			$(".nav-down").slideUp("slow");
+			$(this).parents("li").find(".nav-down").slideDown("slow");
+		} else {
+			$(this).parents("li").find(".nav-down").slideUp("slow");
+		}
+	}); 
 </script>
+
 </html>
