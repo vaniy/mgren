@@ -248,7 +248,20 @@ router.get('/partsMgrM', function (req, res) {
 })
 
 router.get('/integratorMgr', function (req, res) {
-    res.render('/integratorMgr', { title: '管理集成商', parts: {}, integrator: {} })
+    if (req.query.iid && req.query.iid.trim() != '') {
+        dbHandler.getIntegrator(req, res, (integrators) => {
+            res.render('integratorMgr', { title: '管理集成商', integrator:integrators[0] })
+        }, { iid: req.query.iid.trim() })
+    }
+    else {
+        res.render('integratorMgr', { title: '管理集成商', integrator: {} })
+    }
+})
+
+router.get('/integratorMgrM', function (req, res) {
+    dbHandler.getIntegrator(req, res, (integrators) => {
+        res.render('integratorMgrM', { title: '集成商列表', integrators })
+    }, {})
 })
 
 router.get('/userMgrM', function (req, res) {
@@ -382,6 +395,12 @@ router.get('/deleteManage', function (req, res) {
             // if (orders && orders.length > 0) {
             res.redirect('/management/userMgrM')
         }, 'user', { uid: req.query.uid.trim() })
+    }
+    else if (req.query.iid && req.query.iid.trim() != '') {
+        dbHandler.deleteManage(req, res, (p) => {
+            // if (orders && orders.length > 0) {
+            res.redirect('/management/integratorMgrM')
+        }, 'integrator', { iid: req.query.iid.trim() })
     }
     else {
         res.redirect('/management')
