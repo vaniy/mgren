@@ -372,6 +372,12 @@ router.get('/deleteManage', function (req, res) {
             res.redirect('/management/partsMgrM')
         }, 'parts', { partsId: req.query.partsId.trim() })
     }
+    else if(req.query.isCase && req.query.isCase == 1){
+        dbHandler.deleteManage(req, res, (order) => {
+            // if (orders && orders.length > 0) {
+            res.redirect('/management/casePartsMgrM')
+        }, 'caseCategory', { categoryId: req.query.categoryId.trim() })
+    }
     else if (req.query.categoryId && req.query.categoryId.trim() != '') {
         dbHandler.deleteManage(req, res, (order) => {
             // if (orders && orders.length > 0) {
