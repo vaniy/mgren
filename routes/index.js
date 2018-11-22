@@ -32,7 +32,21 @@ router.get('/index', function (req, res) {
 });
 
 router.get('/', function (req, res) {
-    res.render('index', { title: '' });
+    dbHandler.getHomePage(req, res, (home) => {
+        dbHandler.getAllCaseCategory(req, res, (store) => {
+            let q = [];
+            if (store && store.length > 0) {
+                q = store.map((child, index) => {
+                    return {
+                        storeId: child.storeId + ''
+                    }
+                })
+            }
+            dbHandler.getCase(req, res, (cases) => {
+                res.render('index', { title: '', home, cases });
+            }, { $or: q })
+        })
+    })
 });
 
 router.get('/download', function (req, res) {
