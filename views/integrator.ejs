@@ -53,90 +53,93 @@
 	</div>
 	<div class="cp-banner"></div>
 	<div class="container">
-		<div class="car-tt"><span>查找集成伙伴</span> 提供本地化的服务</div>
-		<ul class="jc-tabs clearfix">
-			<li class="active"><a href="">中国集成伙伴</a></li>
-			<li><a href="">国际集成伙伴</a></li>
-		</ul>
-		<ul class="jc-label clearfix">
-			<li><a role="button">上海</a></li>
-			<li><a role="button">上海</a></li>
-			<li><a role="button">上海</a></li>
-			<li><a role="button">上海</a></li>
-			<li><a role="button">上海</a></li>
-			<li><a role="button">上海</a></li>
-			<li><a class="active" role="button">上海</a></li>
-			<li><a role="button">上海</a></li>
-		</ul>
-		<div class="jc-title">我们的集成伙伴</div>
-		<div class="table-responsive jc-margin">
-			<table class="table jc-table">
-		      <thead>
-		        <tr>
-		          <th>伙伴名称</th>
-		          <th>所在城市</th>
-		          <th>服务区域</th>
-		          <th>服务内容</th>
-		          <th>联系信息</th>
-		        </tr>
-		      </thead>
-		      <tbody>
-		        <tr>
-		          <td>
-					<div class="jc-logo"><img src="images/jc-logo.png"></div>
-					<div class="jc-name">上海亨路网络科技有限公司</div>
-		          </td>
-		          <td>上海市</td>
-		          <td>上海市闵行区</td>
-		          <td>系统集成，安装，保养</td>
-		          <td>
-					<div class="jc-txt">
-						<p><span>地址：</span>上海市闵行区吴中路1079号405 </p>
-						<p><span>电话：</span>021-6234 2323</p>
-						<p><span>传真：</span>021-6234 2324</p>
-						<p><span>Email：</span>info@592hl.com</p>
-					</div>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td>
-					<div class="jc-logo"><img src="images/jc-logo.png"></div>
-					<div class="jc-name">上海亨路网络科技有限公司</div>
-		          </td>
-		          <td>上海市</td>
-		          <td>上海市闵行区</td>
-		          <td>系统集成，安装，保养</td>
-		          <td>
-					<div class="jc-txt">
-						<p><span>地址：</span>上海市闵行区吴中路1079号405 </p>
-						<p><span>电话：</span>021-6234 2323</p>
-						<p><span>传真：</span>021-6234 2324</p>
-						<p><span>Email：</span>info@592hl.com</p>
-					</div>
-		          </td>
-		        </tr>
-		        <tr>
-		          <td>
-					<div class="jc-logo"><img src="images/jc-logo.png"></div>
-					<div class="jc-name">上海亨路网络科技有限公司</div>
-		          </td>
-		          <td>上海市</td>
-		          <td>上海市闵行区</td>
-		          <td>系统集成，安装，保养</td>
-		          <td>
-					<div class="jc-txt">
-						<p><span>地址：</span>上海市闵行区吴中路1079号405 </p>
-						<p><span>电话：</span>021-6234 2323</p>
-						<p><span>传真：</span>021-6234 2324</p>
-						<p><span>Email：</span>info@592hl.com</p>
-					</div>
-		          </td>
-		        </tr>
-		      </tbody>
-		    </table>
-
+			<div class="car-tt"><span>查找集成伙伴</span> 提供本地化的服务</div>
+			<ul class="jc-tabs clearfix">
+				<li class="<%=isNational == 0 ? 'active' : ''%>"><a href="">中国集成伙伴</a></li>
+				<li class="<%=isNational == 1 ? 'active' : ''%>"><a href="">国际集成伙伴</a></li>
+			</ul>
+			<ul class="jc-label clearfix">
+				<%if(provinces && provinces.length > 0){ provinces.forEach(function(child, index){%>
+					<li><a href="/integrator?province=<%=child %>" class="<%=currentProvince == child ? 'active' : '' %>" role="button"><%=child %></a></li>
+				<%})} %>
+				<!-- <li><a role="button">上海</a></li>
+				<li><a role="button">上海</a></li>
+				<li><a role="button">上海</a></li>
+				<li><a role="button">上海</a></li>
+				<li><a role="button">上海</a></li>
+				<li><a role="button">上海</a></li>
+				<li><a class="active" role="button">上海</a></li>
+				<li><a role="button">上海</a></li> -->
+			</ul>
+			<div class="jc-title">我们的集成伙伴</div>
+			<div class="table-responsive jc-margin">
+				<table class="table jc-table">
+				  <thead>
+					<tr>
+					  <th>伙伴名称</th>
+					  <th>所在城市</th>
+					  <th>服务区域</th>
+					  <th>服务内容</th>
+					  <th>联系信息</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>
+						<div class="jc-logo"><img src="/images/jc-logo.png"></div>
+						<div class="jc-name">上海亨路网络科技有限公司</div>
+					  </td>
+					  <td>上海市</td>
+					  <td>上海市闵行区</td>
+					  <td>系统集成，安装，保养</td>
+					  <td>
+						<div class="jc-txt">
+							<p><span>地址：</span>上海市闵行区吴中路1079号405 </p>
+							<p><span>电话：</span>021-6234 2323</p>
+							<p><span>传真：</span>021-6234 2324</p>
+							<p><span>Email：</span>info@592hl.com</p>
+						</div>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<div class="jc-logo"><img src="/images/jc-logo.png"></div>
+						<div class="jc-name">上海亨路网络科技有限公司</div>
+					  </td>
+					  <td>上海市</td>
+					  <td>上海市闵行区</td>
+					  <td>系统集成，安装，保养</td>
+					  <td>
+						<div class="jc-txt">
+							<p><span>地址：</span>上海市闵行区吴中路1079号405 </p>
+							<p><span>电话：</span>021-6234 2323</p>
+							<p><span>传真：</span>021-6234 2324</p>
+							<p><span>Email：</span>info@592hl.com</p>
+						</div>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+						<div class="jc-logo"><img src="/images/jc-logo.png"></div>
+						<div class="jc-name">上海亨路网络科技有限公司</div>
+					  </td>
+					  <td>上海市</td>
+					  <td>上海市闵行区</td>
+					  <td>系统集成，安装，保养</td>
+					  <td>
+						<div class="jc-txt">
+							<p><span>地址：</span>上海市闵行区吴中路1079号405 </p>
+							<p><span>电话：</span>021-6234 2323</p>
+							<p><span>传真：</span>021-6234 2324</p>
+							<p><span>Email：</span>info@592hl.com</p>
+						</div>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+	
+			</div>
 		</div>
-	</div>
 	<div class="bottom">
 		<div class="container">
 			<div class="row">

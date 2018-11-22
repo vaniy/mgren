@@ -20,7 +20,7 @@ router.get('/index', function (req, res) {
             if (store && store.length > 0) {
                 q = store.map((child, index) => {
                     return {
-                        storeId: child.storeId+''
+                        storeId: child.storeId + ''
                     }
                 })
             }
@@ -306,7 +306,15 @@ router.get('/video', function (req, res) {
 });
 
 router.get('/integrator', function (req, res) {
-    res.render('integrator', { title: '' });
+    dbHandler.getIntegrator(req, res, (integrators) => {
+        let provinces = ['全部'];
+        if (integrators && integrators.length > 0) {
+            integrators.forEach((child, index) => {
+                provinces.push(child.province);
+            })
+        }
+        res.render('integrator', { title: '', integrators, provinces, currentProvince: req.query.province || '全部', isNational: req.query.isNational || 0 });
+    }, {})
 });
 
 router.get('/productlist', function (req, res) {

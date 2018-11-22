@@ -57,7 +57,7 @@
 		<!-- Swiper -->
 		<div class="swiper-container swiper-container01">
 			<div class="swiper-wrapper">
-				<%if(home.imgs && home.imgs.length > 0){ home.imgs.forEach(function(child, index){%>
+				<%if(home && home.imgs && home.imgs.length > 0){ home.imgs.forEach(function(child, index){%>
 				<div class="swiper-slide"><a href="#"><img src="/home/home<%=child %>.jpg"></a></div>
 				<%})} %>
 			</div>
@@ -148,7 +148,7 @@
 		<div class="db-c">
 			<div class="swiper-container swiper-container03">
 				<div class="swiper-wrapper">
-					<%if(home.propertys && home.propertys.length > 0){ home.propertys.forEach(function(child, index){%>
+					<%if(home && home.propertys && home.propertys.length > 0){ home.propertys.forEach(function(child, index){%>
 					<div class="swiper-slide">
 						<a href="<%=child.link %>" class="hb-logo"><img src="/home/<%=child.name %>.jpg"><span>
 								<%=child.name %></span></a>
