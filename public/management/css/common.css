@@ -1,3 +1,11 @@
 .addBlue{
     color: blue
 }
+
+.nav-treeview .nav-item .nav-link p{
+    font-size: 0.8em !important
+}
+
+.nav-treeview .nav-item .nav-link i{
+    font-size: 0.8rem !important;
+}
