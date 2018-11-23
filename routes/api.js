@@ -1425,6 +1425,15 @@ router.get('/updateQty', function (req, res) {
     }
 })
 
+router.get('/search', function(req, res){
+    if(req.query.keywords && req.query.keywords.trim() != ''){
+        dbHandler.search(req, res);
+    }
+    else{
+        res.send({ status: 'failed', msg: '' })
+    }
+})
+
 // var jssdk = require('../api/jssdk');
 
 // router.get('/', function(req, res, next) {

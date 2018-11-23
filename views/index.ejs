@@ -18,10 +18,10 @@
 	<div class="container nav-c clearfix">
 		<div class="pull-left logo"><a href=""><img src="images/logo.png"></a></div>
 		<ul class="pull-right nav-list clearfix">
-			<li><a href="/index">Home</a></li>
-			<li><a href="/productlist">Products</a></li>
+			<li><a href="/index">首页</a></li>
+			<li><a href="/productlist">产品</a></li>
 			<li>
-				<a href="/case">Solution</a><span class="phone-i"><i class="glyphicon glyphicon-menu-down"></i></span>
+				<a href="/case">方案</a><span class="phone-i"><i class="glyphicon glyphicon-menu-down"></i></span>
 				<ul class="nav-down">
 					<!-- <li><a href="/integrator">查找集成伙伴</a></li>
 					<li><a href="/integrator">查找集成伙伴</a></li>
@@ -30,10 +30,10 @@
 					<li><a href="/integrator">查找集成伙伴</a></li> -->
 				</ul>
 			</li>
-			<li><a href="/support">Support</a></li>
-			<li><a href="/video">Train</a></li>
-			<li><a href="/contact">Contact</a></li>
-			<li class="last"><a href="/integrator">Integrated partner</a></li>
+			<li><a href="/support">支持</a></li>
+			<li><a href="/video">培训</a></li>
+			<li><a href="/contact">联系我们</a></li>
+			<li class="last"><a href="/integrator">查找集成伙伴</a></li>
 		</ul>
 		<button type="button" class="navbar-toggle collapsed">
 			<span class="icon-bar"></span>
@@ -48,6 +48,10 @@
 				<%if(home && home.imgs && home.imgs.length > 0){ home.imgs.forEach(function(child, index){%>
 				<div class="swiper-slide"><a href="#"><img src="/home/home<%=child %>.jpg"></a></div>
 				<%})} %>
+				<!-- <div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
+                <div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
+                <div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
+                <div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div> -->
 			</div>
 			<!-- Add Pagination -->
 			<div class="swiper-pagination swiper-pagination01"></div>
@@ -58,43 +62,42 @@
 	</div>
 	<div class="container">
 		<div class="search-box">
-			<input type="text" class="form-control" placeholder="Search products" />
-			<button type="button" class="btn btn-search"><i class="glyphicon glyphicon-search"></i>search</button>
+			<input type="text" class="form-control keywords" placeholder="请输入要搜索的关键字" />
+			<button type="button" class="btn btn-search"><i class="glyphicon glyphicon-search"></i>搜索</button>
 		</div>
 		<div class="clearfix text-center cp-list">
 			<div class="width-three pull-left">
 				<div class="list-box">
-					<div class="list-tt">Products</div>
+					<div class="list-tt">产品</div>
 					<div class="cp-img"><img src="images/list01.png"><img class="hover" src="images/list01-1.png"></div>
 					<div class="list-txt">基于标准化、模块化的高质量水平的输送分拣设备，拥有中国最快交货期的产品线，可以帮助您面对用户时获得更多优势</div>
-					<a href="/productlist" class="list-btn btn">More+</a>
+					<a href="/productlist" class="list-btn btn">查看详情+</a>
 				</div>
 			</div>
 			<div class="width-three pull-left">
 				<div class="list-box">
-					<div class="list-tt">Train</div>
+					<div class="list-tt">培训</div>
 					<div class="cp-img"><img src="images/list02.png"><img class="hover" src="images/list02-1.png"></div>
 					<div class="list-txt">
 						分享产品与行业应用经验，赋能行业与顾客，帮助您更快获得成功
 					</div>
-					<a href="/video" class="list-btn btn">More+</a>
+					<a href="/video" class="list-btn btn">查看详情+</a>
 				</div>
 			</div>
 			<div class="width-three pull-left">
 				<div class="list-box">
-					<div class="list-tt">Planning</div>
+					<div class="list-tt">快速规划</div>
 					<div class="cp-img"><img src="images/list03.png"><img class="hover" src="images/list03-1.png"></div>
-					<div class="list-txt">基于业内独有的SSM智选系统，能够帮助Solution规划工程师快速选型，并迅速完成Solution搭建与输出</div>
-					<a href="/case" class="list-btn btn">More+</a>
+					<div class="list-txt">基于业内独有的SSM智选系统，能够帮助方案规划工程师快速选型，并迅速完成方案搭建与输出</div>
+					<a href="/case" class="list-btn btn">查看详情+</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="container">
-		<div class="title-back text-center">Application Solution</div>
+		<div class="title-back text-center">解决方案</div>
 		<div class="swiper-container swiper-container02">
 			<div class="swiper-wrapper">
-
 				<%if(cases && cases.length > 0){ cases.forEach(function(child, index){%>
 				<div class="swiper-slide">
 					<div class="design-list clearfix">
@@ -110,6 +113,7 @@
 				</div>
 				<%})} %>
 
+
 			</div>
 			<!-- Add Arrows -->
 			<div class="swiper-button-next swiper-button-next02"></div>
@@ -120,19 +124,19 @@
 		<div class="clearfix fw-c">
 			<div class="fw-icon"></div>
 			<div class="pull-left fw-back">
-				<div class="fw-tt">Support</div>
-				<div class="fw-txt">Support for pre sale, sale and after sales</div>
-				<a href="/support">+More</a>
+				<div class="fw-tt">服务支持</div>
+				<div class="fw-txt">请求售前、售中、售后的支持</div>
+				<a href="/support">+查看详情</a>
 			</div>
 			<div class="pull-left fw-back zc-back">
-				<div class="fw-tt">Integrated partner</div>
-				<div class="fw-txt">Find the integrated partner and get service quickly.</div>
-				<a href="/integrator">+More</a>
+				<div class="fw-tt">集成伙伴</div>
+				<div class="fw-txt">找到德马分布全国的集成合作伙伴，快速获得服务</div>
+				<a href="/integrator">+查看详情</a>
 			</div>
 		</div>
 	</div>
 	<div class="container">
-		<div class="title-back text-center">Our customers</div>
+		<div class="title-back text-center">用户代表</div>
 		<div class="db-c">
 			<div class="swiper-container swiper-container03">
 				<div class="swiper-wrapper">
@@ -142,6 +146,27 @@
 								<%=child.name %></span></a>
 					</div>
 					<%})}%>
+					<!-- <div class="swiper-slide">
+						<a href="" class="hb-logo"><img src="images/logo_1.jpg"><span>意慧包装</span></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="" class="hb-logo"><img src="images/logo_2.jpg"><span>哈工大机器人</span></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="" class="hb-logo"><img src="images/logo_3.jpg"><span>艾吉威机器人
+							</span></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="" class="hb-logo"><img src="images/logo_4.jpg"><span>海康机器人
+							</span></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="" class="hb-logo"><img src="images/logo_5.jpg"><span>音飞集团</span></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="" class="hb-logo"><img src="images/logo_6.jpg"><span>六维智能物流
+							</span></a>
+					</div> -->
 				</div>
 			</div>
 			<div class="swiper-button-next swiper-button-next03"></div>
@@ -153,22 +178,23 @@
 			<div class="row">
 				<div class="col-xs-3">
 					<div class="dis-table">
-						<div class="bottom-tt">customer service</div>
+						<div class="bottom-tt">客户服务</div>
 						<ul class="bottom-list">
-							<li><a href="/register">Create an Account</a></li>
-							<li><a href="">Join integration partners</a></li>
-							<li><a href="/integrator">Find integration partners</a></li>
-							<li><a href="/productlist">Online order </a></li>
-							<li><a href="/support">Support</a></li>
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/integrator">查找集成伙伴</a></li>
+							<li><a href="/productlist">在线购买输送机</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-xs-3">
 					<div class="dis-table">
-						<div class="bottom-tt">Information Center</div>
+						<div class="bottom-tt">信息中心</div>
 						<ul class="bottom-list">
-							<li><a href="/policy">Privacy policy</a></li>
-							<li><a href="">Terms of Use</a></li>
+							<li><a href="/register">隐私政策</a></li>
+							<li><a href="">使用条款</a></li>
 						</ul>
 					</div>
 				</div>
@@ -180,13 +206,13 @@
 						<a href=""><img src="images/footer05.png"></a>
 					</div>
 					<div class="bottom-phone">400-880-5180</div>
-					<div class="bottom-phone bottom-phone-b">7F, software building 461, Hong Cao Road, Xuhui District, Shanghai</div>
+					<div class="bottom-phone bottom-phone-b">上海徐汇区虹漕路461号软件大厦7F</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="footer text-center">
-		<div class="container">COPYRIGHT © 2018 conveyormart.net ALL RIGHTS RESERVED 备案号：沪ICP备11037079号 support：henroad</div>
+		<div class="container">COPYRIGHT © 2018 德马技术 ALL RIGHTS RESERVED 备案号：沪ICP备11037079号 技术支持：亨路网络</div>
 	</div>
 	<section class="zi-fdTel">
 		<a href="" target="_onlineqq" class="tel">
@@ -341,7 +367,38 @@
 		} else {
 			$(this).parents("li").find(".nav-down").slideUp("slow");
 		}
-	}); 
+	});
+	$('.glyphicon.glyphicon-search').click(function (e) {
+		e.preventDefault();
+		var keywords = $('.keywords').val();
+		if (!keywords || keywords.trim() == '') {
+			return;
+		}
+		$.ajax({
+			url: '/api/search?keywords=' + keywords,
+			type: 'GET',
+			async: false,
+			cache: false,
+			success: function (data) {
+				console.log(data);
+				if (data.status && data.status === 'success') {
+					// $('.userName').text(data.content)
+					// alert(data.content)
+					if (data.msg && data.msg.length > 0) {
+						location.href = '/productDetail?pid=' + data.msg
+					}
+					// location.href = '/management/integratorMgrM'
+				} else if (data.msg) {
+					alert(data.msg)
+					// console.log(data.message);
+				}
+			},
+			error: function (data) {
+				console.log(data.status);
+			}
+		});
+	})
+
 </script>
 
 </html>
