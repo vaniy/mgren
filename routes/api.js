@@ -16,6 +16,12 @@ TITLE = 'formidable',
 
 var util = require('../util/util');
 
+router.get('/getUser', function(req, res, next){
+    dbHandler.getUserInfo(req, res, (user)=>{
+        res.send({ status: 'success', content: user.name})
+    })
+})
+
 router.post('/register', function (req, res, next) {
 
     var form = new formidable.IncomingForm();   //创建上传表单

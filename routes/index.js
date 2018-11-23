@@ -12,7 +12,6 @@ var formidable = require('formidable'),
     AVATAR_UPLOAD_FOLDER = '/avatar/';
 
 
-
 router.get('/index', function (req, res) {
     dbHandler.getHomePage(req, res, (home) => {
         dbHandler.getAllCaseCategory(req, res, (store) => {
@@ -320,15 +319,37 @@ router.get('/video', function (req, res) {
 });
 
 router.get('/integrator', function (req, res) {
+    let query = {};
+    if (req.query.province && req.query.province.trim() != '全部') {
+        query = {
+            province: req.query.province.trim()
+        }
+    }
+    if (req.query.isNational) {
+        if (req.query.province && req.query.province.trim() != null) {
+            query = {
+                integratorNationCity: req.query.province.trim()
+            }
+        }
+    }
     dbHandler.getIntegrator(req, res, (integrators) => {
         let provinces = ['全部'];
-        if (integrators && integrators.length > 0) {
-            integrators.forEach((child, index) => {
-                provinces.push(child.province);
-            })
+        let outputs = Object.assign([], integrators);
+        if (outputs && outputs.length > 0) {
+            if (req.query.isNational) {
+                outputs = outputs.filter((x) => { return x.integratorNationCity && x.integratorNationCity.trim() != '' })
+                outputs.forEach((child, index) => {
+                    provinces.push(child.integratorNationCity);
+                })
+            }
+            else {
+                outputs.forEach((child, index) => {
+                    provinces.push(child.province);
+                })
+            }
         }
-        res.render('integrator', { title: '', integrators, provinces, currentProvince: req.query.province || '全部', isNational: req.query.isNational || 0 });
-    }, {})
+        res.render('integrator', { title: '', integrators: outputs, provinces, currentProvince: req.query.province || '全部', isNational: req.query.isNational || 0 });
+    }, query)
 });
 
 router.get('/productlist', function (req, res) {
