@@ -10,6 +10,7 @@
     "express": "^4.12.4",
     "express-session": "^1.0.4",
     "formidable": "latest",
+    "moment": "^2.22.2",
     "mongodb": "^2.2.30",
     "node-fetch": "^1.7.1",
     "request": "^2.82.0",

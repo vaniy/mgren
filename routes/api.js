@@ -16,9 +16,9 @@ TITLE = 'formidable',
 
 var util = require('../util/util');
 
-router.get('/getUser', function(req, res, next){
-    dbHandler.getUserInfo(req, res, (user)=>{
-        res.send({ status: 'success', content: user.name})
+router.get('/getUser', function (req, res, next) {
+    dbHandler.getUserInfo(req, res, (user) => {
+        res.send({ status: 'success', content: user.name })
     })
 })
 
@@ -288,7 +288,17 @@ router.post('/uploadImages', function (req, res, next) {
             else {
                 needChange = true;
                 // if (key === 'description') {
-                var avatarName = pid ? pid : caseId + '_' + type + '_' + new Date().getTime() + '.' + extName;
+                var avatarName = '';
+                if (pid) {
+                    avatarName = pid + '_' + type + '_' + new Date().getTime() + '.' + extName;
+                }
+                else if (caseId) {
+                    avatarName = caseId + '_' + type + '_' + new Date().getTime() + '.' + extName;
+                }
+                else {
+                    avatarName = type + '_' + new Date().getTime() + '.' + extName;
+                }
+                // var avatarName = pid ? pid : caseId + '_' + type + '_' + new Date().getTime() + '.' + extName;
                 var newPath = form.uploadDir + avatarName;
                 // }
 
@@ -658,7 +668,7 @@ router.post('/createIntegrator', function (req, res, next) {
             }
         }
 
-        
+
         dbHandler.createIntegrator(req, res, integrator);
     });
 })
@@ -679,7 +689,7 @@ router.post('/updateIntegrator', function (req, res, next) {
         }
         // var tempstamp = new Date().getTime();
         // var uid = `uid_${tempstamp}`;
-        let integrator = { };
+        let integrator = {};
         for (var obj in fields) {
             if (obj && obj != 'null') {
                 integrator[obj] = fields[obj]
@@ -729,6 +739,85 @@ router.post('/updateIntegrator', function (req, res, next) {
         // }
     });
 })
+
+router.post('/updateWebsite', function (req, res, next) {
+    // let a = '1';
+    let collections = '';
+    if (req.body.type == 0) {
+        collections = 'support'
+    }
+    else if (req.body.type == 1) {
+        collections = 'about'
+    }
+    else if (req.body.type == 2) {
+        collections = 'contract'
+    }
+    dbHandler.updateWebsite(req, res, collections, { id: 1 });
+    // var form = new formidable.IncomingForm();   //创建上传表单
+    // form.encoding = 'utf-8';        //设置编辑
+    // form.uploadDir = 'public' + INTEGRATOR_UPLOAD_FOLDER;     //设置上传目录
+    // form.keepExtensions = true;     //保留后缀
+    // form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+
+
+    // form.parse(req, function (err, fields, files) {
+    //     if (err) {
+    //         res.send({ status: 'failed' });
+    //         return;
+    //     }
+    //     // var tempstamp = new Date().getTime();
+    //     // var uid = `uid_${tempstamp}`;
+    //     let integrator = {};
+    //     for (var obj in fields) {
+    //         if (obj && obj != 'null') {
+    //             integrator[obj] = fields[obj]
+    //         }
+    //     }
+
+    //     // var needChange = true;
+    //     for (var key in files) {
+    //         var extName = '';  //后缀名
+    //         switch (files[key].type) {
+    //             case 'image/pjpeg':
+    //                 extName = 'jpg';
+    //                 break;
+    //             case 'image/jpeg':
+    //                 extName = 'jpg';
+    //                 break;
+    //             case 'image/png':
+    //                 extName = 'jpg';
+    //                 break;
+    //             case 'image/x-png':
+    //                 extName = 'jpg';
+    //                 break;
+    //         }
+    //         if (files[key].size == 0) {
+    //             fs.unlinkSync(files[key].path);
+    //         }
+    //         else {
+    //             // needChange = true;
+    //             // if (key === 'businessLicense') {
+    //             var avatarName = integrator.iid + '_' + key + '.' + extName;
+    //             var newPath = form.uploadDir + avatarName;
+    //             // }
+
+    //             integrator.imgs = '/integrator/' + avatarName;
+    //             console.log(newPath);
+    //             fs.renameSync(files[key].path, newPath);  //重命名
+
+    //         }
+    //     }
+
+    //     // if (needChange) {
+    //     dbHandler.updateIntegrator(req, res, integrator);
+    //     // dbHandler.createUser(user, req, res);
+    //     // }
+    //     // else {
+    //     //     res.send({ status: 'failed', msg: 'try again later' });
+    //     // }
+    // });
+})
+
 
 router.post('/updateCustomQuestion', function (req, res, next) {
 

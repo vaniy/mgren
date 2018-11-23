@@ -12,14 +12,14 @@
 
 </head>
 <body>
-		<%-include('header') %>
+	<%-include('header') %>
 	<div class="container nav-c clearfix">
 		<div class="pull-left logo"><a href=""><img src="images/logo.png"></a></div>
 		<ul class="pull-right nav-list clearfix">
-			<li><a href="/index">Home</a></li>
-			<li><a href="/productlist">Products</a></li>
+			<li><a href="/">首页</a></li>
+			<li><a href="/productlist">产品</a></li>
 			<li>
-				<a href="/case">Solution</a><span class="phone-i"><i class="glyphicon glyphicon-menu-down"></i></span>
+				<a href="/case">方案</a><span class="phone-i"><i class="glyphicon glyphicon-menu-down"></i></span>
 				<ul class="nav-down">
 					<!-- <li><a href="/integrator">查找集成伙伴</a></li>
 					<li><a href="/integrator">查找集成伙伴</a></li>
@@ -28,10 +28,10 @@
 					<li><a href="/integrator">查找集成伙伴</a></li> -->
 				</ul>
 			</li>
-			<li><a href="/support">Support</a></li>
-			<li><a href="/video">Train</a></li>
+			<li><a href="/support">支持</a></li>
+			<li><a href="/video">培训</a></li>
 			<li class="active"><a href="/contact">联系我们</a></li>
-			<li class="last"><a href="/integrator">Integrated partner</a></li>
+			<li class="last"><a href="/integrator">查找集成伙伴</a></li>
 		</ul>
       <button type="button" class="navbar-toggle collapsed">
         <span class="icon-bar"></span>
@@ -51,54 +51,58 @@
 		</div>
 		<div class="cp-right pull-right">
 			<div class="cp-right-tt">联系我们</div>
-			<div class="contact-tt">浙江德马科技股份有限公司</div>
-			<div class="row contact-row">
-				<div class="col-xs-4">免费热线<span>800 988 1656</span></div>
-				<div class="col-xs-4">电子邮件<span>sales@damon-group.com</span></div>
-				<div class="col-xs-4">官方网址<span>www.damon-group.com</span></div>
-			</div>
-			<div class="contact-tt">湖州基地</div>
-			<div class="row jd-row">
-				<div class="col-xs-4">
-					<div class="jd-tt">产品销售部：</div>
-					<div class="jd-txt">
-						<p>电话：+86 21 6485 1303</p>
-						<p>传真：+86 21 5426 0092</p>
-						<p>地址：上海徐汇区虹漕路461号软件大厦7楼</p>
+			<%if(contact && contact.dom) {%>
+				<%-contact.dom %>
+			<%}else{%>
+				<div class="contact-tt">浙江德马科技股份有限公司</div>
+				<div class="row contact-row">
+					<div class="col-xs-4">免费热线<span>800 988 1656</span></div>
+					<div class="col-xs-4">电子邮件<span>sales@damon-group.com</span></div>
+					<div class="col-xs-4">官方网址<span>www.damon-group.com</span></div>
+				</div>
+				<div class="contact-tt">湖州基地</div>
+				<div class="row jd-row">
+					<div class="col-xs-4">
+						<div class="jd-tt">产品销售部：</div>
+						<div class="jd-txt">
+							<p>电话：+86 21 6485 1303</p>
+							<p>传真：+86 21 5426 0092</p>
+							<p>地址：上海徐汇区虹漕路461号软件大厦7楼</p>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="jd-tt">大客户部：</div>
+						<div class="jd-txt">
+							<p>电话：+86 400 880 5810（免费热线）</p>
+							<p>传真：+86 21 5426 0092</p>
+							<p>地址：上海徐汇区虹漕路461号软件大厦7楼</p>
+						</div>
 					</div>
 				</div>
-				<div class="col-xs-4">
-					<div class="jd-tt">大客户部：</div>
-					<div class="jd-txt">
-						<p>电话：+86 400 880 5810（免费热线）</p>
-						<p>传真：+86 21 5426 0092</p>
-						<p>地址：上海徐汇区虹漕路461号软件大厦7楼</p>
+				<div class="map"><img src="images/map.png"></div>
+				<div class="contact-tt">上海营销中心</div>
+				<div class="row jd-row">
+					<div class="col-xs-4">
+						<div class="jd-tt">产品销售部：</div>
+						<div class="jd-txt">
+							<p>电话：+86 21 6485 1303</p>
+							<p>传真：+86 21 5426 0092</p>
+							<p>地址：上海徐汇区虹漕路461号软件大厦7楼</p>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="jd-tt">大客户部：</div>
+						<div class="jd-txt">
+							<p>电话：+86 400 880 5810（免费热线）</p>
+							<p>传真：+86 21 5426 0092</p>
+							<p>地址：上海徐汇区虹漕路461号软件大厦7楼</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="map"><img src="images/map.png"></div>
-			<div class="contact-tt">上海营销中心</div>
-			<div class="row jd-row">
-				<div class="col-xs-4">
-					<div class="jd-tt">产品销售部：</div>
-					<div class="jd-txt">
-						<p>电话：+86 21 6485 1303</p>
-						<p>传真：+86 21 5426 0092</p>
-						<p>地址：上海徐汇区虹漕路461号软件大厦7楼</p>
-					</div>
-				</div>
-				<div class="col-xs-4">
-					<div class="jd-tt">大客户部：</div>
-					<div class="jd-txt">
-						<p>电话：+86 400 880 5810（免费热线）</p>
-						<p>传真：+86 21 5426 0092</p>
-						<p>地址：上海徐汇区虹漕路461号软件大厦7楼</p>
-					</div>
-				</div>
-			</div>
-			<div class="map"><img src="images/map.png"></div>
-			<div class="contact-tt">全球网点</div>
-			<div class="wd"><img src="images/wd.png"></div>
+				<div class="map"><img src="images/map.png"></div>
+				<div class="contact-tt">全球网点</div>
+				<div class="wd"><img src="images/wd.png"></div>
+			<%}%>
 		</div>
 	</div>
 	<div class="bottom">
@@ -106,22 +110,25 @@
 			<div class="row">
 				<div class="col-xs-3">
 					<div class="dis-table">
-						<div class="bottom-tt">customer service</div>
+						<div class="bottom-tt">客户服务</div>
 						<ul class="bottom-list">
-							<li><a href="/register">Create an Account</a></li>
-							<li><a href="">Join integration partners</a></li>
-							<li><a href="/integrator">Find integration partners</a></li>
-							<li><a href="/productlist">Online order </a></li>
-							<li><a href="/support">Support</a></li>
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/integrator">查找集成伙伴</a></li>
+							<li><a href="/productlist">在线购买输送机</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-xs-3">
 					<div class="dis-table">
-						<div class="bottom-tt">Information Center</div>
+						<div class="bottom-tt">信息中心</div>
 						<ul class="bottom-list">
-							<li><a href="/policy">Privacy policy</a></li>
-							<li><a href="">Terms of Use</a></li>
+							<li><a href="/register">成为会员</a></li>
+							<li><a href="">成为集成伙伴</a></li>
+							<li><a href="/support">系统支持</a></li>
+							<li><a href="/support">维护支持</a></li>
 						</ul>
 					</div>
 				</div>
@@ -133,13 +140,13 @@
 						<a href=""><img src="images/footer05.png"></a>
 					</div>
 					<div class="bottom-phone">400-880-5180</div>
-					<div class="bottom-phone bottom-phone-b">7F, software building 461, Hong Cao Road, Xuhui District, Shanghai</div>
+					<div class="bottom-phone bottom-phone-b">成为集成伙伴成为集成伙伴</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="footer text-center">
-		<div class="container">COPYRIGHT © 2018 conveyormart.net ALL RIGHTS RESERVED 备案号：沪ICP备11037079号  support：henroad</div>
+		<div class="container">成为集成伙伴成为集成伙伴</div>
 	</div>
 	<section class="zi-fdTel">
 		<a href="" target="_onlineqq" class="tel">

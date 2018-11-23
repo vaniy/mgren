@@ -241,6 +241,16 @@ router.get('/homeMgr', function (req, res) {
     })
 })
 
+router.get('/supportMgr', function(req, res){
+    res.render('supportMgr', { title: '支持' })
+})
+router.get('/whoMgr', function(req, res){
+    res.render('whoMgr', { title: '关于我们' })
+})
+router.get('/contractMgr', function(req, res){
+    res.render('contractMgr', { title: '联系我们' })
+})
+
 router.get('/partsMgrM', function (req, res) {
     dbHandler.getAllParts(req, res, (parts) => {
         res.render('partsMgrM', { parts })

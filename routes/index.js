@@ -49,7 +49,9 @@ router.get('/', function (req, res) {
 });
 
 router.get('/download', function (req, res) {
-    res.render('download', { title: '' });
+    dbHandler.getListPage(req, res, (stores) => {
+        res.render('download', { title: '', stores });
+    })
 });
 
 router.get('/downloadDetail', function (req, res) {
@@ -57,15 +59,21 @@ router.get('/downloadDetail', function (req, res) {
 });
 
 router.get('/support', function (req, res) {
-    res.render('support', { title: '' });
+    dbHandler.getWebsite(req, res, (support) => {
+        res.render('support', { title: '', support });
+    }, 'support')
 });
 
 router.get('/about', function (req, res) {
-    res.render('about', { title: '' });
+    dbHandler.getWebsite(req, res, (about) => {
+        res.render('about', { title: '', about });
+    }, 'about')
 });
 
 router.get('/contact', function (req, res) {
-    res.render('contact', { title: '' });
+    dbHandler.getWebsite(req, res, (contact) => {
+        res.render('contact', { title: '', contact });
+    }, 'contract')
 });
 
 router.get('/case', function (req, res) {
