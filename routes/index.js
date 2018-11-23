@@ -55,7 +55,9 @@ router.get('/download', function (req, res) {
 });
 
 router.get('/downloadDetail', function (req, res) {
-    res.render('downloadDetail', { title: '' });
+    dbHandler.getSoftwares(req, res, (software)=>{
+        res.render('downloadDetail', { title: '', softwares: software && software.length > 0 ? software[0].propertys : []});
+    })
 });
 
 router.get('/support', function (req, res) {
@@ -74,6 +76,38 @@ router.get('/contact', function (req, res) {
     dbHandler.getWebsite(req, res, (contact) => {
         res.render('contact', { title: '', contact });
     }, 'contract')
+});
+
+router.get('/guide', function (req, res) {
+    let title = '购物流程';
+    let currentType = 1;
+    if (req.query.type) {
+        switch (req.query.type) {
+            case '1':
+                title = '购物流程';
+                currentType = 1;
+                break;
+            case '2':
+                title = '会员账户';
+                currentType = 2;
+                break;
+            case '3':
+                title = '产品挑选';
+                currentType = 3;
+                break;
+            case '4':
+                title = '下单说明';
+                currentType = 4;
+                break;
+            case '5':
+                title = '订单修改';
+                currentType = 5;
+                break;
+        }
+    }
+    dbHandler.getWebsite(req, res, (guide) => {
+        res.render('guide', { title: title, guide, currentType });
+    }, 'guide', req.query.type ? { id: parseInt(req.query.type) } : {})
 });
 
 router.get('/case', function (req, res) {

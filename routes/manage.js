@@ -241,14 +241,23 @@ router.get('/homeMgr', function (req, res) {
     })
 })
 
-router.get('/supportMgr', function(req, res){
+router.get('/supportMgr', function (req, res) {
     res.render('supportMgr', { title: '支持' })
 })
-router.get('/whoMgr', function(req, res){
+router.get('/whoMgr', function (req, res) {
     res.render('whoMgr', { title: '关于我们' })
 })
-router.get('/contractMgr', function(req, res){
+router.get('/contractMgr', function (req, res) {
     res.render('contractMgr', { title: '联系我们' })
+})
+router.get('/guideMgr', function (req, res) {
+    res.render('guideMgr', { title: '购物指南' })
+})
+
+router.get('/softwareMgr', function (req, res) {
+    dbHandler.getSoftwares(req, res, (softwares) => {
+        res.render('softwareMgr', { title: '销售工具', software: softwares[0] })
+    })
 })
 
 router.get('/partsMgrM', function (req, res) {
@@ -260,7 +269,7 @@ router.get('/partsMgrM', function (req, res) {
 router.get('/integratorMgr', function (req, res) {
     if (req.query.iid && req.query.iid.trim() != '') {
         dbHandler.getIntegrator(req, res, (integrators) => {
-            res.render('integratorMgr', { title: '管理集成商', integrator:integrators[0] })
+            res.render('integratorMgr', { title: '管理集成商', integrator: integrators[0] })
         }, { iid: req.query.iid.trim() })
     }
     else {
@@ -382,7 +391,7 @@ router.get('/deleteManage', function (req, res) {
             res.redirect('/management/partsMgrM')
         }, 'parts', { partsId: req.query.partsId.trim() })
     }
-    else if(req.query.isCase && req.query.isCase == 1){
+    else if (req.query.isCase && req.query.isCase == 1) {
         dbHandler.deleteManage(req, res, (order) => {
             // if (orders && orders.length > 0) {
             res.redirect('/management/casePartsMgrM')

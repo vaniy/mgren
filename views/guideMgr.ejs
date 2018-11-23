@@ -323,16 +323,16 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/guideMgr" class="nav-link active">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>购物指南</p>
-                                  </a>
+                                    <a href="/management/guideMgr" class="nav-link active">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>购物指南</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/softwareMgr" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>销售工具</p>
-                                  </a>
+                                    <a href="/management/softwareMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>销售工具</p>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -399,16 +399,73 @@
                                 <div class="card-body">
 
                                     <div class="mb-3">
-                                        <label for="description">关于我们</label>
+                                        <label for="description">购物流程</label>
 
-                                        <textarea id="description" name="description" style="width: 100%; display: none;"></textarea>
+                                        <textarea id="description1" name="description" style="width: 100%; display: none;"></textarea>
                                     </div>
 
                                     <!-- /.card-body -->
 
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary description1">Submit</button>
                                     </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="mb-3">
+                                        <label for="description">会员帐户</label>
+
+                                        <textarea id="description2" name="description" style="width: 100%; display: none;"></textarea>
+                                    </div>
+
+                                    <!-- /.card-body -->
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary description2">Submit</button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="mb-3">
+                                        <label for="description">产品挑选</label>
+
+                                        <textarea id="description3" name="description" style="width: 100%; display: none;"></textarea>
+                                    </div>
+
+                                    <!-- /.card-body -->
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary description3">Submit</button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="mb-3">
+                                        <label for="description">下载说明</label>
+
+                                        <textarea id="description4" name="description" style="width: 100%; display: none;"></textarea>
+                                    </div>
+
+                                    <!-- /.card-body -->
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary description4">Submit</button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="mb-3">
+                                        <label for="description">订单修改</label>
+
+                                        <textarea id="description5" name="description" style="width: 100%; display: none;"></textarea>
+                                    </div>
+
+                                    <!-- /.card-body -->
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary description5">Submit</button>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                         <!-- /.card -->
@@ -477,15 +534,71 @@
     <script>
         $(function () {
 
-            var descriptionEditor = null;
+            var descriptionEditor1 = null;
+            var descriptionEditor2 = null;
+            var descriptionEditor3 = null;
+            var descriptionEditor4 = null;
+            var descriptionEditor5 = null;
             ClassicEditor
-                .create(document.querySelector('#description'), {
+                .create(document.querySelector('#description1'), {
                     ckfinder: {
-                        uploadUrl: '/api/uploadImages?command=about&type=Files&responseType=json'
+                        uploadUrl: '/api/uploadImages?command=guide1&type=Files&responseType=json'
                     }
                 })
                 .then(function (editor) {
-                    descriptionEditor = editor;
+                    descriptionEditor1 = editor;
+                    // The editor instance
+                })
+                .catch(function (error) {
+                    console.error(error)
+                });
+            ClassicEditor
+                .create(document.querySelector('#description2'), {
+                    ckfinder: {
+                        uploadUrl: '/api/uploadImages?command=guide2&type=Files&responseType=json'
+                    }
+                })
+                .then(function (editor) {
+                    descriptionEditor2 = editor;
+                    // The editor instance
+                })
+                .catch(function (error) {
+                    console.error(error)
+                });
+            ClassicEditor
+                .create(document.querySelector('#description3'), {
+                    ckfinder: {
+                        uploadUrl: '/api/uploadImages?command=guide3&type=Files&responseType=json'
+                    }
+                })
+                .then(function (editor) {
+                    descriptionEditor3 = editor;
+                    // The editor instance
+                })
+                .catch(function (error) {
+                    console.error(error)
+                });
+            ClassicEditor
+                .create(document.querySelector('#description4'), {
+                    ckfinder: {
+                        uploadUrl: '/api/uploadImages?command=guide4&type=Files&responseType=json'
+                    }
+                })
+                .then(function (editor) {
+                    descriptionEditor4 = editor;
+                    // The editor instance
+                })
+                .catch(function (error) {
+                    console.error(error)
+                });
+            ClassicEditor
+                .create(document.querySelector('#description5'), {
+                    ckfinder: {
+                        uploadUrl: '/api/uploadImages?command=guide5&type=Files&responseType=json'
+                    }
+                })
+                .then(function (editor) {
+                    descriptionEditor5 = editor;
                     // The editor instance
                 })
                 .catch(function (error) {
@@ -493,10 +606,33 @@
                 });
             $('.btn.btn-primary').click(function (e) {
                 e.preventDefault();
+                // debugger;
+                let type = -1;
+                var description = '';
+                if(this.className.indexOf('description1')){
+                    type = 3;
+                    description = descriptionEditor1.getData();
+                }
+                else if(this.className.indexOf('description2')){
+                    type = 4;
+                    description = descriptionEditor2.getData();
+                }
+                else if(this.className.indexOf('description3')){
+                    type = 5;
+                    description = descriptionEditor3.getData();
+                }
+                else if(this.className.indexOf('description4')){
+                    type = 6;
+                    description = descriptionEditor4.getData();
+                }
+                else if(this.className.indexOf('description5')){
+                    type = 7;
+                    description = descriptionEditor5.getData();
+                }
 
                 // var data = new FormData();
 
-                var description = descriptionEditor.getData();
+                // var description = descriptionEditor.getData();
                 // data.append("support", description);
                 // data.append("type", 0);
 
@@ -505,7 +641,7 @@
                     type: 'POST',
                     data: {
                         dom: description,
-                        type: 1
+                        type: type
                     },
                     async: false,
                     cache: false,
@@ -514,7 +650,7 @@
                         console.log(data);
                         if (data.status && data.status === 'success') {
                             alert(data.msg)
-                            location.href = '/management/whoMgr'
+                            location.href = '/management/guideMgr'
                         } else if (data.msg) {
                             alert(data.msg)
                             // console.log(data.message);

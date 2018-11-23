@@ -369,7 +369,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">商品管理</h1>
+                            <h1 class="m-0 text-dark">销售工具管理</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -397,53 +397,30 @@
                             <!-- form start -->
                             <form role="form">
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="exampleInputFile">首页图片</label>
-                                        <%for(var j = 0; j < 6; j++){%>
-                                        <div class="input-group" data-provides="fileinput">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input home<%=j+1 %>" id="exampleInputFile"
-                                                    accept="image/gif,image/jpeg,image/x-png">
-                                                <label class="custom-file-label" for="exampleInputFile">选择图片</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <!-- <span class="input-group-text" id="">Upload</span> -->
-                                            </div>
-                                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
-
-                                                <img style="width: 200px;height:150px" src="/home/home<%=j+1 %>.jpg"
-                                                    alt="">
-                                            </div>
-                                        </div>
-                                        <%}%>
-                                    </div>
 
                                     <div class="form-group ">
-                                        <label for="onSale">用户代表 </label>
-                                        <%if(home.propertys && home.propertys.length > 0){ home.propertys.forEach(function(child, index){ %>
+                                        <label for="onSale">销售工具 </label>
+                                        <%if(software && software.propertys &&  software.propertys.length > 0){ software.propertys.forEach(function(child, index){ %>
                                         <%if(index === 0){ %>
                                         <label class="addPropertyDom addBlue " for="onSale"> +</label>
                                         <%} %>
                                         <div class="row propertyDom">
                                             <div class="col-2">
                                                 <input type="text" value="<%=child.name %>" class="form-control"
-                                                    placeholder="名称">
+                                                    placeholder="文件名">
                                             </div>
                                             <div class="col-6">
-                                                <input type="text" value="<%=child.link %>" class="form-control"
-                                                    placeholder="链接">
+                                                <input type="text" value="<%=child.content %>" class="form-control"
+                                                    placeholder="内容">
                                             </div>
                                             <div class="col-3" data-provides="fileinput">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input representative" id="exampleInputFile"
-                                                        accept="image/gif,image/jpeg,image/x-png">
-                                                    <label class="custom-file-label" for="exampleInputFile">选择图片</label>
+                                                    <input type="file" class="custom-file-input rar" id="exampleInputFile"
+                                                        accept="application/rar">
+                                                    <label class="custom-file-label" for="exampleInputFile">选择rar文件</label>
                                                 </div>
                                                 <div class="input-group-append">
                                                     <!-- <span class="input-group-text" id="">Upload</span> -->
-                                                </div>
-                                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
-                                                    <img style="width: 200px;height:150px" src="/home/<%=child.name %>.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-1">
@@ -454,16 +431,16 @@
                                         <label class="addPropertyDom addBlue " for="onSale"> +</label>
                                         <div class="row propertyDom">
                                             <div class="col-2">
-                                                <input type="text" class="form-control" placeholder="名称">
+                                                <input type="text" class="form-control" placeholder="文件名">
                                             </div>
                                             <div class="col-6">
-                                                <input type="text" class="form-control" placeholder="链接">
+                                                <input type="text" class="form-control" placeholder="内容">
                                             </div>
                                             <div class="col-3" data-provides="fileinput">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input representative" id="exampleInputFile"
-                                                        accept="image/gif,image/jpeg,image/x-png">
-                                                    <label class="custom-file-label" for="exampleInputFile">选择图片</label>
+                                                    <input type="file" class="custom-file-input rar" id="exampleInputFile"
+                                                        accept="application/rar">
+                                                    <label class="custom-file-label" for="exampleInputFile">选择rar文件</label>
                                                 </div>
                                                 <div class="input-group-append">
                                                     <!-- <span class="input-group-text" id="">Upload</span> -->
@@ -592,7 +569,7 @@
                 let propertys = [];
                 for (let k = 0; k < propertyDom.length; k++) {
                     let property = $(propertyDom[k]).find('input');
-                    let img = $(propertyDom[k]).find('.representative');
+                    let img = $(propertyDom[k]).find('.rar');
                     if (property && property.length >= 3) {
                         // propertys.push({
                         //     "name": property[0].value,
@@ -605,20 +582,12 @@
                         }
                     }
                 }
-                var homeImgCount = 0;
-                let imgs = [];
-                for (let h = 0; h < 6; h++) {
-                    if (document.getElementsByClassName('home' + (h + 1))[0].files[0]) {
-                        data.append("home" + (h + 1), document.getElementsByClassName('home' + (h + 1))[0].files[0]);
-                        homeImgCount++;
-                        imgs.push(h + 1);
-                    }
-                }
-                data.append("homeImgCount", homeImgCount);
-                data.append("imgs", imgs.join(','));
+                
+                // data.append("homeImgCount", homeImgCount);
+                // data.append("imgs", imgs.join(','));
                 data.append("propertys", propertys.join(','));
                 $.ajax({
-                    url: '/api/updateHomePage',
+                    url: '/api/updateSoftwares',
                     type: 'POST',
                     data: data,
                     async: false,
@@ -629,7 +598,7 @@
                         console.log(data);
                         if (data.status && data.status === 'success') {
                             alert(data.msg)
-                            location.href = '/management/homeMgr'
+                            location.href = '/management/softwareMgr'
                         } else if (data.msg) {
                             alert(data.msg)
                             // console.log(data.message);

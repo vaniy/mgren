@@ -11,6 +11,7 @@ TITLE = 'formidable',
     VIDEO_UPLOAD_FOLDER = '/video/',
     COMPANY_UPLOAD_FOLDER = '/company/',
     HOMEPAGE_UPLOAD_FOLDER = '/home/',
+    SOFTWARE_UPLOAD_FOLDER = '/softwares/',
     INTEGRATOR_UPLOAD_FOLDER = '/integrator/',
     USER_UPLOAD_FOLDER = '/user/';
 
@@ -324,7 +325,7 @@ router.post('/createProduct', function (req, res, next) {
     form.encoding = 'utf-8';        //设置编辑
     form.uploadDir = 'public' + COMPANY_UPLOAD_FOLDER;     //设置上传目录
     form.keepExtensions = true;     //保留后缀
-    form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+    form.maxFieldsSize = 2 * 1024 * 1024 * 1024;   //文件大小
 
 
     form.parse(req, function (err, fields, files) {
@@ -743,6 +744,7 @@ router.post('/updateIntegrator', function (req, res, next) {
 router.post('/updateWebsite', function (req, res, next) {
     // let a = '1';
     let collections = '';
+    let query = {id: 1}
     if (req.body.type == 0) {
         collections = 'support'
     }
@@ -752,7 +754,27 @@ router.post('/updateWebsite', function (req, res, next) {
     else if (req.body.type == 2) {
         collections = 'contract'
     }
-    dbHandler.updateWebsite(req, res, collections, { id: 1 });
+    else if (req.body.type == 3) {
+        collections = 'guide'
+        query = {id: 1}
+    }
+    else if (req.body.type == 4) {
+        collections = 'guide'
+        query = {id: 2}
+    }
+    else if (req.body.type == 5) {
+        collections = 'guide'
+        query = {id: 3}
+    }
+    else if (req.body.type == 6) {
+        collections = 'guide'
+        query = {id: 4}
+    }
+    else if (req.body.type == 7) {
+        collections = 'guide'
+        query = {id: 5}
+    }
+    dbHandler.updateWebsite(req, res, collections, query);
     // var form = new formidable.IncomingForm();   //创建上传表单
     // form.encoding = 'utf-8';        //设置编辑
     // form.uploadDir = 'public' + INTEGRATOR_UPLOAD_FOLDER;     //设置上传目录
@@ -893,7 +915,7 @@ router.post('/updateProduct', function (req, res, next) {
         form.encoding = 'utf-8';        //设置编辑
         form.uploadDir = 'public' + COMPANY_UPLOAD_FOLDER;     //设置上传目录
         form.keepExtensions = true;     //保留后缀
-        form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+        form.maxFieldsSize = 2 * 1024 * 1024 * 1024;   //文件大小
 
 
         form.parse(req, function (err, fields, files) {
@@ -1204,6 +1226,67 @@ router.post('/updateHomePage', function (req, res, next) {
     });
 })
 
+router.post('/updateSoftwares', function (req, res, next) {
+    var form = new formidable.IncomingForm();   //创建上传表单
+    form.encoding = 'utf-8';        //设置编辑
+    form.uploadDir = 'public' + SOFTWARE_UPLOAD_FOLDER;     //设置上传目录
+    form.keepExtensions = true;     //保留后缀
+    form.maxFieldsSize = 2 * 1024 * 1024 * 1024;   //文件大小
+
+
+    form.parse(req, function (err, fields, files) {
+        if (err) {
+            res.send({ status: 'failed' });
+            return;
+        }
+        // var tempstamp = new Date().getTime();
+        // var uid = `uid_${tempstamp}`;
+        let software = {};
+        // product.video = '';
+        for (var obj in fields) {
+            if (obj && obj != 'null') {
+                software[obj] = fields[obj]
+            }
+        }
+
+        var needChange = true;
+        for (var key in files) {
+            var extName = '';  //后缀名
+            switch (files[key].type) {
+                case 'application/octet-stream':
+                    extName = 'rar';
+            }
+            if (files[key].size == 0) {
+                fs.unlinkSync(files[key].path);
+            }
+            else {
+                needChange = true;
+                // if (key === 'businessLicense') {
+                var avatarName = key + '.' + extName;
+                var newPath = form.uploadDir + avatarName;
+                // }
+
+                // if (key == 'img') {
+                //     product.img = '/video/' + avatarName;
+                // }
+                // else {
+                //     product.video = '/video/' + avatarName;
+                // }
+                console.log(newPath);
+                fs.renameSync(files[key].path, newPath);  //重命名
+
+            }
+        }
+
+        // if (needChange) {
+        dbHandler.updateSoftwares(req, res, software);
+        // dbHandler.createUser(user, req, res);
+        // }
+        // else {
+        //     res.send({ status: 'failed', msg: '请上传视频' });
+        // }
+    });
+})
 
 router.post('/createCategory', function (req, res, next) {
     if (req.body.storeId && req.body.storeName) {
