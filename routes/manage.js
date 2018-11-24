@@ -359,6 +359,23 @@ router.get('/customServiceMgrM', function (req, res) {
     // })
 })
 
+router.get('/priceServiceMgrM', function (req, res) {
+    // dbHandler.getAllOrders(req, res, (orders) => {
+    dbHandler.getUserServiceQuestion(req, res, (questions) => {
+        res.render('priceServiceMgrM', { title: '', questions });
+    }, 'priceService', {})
+    // })
+})
+
+router.get('/suggestServiceMgrM', function (req, res) {
+    // dbHandler.getAllOrders(req, res, (orders) => {
+    dbHandler.getUserServiceQuestion(req, res, (questions) => {
+        res.render('suggestServiceMgrM', { title: '', questions });
+    }, 'suggestService', {})
+    // })
+})
+
+
 router.get('/customServiceMgr', function (req, res) {
     if (req.query.qid && req.query.qid.trim() != '') {
         dbHandler.getUserCustomQuestions(req, res, true, (questions) => {
@@ -369,6 +386,32 @@ router.get('/customServiceMgr', function (req, res) {
     }
     else {
         res.redirect('/management/customServiceMgrM')
+    }
+})
+
+router.get('/priceServiceMgr', function (req, res) {
+    if (req.query.qid && req.query.qid.trim() != '') {
+        dbHandler.getUserServiceQuestion(req, res, (questions) => {
+            dbHandler.getUserInfo(req, res, (user) => {
+                res.render('priceServiceMgr', { title: '', question: questions[0], name: user.name });
+            }, { uid: questions[0].uid });
+        }, 'priceService', { qid: req.query.qid })
+    }
+    else {
+        res.redirect('/management/priceServiceMgrM')
+    }
+})
+
+router.get('/suggestServiceMgr', function (req, res) {
+    if (req.query.qid && req.query.qid.trim() != '') {
+        dbHandler.getUserServiceQuestion(req, res, (questions) => {
+            dbHandler.getUserInfo(req, res, (user) => {
+                res.render('suggestServiceMgr', { title: '', question: questions[0], name: user.name });
+            }, { uid: questions[0].uid });
+        }, 'suggestService', { qid: req.query.qid })
+    }
+    else {
+        res.redirect('/management/suggestServiceMgrM')
     }
 })
 

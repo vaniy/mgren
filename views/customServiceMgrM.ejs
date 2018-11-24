@@ -134,13 +134,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/management/priceServiceMgrM" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>用户询价</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/management/suggestServiceMgrM" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>用户建议</p>
                                     </a>
@@ -389,6 +389,7 @@
                         <tbody>
                             <tr>
                                 <th style="width: 10px">#</th>
+								<th>用户邮箱</th>
 								<th>订单编号</th>
 								<th>分类</th>
 								<th>问题描述</th>
@@ -402,6 +403,9 @@
 							<tr>
 								<td>
 									<%=index+1 %>
+								</td>
+								<td>
+									<%= child.email || '' %>
 								</td>
 								<td>
 									<%= child.oid %>

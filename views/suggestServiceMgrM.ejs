@@ -71,7 +71,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-tree"></i>
                                 <p>
@@ -105,7 +105,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/management/productMgrM" class="nav-link active">
+                                    <a href="/management/productMgrM" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>商品管理</p>
                                     </a>
@@ -118,7 +118,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-edit"></i>
                                 <p>
@@ -140,7 +140,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/management/suggestServiceMgrM" class="nav-link">
+                                    <a href="/management/suggestServiceMgrM" class="nav-link active">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>用户建议</p>
                                     </a>
@@ -369,7 +369,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">商品列表</h1>
+                            <h1 class="m-0 text-dark">建议管理</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -389,25 +389,43 @@
                         <tbody>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>商品标题</th>
-                                <th>商品编号</th>
-                                <th>商品描述</th>
+								<!-- <th>订单编号</th>
+								<th>分类</th> -->
+								<th>用户邮箱</th>
+								<th>建议标题</th>
+								<th>提交时间</th>
+								<th>回复时间</th>
+								<th>状态</th>
+								<th>答复</th>
                                 <!-- <th>商品重量</th> -->
-                                <th>商品修改</th>
-                                <!-- <th>商品重量</th> -->
-                                <th>删除商品</th>
                             </tr>
-                            <%if(products && products.length > 0){ products.forEach(function(child ,index){ %>
-                            <tr>
-                                <td><%=index %>.</td>
-                                <td><%=child.title %></td>
-                                <td><%=child.identifier %></td>
-                                <td><%=child.productSEO %></td>
-                                <!-- <td><%=child.weight %></td> -->
-                                <td><a href="/management/productMgr?pid=<%=child.pid %>">修改详情</a></td>
-                                <td><a href="/management/deleteManage?pid=<%=child.pid %>">删除商品</a></td>
-                            </tr>
-                            <%})} %>
+							<%if(questions && questions.length > 0){ questions.forEach(function(child, index){%>
+							<tr>
+								<td>
+									<%=index+1 %>
+								</td>
+								<td>
+									<%= child.email || '' %>
+								</td>
+								<td>
+									<%= child.title %>
+								</td>
+								<td>
+									<%= child.inDate ? child.inDate.toISOString() : '' %>
+								</td>
+								<td>
+									<%= child.outDate ? child.outDate.toISOString() : '' %>
+								</td>
+								<%if(child.status == 0){%>
+								<td>待回复</td>
+								<%}else if(child.status == 1){%>
+								<td>新回复</td>
+								<%}else if(child.status == 2){%>
+								<td>已完成</td>
+                                <%} %>
+                                <td><a href="/management/suggestServiceMgr?qid=<%=child.qid %>">答复</a></td>
+							</tr>
+							<%})} %>
                         </tbody>
                     </table>
                     <!-- /.card -->

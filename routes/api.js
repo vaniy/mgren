@@ -610,6 +610,79 @@ router.post('/createCustomQuestion', function (req, res, next) {
         // }
     });
 })
+router.post('/createService', function (req, res, next) {
+
+    var form = new formidable.IncomingForm();   //创建上传表单
+    form.encoding = 'utf-8';        //设置编辑
+    form.uploadDir = 'public' + QUESTION_UPLOAD_FOLDER;     //设置上传目录
+    form.keepExtensions = true;     //保留后缀
+    form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+
+
+    form.parse(req, function (err, fields, files) {
+        if (err) {
+            res.send({ status: 'failed' });
+            return;
+        }
+        var tempstamp = new Date().getTime();
+        var qid = `qid_${tempstamp}`;
+        let common = { inDate: new Date(), qid };
+        common.img = '';
+        for (var obj in fields) {
+            if (obj && obj != 'null') {
+                common[obj] = fields[obj]
+            }
+        }
+
+        // var needChange = true;
+        for (var key in files) {
+            var extName = '';  //后缀名
+            switch (files[key].type) {
+                case 'image/pjpeg':
+                    extName = 'jpg';
+                    break;
+                case 'image/jpeg':
+                    extName = 'jpg';
+                    break;
+                case 'image/png':
+                    extName = 'jpg';
+                    break;
+                case 'image/x-png':
+                    extName = 'jpg';
+                    break;
+            }
+            if (files[key].size == 0) {
+                fs.unlinkSync(files[key].path);
+            }
+            else {
+                // needChange = true;
+                // if (key === 'businessLicense') {
+                var avatarName = '';
+                if (req.query.type == 0) {
+                    avatarName = 'priceService' + '_' + qid + '_' + key + '_' + '.' + extName;
+                }
+                else if (req.query.type == 1) {
+                    avatarName = 'suggestService' + '_' + qid + '_' + key + '_' + '.' + extName;
+                }
+                var newPath = form.uploadDir + avatarName;
+                // }
+
+                common.img = '/questions/' + avatarName;
+                console.log(newPath);
+                fs.renameSync(files[key].path, newPath);  //重命名
+
+            }
+        }
+
+        // if (needChange) {
+        dbHandler.createService(req, res, common, req.query.type == 0 ? 'priceService' : 'suggestService');
+        // dbHandler.createUser(user, req, res);
+        // }
+        // else {
+        //     res.send({ status: 'failed', msg: 'try again later' });
+        // }
+    });
+})
 
 router.post('/createIntegrator', function (req, res, next) {
 
@@ -744,7 +817,7 @@ router.post('/updateIntegrator', function (req, res, next) {
 router.post('/updateWebsite', function (req, res, next) {
     // let a = '1';
     let collections = '';
-    let query = {id: 1}
+    let query = { id: 1 }
     if (req.body.type == 0) {
         collections = 'support'
     }
@@ -756,23 +829,23 @@ router.post('/updateWebsite', function (req, res, next) {
     }
     else if (req.body.type == 3) {
         collections = 'guide'
-        query = {id: 1}
+        query = { id: 1 }
     }
     else if (req.body.type == 4) {
         collections = 'guide'
-        query = {id: 2}
+        query = { id: 2 }
     }
     else if (req.body.type == 5) {
         collections = 'guide'
-        query = {id: 3}
+        query = { id: 3 }
     }
     else if (req.body.type == 6) {
         collections = 'guide'
-        query = {id: 4}
+        query = { id: 4 }
     }
     else if (req.body.type == 7) {
         collections = 'guide'
-        query = {id: 5}
+        query = { id: 5 }
     }
     dbHandler.updateWebsite(req, res, collections, query);
     // var form = new formidable.IncomingForm();   //创建上传表单
@@ -908,6 +981,81 @@ router.post('/updateCustomQuestion', function (req, res, next) {
         // }
     });
 })
+
+router.post('/updateService', function (req, res, next) {
+
+    var form = new formidable.IncomingForm();   //创建上传表单
+    form.encoding = 'utf-8';        //设置编辑
+    form.uploadDir = 'public' + QUESTION_UPLOAD_FOLDER;     //设置上传目录
+    form.keepExtensions = true;     //保留后缀
+    form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+
+
+    form.parse(req, function (err, fields, files) {
+        if (err) {
+            res.send({ status: 'failed' });
+            return;
+        }
+        // var tempstamp = new Date().getTime();
+        // var qid = `qid_${tempstamp}`;
+        let common = { inDate: new Date() };
+        common.img = '';
+        for (var obj in fields) {
+            if (obj && obj != 'null') {
+                common[obj] = fields[obj]
+            }
+        }
+
+        // var needChange = true;
+        for (var key in files) {
+            var extName = '';  //后缀名
+            switch (files[key].type) {
+                case 'image/pjpeg':
+                    extName = 'jpg';
+                    break;
+                case 'image/jpeg':
+                    extName = 'jpg';
+                    break;
+                case 'image/png':
+                    extName = 'jpg';
+                    break;
+                case 'image/x-png':
+                    extName = 'jpg';
+                    break;
+            }
+            if (files[key].size == 0) {
+                fs.unlinkSync(files[key].path);
+            }
+            else {
+                // needChange = true;
+                // if (key === 'businessLicense') {
+                var avatarName = '';
+                if (req.query.type == 0) {
+                    avatarName = 'priceService' + '_' + new Date().getTime() + '_' + key + '_' + '.' + extName;
+                }
+                else if (req.query.type == 1) {
+                    avatarName = 'suggestService' + '_' +  new Date().getTime() + '_' + key + '_' + '.' + extName;
+                }
+                var newPath = form.uploadDir + avatarName;
+                // }
+
+                common.img = '/questions/' + avatarName;
+                console.log(newPath);
+                fs.renameSync(files[key].path, newPath);  //重命名
+
+            }
+        }
+
+        // if (needChange) {
+        dbHandler.updateService(req, res, common, req.query.type == 0 ? 'priceService' : 'suggestService');
+        // dbHandler.createUser(user, req, res);
+        // }
+        // else {
+        //     res.send({ status: 'failed', msg: 'try again later' });
+        // }
+    });
+})
+
 
 router.post('/updateProduct', function (req, res, next) {
     if (req.query.pid && req.query.pid.trim() != '') {
@@ -1385,7 +1533,16 @@ router.post('/updateOrder', function (req, res, next) {
 
 router.post('/updateQuestion', function (req, res, next) {
     if (req.query.qid && req.query.qid.trim() != '') {
-        dbHandler.updateQuestion(req, res);
+        let collection = 'question';
+        if(req.query.type != undefined){
+            if(req.query.type == 0){
+                collection = 'priceService';
+            }
+            else if(req.query.type == 1){
+                collection = 'suggestService';
+            }
+        }
+        dbHandler.updateQuestion(req, res, collection);
     }
     else {
         res.send({ status: 'falied', mgs: '请正确填写' })
@@ -1425,11 +1582,11 @@ router.get('/updateQty', function (req, res) {
     }
 })
 
-router.get('/search', function(req, res){
-    if(req.query.keywords && req.query.keywords.trim() != ''){
+router.get('/search', function (req, res) {
+    if (req.query.keywords && req.query.keywords.trim() != '') {
         dbHandler.search(req, res);
     }
-    else{
+    else {
         res.send({ status: 'failed', msg: '' })
     }
 })

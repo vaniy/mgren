@@ -55,8 +55,8 @@ router.get('/download', function (req, res) {
 });
 
 router.get('/downloadDetail', function (req, res) {
-    dbHandler.getSoftwares(req, res, (software)=>{
-        res.render('downloadDetail', { title: '', softwares: software && software.length > 0 ? software[0].propertys : []});
+    dbHandler.getSoftwares(req, res, (software) => {
+        res.render('downloadDetail', { title: '', softwares: software && software.length > 0 ? software[0].propertys : [] });
     })
 });
 
@@ -465,6 +465,25 @@ router.get('/customService', function (req, res) {
     }
 });
 
+router.get('/priceService', function (req, res) {
+    if (req.cookies && req.cookies.user) {
+        res.render('priceService', { title: '' });
+    }
+    else {
+        res.redirect('/login')
+    }
+});
+
+
+router.get('/suggestService', function (req, res) {
+    if (req.cookies && req.cookies.user) {
+        res.render('suggestService', { title: '' });
+    }
+    else {
+        res.redirect('/login')
+    }
+});
+
 router.get('/customServiceList', function (req, res) {
     if (req.cookies && req.cookies.user) {
         dbHandler.getUserCustomQuestions(req, res, false, (questions) => {
@@ -472,6 +491,28 @@ router.get('/customServiceList', function (req, res) {
         })
         // dbHandler.getUserInfo(req, res, (user) => {
         // })
+    }
+    else {
+        res.redirect('/login')
+    }
+});
+
+router.get('/priceServiceList', function (req, res) {
+    if (req.cookies && req.cookies.user) {
+        dbHandler.getUserServiceQuestion(req, res, (questions) => {
+            res.render('priceServiceList', { title: '', questions });
+        }, 'priceService')
+    }
+    else {
+        res.redirect('/login')
+    }
+});
+
+router.get('/suggestServiceList', function (req, res) {
+    if (req.cookies && req.cookies.user) {
+        dbHandler.getUserServiceQuestion(req, res, (questions) => {
+            res.render('suggestServiceList', { title: '', questions });
+        }, 'suggestService')
     }
     else {
         res.redirect('/login')
@@ -487,6 +528,32 @@ router.get('/customServiceContact', function (req, res) {
         }, { qid: req.query.qid })
         // dbHandler.getUserInfo(req, res, (user) => {
         // })
+    }
+    else {
+        res.redirect('/login')
+    }
+});
+
+router.get('/priceServiceContact', function (req, res) {
+    if (req.cookies && req.cookies.user) {
+        dbHandler.getUserServiceQuestion(req, res, (questions) => {
+            dbHandler.getUserInfo(req, res, (user) => {
+                res.render('priceServiceContact', { title: '', question: questions[0], user });
+            }, { uid: questions[0].uid })
+        }, 'priceService', { qid: req.query.qid })
+    }
+    else {
+        res.redirect('/login')
+    }
+});
+
+router.get('/suggestServiceContact', function (req, res) {
+    if (req.cookies && req.cookies.user) {
+        dbHandler.getUserServiceQuestion(req, res, (questions) => {
+            dbHandler.getUserInfo(req, res, (user) => {
+                res.render('suggestServiceContact', { title: '', question: questions[0], user });
+            }, { uid: questions[0].uid })
+        }, 'suggestService', { qid: req.query.qid })
     }
     else {
         res.redirect('/login')

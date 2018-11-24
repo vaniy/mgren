@@ -71,7 +71,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-tree"></i>
                                 <p>
@@ -105,7 +105,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/management/productMgrM" class="nav-link active">
+                                    <a href="/management/productMgrM" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>商品管理</p>
                                     </a>
@@ -118,7 +118,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-edit"></i>
                                 <p>
@@ -134,7 +134,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/management/priceServiceMgrM" class="nav-link">
+                                    <a href="/management/priceServiceMgrM" class="nav-link active">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>用户询价</p>
                                     </a>
@@ -175,7 +175,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="#" class="nav-link ">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>修改订单</p>
                                     </a>
@@ -369,7 +369,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">商品列表</h1>
+                            <h1 class="m-0 text-dark">询价管理</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -385,52 +385,116 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th style="width: 10px">#</th>
-                                <th>商品标题</th>
-                                <th>商品编号</th>
-                                <th>商品描述</th>
-                                <!-- <th>商品重量</th> -->
-                                <th>商品修改</th>
-                                <!-- <th>商品重量</th> -->
-                                <th>删除商品</th>
-                            </tr>
-                            <%if(products && products.length > 0){ products.forEach(function(child ,index){ %>
-                            <tr>
-                                <td><%=index %>.</td>
-                                <td><%=child.title %></td>
-                                <td><%=child.identifier %></td>
-                                <td><%=child.productSEO %></td>
-                                <!-- <td><%=child.weight %></td> -->
-                                <td><a href="/management/productMgr?pid=<%=child.pid %>">修改详情</a></td>
-                                <td><a href="/management/deleteManage?pid=<%=child.pid %>">删除商品</a></td>
-                            </tr>
-                            <%})} %>
-                        </tbody>
-                    </table>
-                    <!-- /.card -->
+                    <div class="col-md-12">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    答复
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form role="form">
+                                <div class="card-body">
+                                    <input class="question" type="text" hidden value="<%=question.qid || '' %>">
+                                    <div class="form-group">
+                                        <label for="name">售后编号</label>
+                                        <input value="<%=question.qid ? question.qid : '' %>" class="form-control qid"
+                                            type="text" disabled>
+                                    </div>
 
-                </div>
-        </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <!-- <strong>Copyright &copy; 2014-2018 <a href="#">AdminLTE.io</a>.</strong>
+                                    <div class="form-group">
+                                        <label for="name">询问时间</label>
+                                        <input value="<%=question.inDate ? question.inDate.toISOString() : '' %>" class="form-control inDate"
+                                            type="text" disabled>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="name">提问人</label>
+                                        <input value='<%=name %>' class="form-control" type="text" disabled>
+                                    </div>
+
+                                    <!-- <div class="form-group">
+                                        <label for="name">质保情况</label>
+                                        <input value='<%=question.qualityAssurance ? "质保期内":"过质保期" %>' class="form-control"
+                                            type="text" disabled>
+                                    </div> -->
+
+                                    <div class="form-group">
+                                        <label for="name">问题标题</label>
+                                        <input value='<%=question.title %>' class="form-control" type="text"
+                                            disabled>
+                                    </div>
+
+                                    <%if(question.questions && question.questions.length > 0){ question.questions.forEach(function(child, index){ %>
+                                    <%if(child.isUser){%>
+                                    <div class="form-group">
+                                        <label for="name">问题描述</label>
+                                        <input value='<%=child.description %>' class="form-control" type="text"
+                                            disabled>
+                                        <img src="<%=child.img %>" alt="">
+                                    </div>
+                                    <%}else{ %>
+                                    <div class="form-group">
+                                        <label style="color:red" for="name">答复</label>
+                                        <input value='<%=child.response %>' class="form-control" type="text" disabled>
+                                    </div>
+                                    <%}%>
+                                    <%})} %>
+
+                                    <div class="form-group">
+                                        <label for="status">状态</label>
+                                        <select class="form-control status">
+                                            <%if(question.status == 0){ %>
+                                            <option data-target="0">待回复</option>
+                                            <option data-target="1">新回复</option>
+                                            <option data-target="2">已完成</option>
+                                            <%}else if(question.status == 1){ %>
+                                            <option data-target="1">新回复</option>
+                                            <option data-target="0">待回复</option>
+                                            <option data-target="2">已完成</option>
+                                            <%}else if(question.status == 2){ %>
+                                            <option data-target="2">已完成</option>
+                                            <option data-target="0">待回复</option>
+                                            <option data-target="1">新回复</option>
+                                            <%} %>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="name">回复</label>
+                                        <input class="form-control response" type="text" placeholder="例如：好的">
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <!-- <strong>Copyright &copy; 2014-2018 <a href="#">AdminLTE.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.0.0-alpha
     </div> -->
-    </footer>
+        </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
@@ -475,120 +539,46 @@
     <script src="/js/bootstrap-fileinput.js"></script>
     <script>
         $(function () {
-            // var descriptionEditor = null;
-            // var structureEditor = null;
-            // var configureEditor = null;
-            // var helpEditor = null;
-            // var pid = 'pid_' + new Date().getTime();
-            // ClassicEditor
-            //     .create(document.querySelector('#description'), {
-            //         ckfinder: {
-            //             uploadUrl: '/api/uploadImages?command=description&pid=' + pid + '&type=Files&responseType=json'
-            //         }
-            //     })
-            //     .then(function (editor) {
-            //         descriptionEditor = editor;
-            //         // The editor instance
-            //     })
-            //     .catch(function (error) {
-            //         console.error(error)
-            //     });
-
-            // ClassicEditor
-            //     .create(document.querySelector('#structure'), {
-            //         ckfinder: {
-            //             uploadUrl: '/api/uploadImages?command=structure&pid=' + pid + '&type=Files&responseType=json'
-            //         }
-            //     })
-            //     .then(function (editor) {
-            //         structureEditor = editor;
-            //         // The editor instance
-            //     })
-            //     .catch(function (error) {
-            //         console.error(error)
-            //     })
-
-            // ClassicEditor
-            //     .create(document.querySelector('#configure'), {
-            //         ckfinder: {
-            //             uploadUrl: '/api/uploadImages?command=configure&pid=' + pid + '&type=Files&responseType=json'
-            //         }
-            //     })
-            //     .then(function (editor) {
-            //         configureEditor = editor;
-            //         // The editor instance
-            //     })
-            //     .catch(function (error) {
-            //         console.error(error)
-            //     })
-
-            // ClassicEditor
-            //     .create(document.querySelector('#help'), {
-            //         ckfinder: {
-            //             uploadUrl: '/api/uploadImages?command=help&pid=' + pid + '&type=Files&responseType=json'
-            //         }
-            //     })
-            //     .then(function (editor) {
-            //         helpEditor = editor;
-            //         // The editor instance
-            //     })
-            //     .catch(function (error) {
-            //         console.error(error)
-            //     })
-
-            // $('.addPartsDom').click(function (E) {
-            //     var partsDom = $('.partsDom').clone();
-            //     partsDom.find('.addPartsDom').remove();
-            //     $($('.partsDom')[0]).after($(partsDom[0]))
-            // })
-
             // $('.addPropertyDom').click((function (e) {
             //     var properyDom = $('.propertyDom').clone();
             //     properyDom.find('.addPropertyDom').remove();
             //     $($('.propertyDom')[0]).after($(properyDom[0]))
             // }))
 
-            // $('.btn.btn-primary').click(function (e) {
-            //     e.preventDefault();
+            $('.btn.btn-primary').click(function (e) {
+                e.preventDefault();
 
-            //     var name = $('input.name').val();
-
-            //     var propertyDom = $('.propertyDom');
-            //     let propertys = [];
-            //     for (let k = 0; k < propertyDom.length; k++) {
-            //         let property = $(propertyDom[k]).find('input');
-            //         if (property && property.length >= 3) {
-            //             propertys.push({
-            //                 "name": property[0].value,
-            //                 "amount": parseInt(property[1].value),
-            //                 "qty": parseInt(property[2].value)
-            //             })
-            //         }
-            //     }
-            //     $.ajax({
-            //         url: '/api/createParts',
-            //         type: 'POST',
-            //         data: {
-            //             propertys,
-            //             name,
-            //         },
-            //         async: false,
-            //         cache: false,
-            //         success: function (data) {
-            //             console.log(data);
-            //             if (data.status && data.status === 'success') {
-            //                 alert('成功创建')
-            //                 location.href = '/management'
-            //             } else if (data.msg) {
-            //                 alert(data.msg)
-            //                 // console.log(data.message);
-            //             }
-            //         },
-            //         error: function (data) {
-            //             console.log(data.status);
-            //         }
-            //     });
-            // })
+                // var name = $('input.name').val();
+                var qid = $('input.qid').val();
+                var response = $('input.response').val();
+                var status = '';
+                if (jQuery(".status  option:selected").attr("data-target")) {
+                    status = jQuery(".status  option:selected").attr("data-target").trim();
+                }
+                $.ajax({
+                    url: '/api/updateQuestion?type=0&qid=' + qid,
+                    type: 'POST',
+                    data: {
+                        response,
+                        status,
+                    },
+                    async: false,
+                    cache: false,
+                    success: function (data) {
+                        console.log(data);
+                        if (data.status && data.status === 'success') {
+                            alert(data.msg)
+                            location.href = '/management/priceServiceMgrM'
+                        } else if (data.msg) {
+                            alert(data.msg)
+                            // console.log(data.message);
+                        }
+                    },
+                    error: function (data) {
+                        console.log(data.status);
+                    }
+                });
+            })
         })
     </script>
 </body>
