@@ -360,6 +360,35 @@ router.get('/video', function (req, res) {
     })
 });
 
+router.get('/training', function (req, res) {
+    dbHandler.getTraining(req, res, (trainings) => {
+        res.render('training', { title: '', trainings });
+    })
+});
+
+router.get('/myTraining', function (req, res) {
+    if (req.cookies.user && req.cookies.user.uid) {
+        dbHandler.getUserTraining(req, res, (trainings) => {
+            res.render('myTraining', { title: '', trainings });
+        }, { uid: req.cookies.user.uid })
+    }
+    else {
+        res.redirect('/login')
+    }
+});
+
+router.get('/trainingDetail', function (req, res) {
+    if (req.query.ttid && req.query.ttid.trim() != '') {
+        dbHandler.getTraining(req, res, (trainings) => {
+            res.render('trainingDetail', { title: '', training: trainings[0] });
+        }, { ttid: req.query.ttid.trim() })
+    }
+    else {
+        res.render('trainingDetail', { title: '', training: {} });
+    }
+});
+
+
 router.get('/integrator', function (req, res) {
     let query = {};
     if (req.query.province && req.query.province.trim() != '全部') {

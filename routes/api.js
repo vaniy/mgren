@@ -10,6 +10,7 @@ TITLE = 'formidable',
     QUESTION_UPLOAD_FOLDER = '/questions/',
     VIDEO_UPLOAD_FOLDER = '/video/',
     COMPANY_UPLOAD_FOLDER = '/company/',
+    TRAINING_UPLOAD_FOLDER = '/training/',
     HOMEPAGE_UPLOAD_FOLDER = '/home/',
     SOFTWARE_UPLOAD_FOLDER = '/softwares/',
     INTEGRATOR_UPLOAD_FOLDER = '/integrator/',
@@ -542,6 +543,85 @@ router.post('/createVideos', function (req, res, next) {
     });
 })
 
+router.post('/createTraining', function (req, res, next) {
+
+    var form = new formidable.IncomingForm();   //创建上传表单
+    form.encoding = 'utf-8';        //设置编辑
+    form.uploadDir = 'public' + TRAINING_UPLOAD_FOLDER;     //设置上传目录
+    form.keepExtensions = true;     //保留后缀
+    form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+
+
+    form.parse(req, function (err, fields, files) {
+        if (err) {
+            res.send({ status: 'failed' });
+            return;
+        }
+        var tempstamp = new Date().getTime();
+        var ttid = `ttid_${tempstamp}`;
+        let product = { inDate: new Date(), ttid };
+        product.img = '';
+        for (var obj in fields) {
+            if (obj && obj != 'null') {
+                product[obj] = fields[obj]
+            }
+        }
+
+        var needChange = true;
+        for (var key in files) {
+            var extName = '';  //后缀名
+            switch (files[key].type) {
+                case 'image/pjpeg':
+                    extName = 'jpg';
+                    break;
+                case 'image/jpeg':
+                    extName = 'jpg';
+                    break;
+                case 'image/png':
+                    extName = 'jpg';
+                    break;
+                case 'image/x-png':
+                    extName = 'jpg';
+                    break;
+                case 'video/mp4':
+                    extName = 'mp4';
+                    break;
+                case 'video/avi':
+                    extName = 'avi';
+                    break;
+                case 'video/mkv':
+                    extName = 'mkv';
+                    break;
+                // case 'image/x-png':
+                //     extName = 'jpg';
+            }
+            if (files[key].size == 0) {
+                fs.unlinkSync(files[key].path);
+            }
+            else {
+                needChange = true;
+                // if (key === 'businessLicense') {
+                var avatarName = product.ttid + '_' + key + '_' + '.' + extName;
+                var newPath = form.uploadDir + avatarName;
+                // }
+
+                product.img = '/training/' + avatarName;
+                console.log(newPath);
+                fs.renameSync(files[key].path, newPath);  //重命名
+
+            }
+        }
+
+        // if (needChange) {
+        dbHandler.createTraining(req, res, product);
+        // dbHandler.createUser(user, req, res);
+        // }
+        // else {
+        //     res.send({ status: 'failed', msg: '请上传视频' });
+        // }
+    });
+})
+
 
 router.post('/createCustomQuestion', function (req, res, next) {
 
@@ -1034,7 +1114,7 @@ router.post('/updateService', function (req, res, next) {
                     avatarName = 'priceService' + '_' + new Date().getTime() + '_' + key + '_' + '.' + extName;
                 }
                 else if (req.query.type == 1) {
-                    avatarName = 'suggestService' + '_' +  new Date().getTime() + '_' + key + '_' + '.' + extName;
+                    avatarName = 'suggestService' + '_' + new Date().getTime() + '_' + key + '_' + '.' + extName;
                 }
                 var newPath = form.uploadDir + avatarName;
                 // }
@@ -1281,6 +1361,81 @@ router.post('/updateVideos', function (req, res, next) {
 
         // if (needChange) {
         dbHandler.updateVideos(req, res, product);
+    });
+})
+
+router.post('/updateTraining', function (req, res, next) {
+
+    var form = new formidable.IncomingForm();   //创建上传表单
+    form.encoding = 'utf-8';        //设置编辑
+    form.uploadDir = 'public' + TRAINING_UPLOAD_FOLDER;     //设置上传目录
+    form.keepExtensions = true;     //保留后缀
+    form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+
+
+    form.parse(req, function (err, fields, files) {
+        if (err) {
+            res.send({ status: 'failed' });
+            return;
+        }
+        // var tempstamp = new Date().getTime();
+        // var uid = `uid_${tempstamp}`;
+        let product = {};
+        product.img = '';
+        for (var obj in fields) {
+            if (obj && obj != 'null') {
+                product[obj] = fields[obj]
+            }
+        }
+
+        var needChange = true;
+        for (var key in files) {
+            var extName = '';  //后缀名
+            switch (files[key].type) {
+                case 'image/pjpeg':
+                    extName = 'jpg';
+                    break;
+                case 'image/jpeg':
+                    extName = 'jpg';
+                    break;
+                case 'image/png':
+                    extName = 'jpg';
+                    break;
+                case 'image/x-png':
+                    extName = 'jpg';
+                    break;
+                case 'video/mp4':
+                    extName = 'mp4';
+                    break;
+                case 'video/avi':
+                    extName = 'avi';
+                    break;
+                case 'video/mkv':
+                    extName = 'mkv';
+                    break;
+                    // case 'image/x-png':
+                    //     extName = 'jpg';
+                    break;
+            }
+            if (files[key].size == 0) {
+                fs.unlinkSync(files[key].path);
+            }
+            else {
+                needChange = true;
+                // if (key === 'businessLicense') {
+                var avatarName = req.query.ttid + '_' + key + '_' + '.' + extName;
+                var newPath = form.uploadDir + avatarName;
+                // }
+
+                product.img = '/training/' + avatarName;
+                console.log(newPath);
+                fs.renameSync(files[key].path, newPath);  //重命名
+
+            }
+        }
+
+        // if (needChange) {
+        dbHandler.updateTraining(req, res, product);
         // dbHandler.createUser(user, req, res);
         // }
         // else {
@@ -1503,6 +1658,15 @@ router.post('/updateParts', function (req, res, next) {
     }
 })
 
+router.post('/submitTraining', function(req, res, next){
+    if(req.body.ttid && req.body.ttid.trim() != ''){
+        dbHandler.submitTraining(req, res);
+    }
+    else{
+        res.send({ status: 'falied', mgs: '请正确填写' })
+    }
+})
+
 router.post('/updateCategory', function (req, res, next) {
     if (req.query.categoryId && req.query.categoryId.trim() != '') {
         dbHandler.updateCategory(req, res);
@@ -1534,11 +1698,11 @@ router.post('/updateOrder', function (req, res, next) {
 router.post('/updateQuestion', function (req, res, next) {
     if (req.query.qid && req.query.qid.trim() != '') {
         let collection = 'question';
-        if(req.query.type != undefined){
-            if(req.query.type == 0){
+        if (req.query.type != undefined) {
+            if (req.query.type == 0) {
                 collection = 'priceService';
             }
-            else if(req.query.type == 1){
+            else if (req.query.type == 1) {
                 collection = 'suggestService';
             }
         }

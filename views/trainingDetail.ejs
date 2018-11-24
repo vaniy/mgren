@@ -56,46 +56,33 @@
             <div class="cp-right-tt">
                 培训计划
             </div>
-            <ul class="fa-list">
-                <%if(trainings && trainings.length > 0){ trainings.forEach(function(child, index){%>
-                <li class="clearfix">
-                    <div class="pull-right fa-img"><a href=""><img src="<%=child.img %>"></a></div>
-                    <div class="pull-left">
-                        <div class="fa-tt"><%=child.title %></div>
-                        <div class="fa-p">
-                            <p><%=child.content %></p>
-                            <p>时间：<%=child.time %></p>
-                            <p>地点：<%=child.address %></p>
-                        </div>
-                        <a href="/trainingDetail?ttid=<%=child.ttid %>" class="fa-more"><span>了解更多</span></a>
-                    </div>
-                </li>
-                <%})} %>
-                <!-- <li class="clearfix">
-                    <div class="pull-right fa-img"><a href=""><img src="images/fa-img.png"></a></div>
-                    <div class="pull-left">
-                        <div class="fa-tt">服装分销1</div>
-                        <div class="fa-p">
-                            <p>案例研究重点：批发服装分销</p>
-                            <p>关键系统解决方案：采摘，放养，分期，分拣和流体装载</p>
-                            <p>产品处理：印花运动服市场上的空白服装（T恤，运动衫，polo衫等）</p>
-                        </div>
-                        <a href="" class="fa-more"><span>了解更多</span></a>
-                    </div>
-                </li>
-                <li class="clearfix">
-                    <div class="pull-right fa-img"><a href=""><img src="images/fa-img.png"></a></div>
-                    <div class="pull-left">
-                        <div class="fa-tt">服装分销1</div>
-                        <div class="fa-p">
-                            <p>案例研究重点：批发服装分销</p>
-                            <p>关键系统解决方案：采摘，放养，分期，分拣和流体装载</p>
-                            <p>产品处理：印花运动服市场上的空白服装（T恤，运动衫，polo衫等）</p>
-                        </div>
-                        <a href="" class="fa-more"><span>了解更多</span></a>
-                    </div>
-                </li> -->
-            </ul>
+            <input hidden class="ttid" type="text" value="<%=training.ttid %>">
+            <h1>
+                <%=training.title %>
+            </h1>
+            <div>
+                <p>时间：
+                    <%=training.time %>
+                </p>
+                <p>地点：
+                    <%=training.address %>
+                </p>
+            </div>
+            <span>
+                <%=training.content %>
+            </span>
+
+            <div>
+                <p>培训报名</p>
+                <input class="companyName" type="text" placeholder="公司名称">
+                <input class="position" type="text" placeholder="您的职位">
+                <input class="name" type="text" placeholder="您的姓名">
+                <input class="phone" type="text" placeholder="联系电话">
+                <input class="email" type="text" placeholder="您的邮箱">
+                <input class="address" type="text" placeholder="居住地址">
+                <textarea class="feedBack" type="text" placeholder="留言"></textarea>
+                <button class="submit">提交信息</button>
+            </div>
         </div>
     </div>
     <div class="bottom">
@@ -165,7 +152,46 @@
 <script type="text/javascript">
     //右侧悬浮
     $(document).ready(function () {
-
+        $('.submit').click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/api/submitTraining',
+                type: 'POST',
+                data: {
+                    ttid: $('.ttid').val(),
+                    companyName: $('.companyName').val(),
+                    position: $('.position').val(),
+                    name: $('.name').val(),
+                    phone: $('.phone').val(),
+                    email: $('.email').val(),
+                    address: $('.address').val(),
+                    feedBack: $('.feedBack').val(),
+                },
+                async: false,
+                cache: false,
+                success: function (data) {
+                    console.log(data);
+                    if (data && data.status && data.status == 'success') {
+                        alert(data.msg)
+                        // debugger
+                        // var oid = $('.oid').val();
+                        // if (oid && oid != '') {
+                        //     location.href = '/confirmOrder?oid=' + oid.trim();
+                        // }
+                        // else {
+                        //     location.href = '/addressInfo'
+                        // }
+                    } else if (data.msg) {
+                        alert(data.msg)
+                        // console.log(data.message);
+                    }
+                },
+                error: function (data) {
+                    console.log(data.status);
+                }
+            });
+            $(".tc-box").hide();
+        })
         $(document).on("click", ".zi-fdTel .up", function () {
             $("html,body").animate({ scrollTop: 0 });
         });

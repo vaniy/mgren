@@ -130,6 +130,21 @@ router.get('/videoMgr', (req, res) => {
     // })
 })
 
+router.get('/trainingMgr', (req, res) => {
+    // dbHandler.getAllCategory(req, res, (stores) => {
+    // dbHandler.getAllParts(req, res, (parts) => {
+    if (req.query.ttid && req.query.ttid.trim() != '') {
+        dbHandler.getTraining(req, res, (trainings) => {
+            res.render('trainingMgr', { title: '管理培训', training: trainings[0] })
+        }, { ttid: req.query.ttid.trim() })
+    }
+    else {
+        res.render('trainingMgr', { title: '创建培训', training: {} })
+    }
+    // })
+    // })
+})
+
 router.get('/videoMgrM', (req, res) => {
     // dbHandler.getAllCategory(req, res, (stores) => {
     // dbHandler.getAllParts(req, res, (parts) => {
@@ -138,6 +153,22 @@ router.get('/videoMgrM', (req, res) => {
     })
     // })
     // })
+})
+
+router.get('/trainingMgrM', (req, res) => {
+    dbHandler.getTraining(req, res, (trainings) => {
+        res.render('trainingMgrM', { trainings })
+    })
+})
+
+router.get('/updateTraining', (req, res)=>{
+    dbHandler.updateUserTraining(req, res);
+})
+
+router.get('/trainingServiceMgrM', (req, res) => {
+    dbHandler.getUserTraining(req, res, (trainings) => {
+        res.render('trainingServiceMgrM', { trainings })
+    })
 })
 
 router.get('/productMgr', (req, res) => {
@@ -469,6 +500,12 @@ router.get('/deleteManage', function (req, res) {
             // if (orders && orders.length > 0) {
             res.redirect('/management/integratorMgrM')
         }, 'integrator', { iid: req.query.iid.trim() })
+    }
+    else if (req.query.ttid && req.query.ttid.trim() != '') {
+        dbHandler.deleteManage(req, res, (p) => {
+            // if (orders && orders.length > 0) {
+            res.redirect('/management/trainingMgrM')
+        }, 'training', { ttid: req.query.ttid.trim() })
     }
     else {
         res.redirect('/management')
