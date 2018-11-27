@@ -391,6 +391,7 @@
                                 <th>培训地点</th>
                                 <th>状态</th>
                                 <th>通过</th>
+                                <th>拒绝通过</th>
                                 <!-- <th>删除培训</th> -->
                                 <!-- <th>商品重量</th> -->
                             </tr>
@@ -417,12 +418,15 @@
                                     <%=child.training.address %>
                                 </td>
                                 <%if(child.status == 0){%>
-                                <td><span class="red">未通过</span></td>
+                                <td><span>待审核</span></td>
                                 <%}else if(child.status == 1){%>
                                 <td>通过</td>
+								<%}else if(child.status == 2){%>
+								<td class="red">未通过</td>
                                 <%} %>
                                 <!-- <td><%=child.storeId %></td> -->
-                                <td><a href="/management/updateTraining?ttid=<%=child.ttid %>&uid=<%=child.uid %>">通过</a></td>
+                                <td><a href="/management/updateTraining?ttid=<%=child.ttid %>&uid=<%=child.uid %>&status=1">通过</a></td>
+                                <td><a href="/management/updateTraining?ttid=<%=child.ttid %>&uid=<%=child.uid %>&status=2">拒绝</a></td>
                                 <!-- <td><a href="/management/deleteManage?ttid=<%=child.ttid %>">修改详情</a></td> -->
                             </tr>
                             <%})} %>

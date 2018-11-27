@@ -108,9 +108,11 @@
 									<%= child.training.address %>
 								</td>
 								<%if(child.status == 0){%>
-								<td><span class="red">未通过</span></td>
+								<td><span>待审核</span></td>
 								<%}else if(child.status == 1){%>
 								<td>通过</td>
+								<%}else if(child.status == 2){%>
+								<td class="red">未通过</td>
 								<!-- <%}else if(child.status == 2){%>
 								<td>已完成</td> -->
 								<%} %>
