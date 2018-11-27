@@ -1381,7 +1381,7 @@ router.post('/updateTraining', function (req, res, next) {
         // var tempstamp = new Date().getTime();
         // var uid = `uid_${tempstamp}`;
         let product = {};
-        product.img = '';
+        // product.img = '';
         for (var obj in fields) {
             if (obj && obj != 'null') {
                 product[obj] = fields[obj]
@@ -1779,7 +1779,6 @@ router.get("/show", function (req, res, next) {
         process.exit();
     }
 })
-
 
 // var jssdk = require('../api/jssdk');
 
