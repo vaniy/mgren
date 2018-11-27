@@ -61,11 +61,30 @@
                 <li class="clearfix">
                     <div class="pull-right fa-img"><a href=""><img src="<%=child.img %>"></a></div>
                     <div class="pull-left">
-                        <div class="fa-tt"><%=child.title %></div>
+                        <div class="fa-tt">
+                            <%=child.title %>
+                            <%if(child.status != undefined){%>
+                            <%if(child.status == 0){%>
+                            <span>(待审核)</span>
+                            <%}else if(child.status == 1){%>
+                            <span>(通过)</span>
+                            <%}else if(child.status == 2){%>
+                            <span class="red">(未通过)</span>
+                            <!-- <%}else if(child.status == 2){%>
+                                    <td>已完成</td> -->
+                            <%} %>
+                            <%} %>
+                        </div>
                         <div class="fa-p">
-                            <p><%=child.content %></p>
-                            <p>时间：<%=child.time %></p>
-                            <p>地点：<%=child.address %></p>
+                            <p>
+                                <%=child.content %>
+                            </p>
+                            <p>时间：
+                                <%=child.time %>
+                            </p>
+                            <p>地点：
+                                <%=child.address %>
+                            </p>
                         </div>
                         <a href="/trainingDetail?ttid=<%=child.ttid %>" class="fa-more"><span>了解更多</span></a>
                     </div>

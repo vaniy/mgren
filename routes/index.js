@@ -362,7 +362,23 @@ router.get('/video', function (req, res) {
 
 router.get('/training', function (req, res) {
     dbHandler.getTraining(req, res, (trainings) => {
-        res.render('training', { title: '', trainings });
+        if (req.cookies.user && req.cookies.user.uid) {
+            dbHandler.getUserTraining(req, res, (userTrainings) => {
+                let outputs = Object.assign([], trainings);
+                outputs.forEach((child, index)=>{
+                    userTrainings.forEach((cld, idx)=>{
+                        // if
+                        if(child.ttid == cld.ttid){
+                            child.status = cld.status;
+                        }
+                    })
+                })
+                res.render('training', { title: '', trainings: outputs });
+            }, { uid: req.cookies.user.uid });
+        }
+        else {
+            res.render('training', { title: '', trainings });
+        }
     })
 });
 
