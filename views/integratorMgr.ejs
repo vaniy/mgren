@@ -417,7 +417,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="name">所在城市
+                                        <label for="name">所在城市(只有国内集成商需要选择)
                                                 <%if(integrator.province && integrator.province.length > 0){%>
                                                     (<%= integrator.province%>)
                                                 <%} %>
@@ -603,7 +603,7 @@
                 data.append("fax", fax);
                 var email = $('input.email').val();
                 data.append("email", email);
-                if (addressInfo.province) {
+                if (addressInfo.province && integratorNationCity.trim == "") {
                     data.append("province", addressInfo.province);
                 }
 
