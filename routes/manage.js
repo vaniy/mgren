@@ -11,16 +11,20 @@ var formidable = require('formidable'),
     TITLE = 'formidable',
     AVATAR_UPLOAD_FOLDER = '/tenzhong/';
 
-router.get('/', (req, res) => {
-    // if (!req.session.admin) {
-    //     res.redirect("/management/signIn");
-    // } else {
-    // var dom = viewHandler.buildManagementView();
-    res.render('manage', { title: '', user: {}, type: "1" });
-    // }
+router.get('/', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
+    res.render('manage', { title: '', user: {}, type: "1" })
 })
 
-router.get('/caseMgr', (req, res) => {
+var checkAdmin = function (req, res, next) {
+    if (!req.session.admin) {
+        res.redirect("/management/signIn");
+    }
+    else {
+        next()
+    }
+}
+
+router.get('/caseMgr', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     if (req.query.caseId && req.query.caseId.trim() != '') {
         dbHandler.getAllCaseCategory(req, res, (stores) => {
             dbHandler.getAllProduct(req, res, (products) => {
@@ -45,7 +49,7 @@ router.get('/caseMgr', (req, res) => {
     }
 })
 
-router.get('/caseMgrM', (req, res) => {
+router.get('/caseMgrM', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     // dbHandler.getAllCaseCategory(req, res, (stores) => {
     // dbHandler.getAllProduct(req, res, (products) => {
     dbHandler.getCase(req, res, (casee) => {
@@ -57,7 +61,7 @@ router.get('/caseMgrM', (req, res) => {
     // })
 })
 
-router.get('/userMgr', (req, res) => {
+router.get('/userMgr', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     if (req.query.uid) {
         dbHandler.getUserInfo(req, res, (user) => {
             // dbHandler.getRole(req, res, (role) => {
@@ -89,7 +93,7 @@ router.get('/userMgr', (req, res) => {
     // })
 })
 
-router.get('/roleMgr', (req, res) => {
+router.get('/roleMgr', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     // dbHandler.getAllCategory(req, res, (stores) => {
     // dbHandler.getAllParts(req, res, (parts) => {
     dbHandler.getRole(req, res, (role) => {
@@ -115,7 +119,7 @@ router.get('/roleMgr', (req, res) => {
 })
 
 
-router.get('/videoMgr', (req, res) => {
+router.get('/videoMgr', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     // dbHandler.getAllCategory(req, res, (stores) => {
     // dbHandler.getAllParts(req, res, (parts) => {
     if (req.query.vid && req.query.vid.trim() != '') {
@@ -130,7 +134,7 @@ router.get('/videoMgr', (req, res) => {
     // })
 })
 
-router.get('/trainingMgr', (req, res) => {
+router.get('/trainingMgr', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     // dbHandler.getAllCategory(req, res, (stores) => {
     // dbHandler.getAllParts(req, res, (parts) => {
     if (req.query.ttid && req.query.ttid.trim() != '') {
@@ -145,7 +149,7 @@ router.get('/trainingMgr', (req, res) => {
     // })
 })
 
-router.get('/videoMgrM', (req, res) => {
+router.get('/videoMgrM', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     // dbHandler.getAllCategory(req, res, (stores) => {
     // dbHandler.getAllParts(req, res, (parts) => {
     dbHandler.getVideo(req, res, (videos) => {
@@ -155,23 +159,23 @@ router.get('/videoMgrM', (req, res) => {
     // })
 })
 
-router.get('/trainingMgrM', (req, res) => {
+router.get('/trainingMgrM', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     dbHandler.getTraining(req, res, (trainings) => {
         res.render('trainingMgrM', { trainings })
     })
 })
 
-router.get('/updateTraining', (req, res)=>{
+router.get('/updateTraining', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     dbHandler.updateUserTraining(req, res);
 })
 
-router.get('/trainingServiceMgrM', (req, res) => {
+router.get('/trainingServiceMgrM', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     dbHandler.getUserTraining(req, res, (trainings) => {
         res.render('trainingServiceMgrM', { trainings })
     })
 })
 
-router.get('/productMgr', (req, res) => {
+router.get('/productMgr', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     if (req.query.pid && req.query.pid.trim() != '') {
         dbHandler.getAllCategory(req, res, (stores) => {
             dbHandler.getAllParts(req, res, (parts) => {
@@ -190,7 +194,7 @@ router.get('/productMgr', (req, res) => {
     }
 })
 
-router.get('/productMgrM', (req, res) => {
+router.get('/productMgrM', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     dbHandler.getAllCategory(req, res, (stores) => {
         dbHandler.getAllParts(req, res, (parts) => {
             dbHandler.getAllProduct(req, res, (products) => {
@@ -217,7 +221,7 @@ router.get('/productMgrM', (req, res) => {
     })
 })
 
-router.get('/categoryMgr', (req, res) => {
+router.get('/categoryMgr', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     if (req.query.categoryId && req.query.categoryId.trim() != '') {
         dbHandler.getCategory(req, res, (store) => {
             res.render('categoryMgr', { title: '管理分类', store })
@@ -228,7 +232,7 @@ router.get('/categoryMgr', (req, res) => {
     }
 })
 
-router.get('/casePartsMgr', (req, res) => {
+router.get('/casePartsMgr', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     if (req.query.categoryId && req.query.categoryId.trim() != '') {
         dbHandler.getCaseCategory(req, res, (caseStore) => {
             res.render('casePartsMgr', { title: '管理分类', caseStore })
@@ -239,19 +243,19 @@ router.get('/casePartsMgr', (req, res) => {
     }
 })
 
-router.get('/casePartsMgrM', (req, res) => {
+router.get('/casePartsMgrM', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     dbHandler.getAllCaseCategory(req, res, (caseStore) => {
         res.render('casePartsMgrM', { caseStore })
     })
 })
 
-router.get('/categoryMgrM', (req, res) => {
+router.get('/categoryMgrM', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
     dbHandler.getAllCategory(req, res, (stores) => {
         res.render('categoryMgrM', { stores })
     })
 })
 
-router.get('/partsMgr', function (req, res) {
+router.get('/partsMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     if (req.query.partsId && req.query.partsId != '') {
         dbHandler.getParts(req, res, (part) => {
             res.render('partsMgr', { title: '管理配置', part })
@@ -262,7 +266,7 @@ router.get('/partsMgr', function (req, res) {
     }
 })
 
-router.get('/homeMgr', function (req, res) {
+router.get('/homeMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     dbHandler.getHomePage(req, res, (home) => {
         // let output = {};
         // output.imgs = home.imgs;
@@ -272,32 +276,32 @@ router.get('/homeMgr', function (req, res) {
     })
 })
 
-router.get('/supportMgr', function (req, res) {
+router.get('/supportMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     res.render('supportMgr', { title: '支持' })
 })
-router.get('/whoMgr', function (req, res) {
+router.get('/whoMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     res.render('whoMgr', { title: '关于我们' })
 })
-router.get('/contractMgr', function (req, res) {
+router.get('/contractMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     res.render('contractMgr', { title: '联系我们' })
 })
-router.get('/guideMgr', function (req, res) {
+router.get('/guideMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     res.render('guideMgr', { title: '购物指南' })
 })
 
-router.get('/softwareMgr', function (req, res) {
+router.get('/softwareMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     dbHandler.getSoftwares(req, res, (softwares) => {
         res.render('softwareMgr', { title: '销售工具', software: softwares[0] })
     })
 })
 
-router.get('/partsMgrM', function (req, res) {
+router.get('/partsMgrM', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     dbHandler.getAllParts(req, res, (parts) => {
         res.render('partsMgrM', { parts })
     })
 })
 
-router.get('/integratorMgr', function (req, res) {
+router.get('/integratorMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     if (req.query.iid && req.query.iid.trim() != '') {
         dbHandler.getIntegrator(req, res, (integrators) => {
             res.render('integratorMgr', { title: '管理集成商', integrator: integrators[0] })
@@ -308,19 +312,19 @@ router.get('/integratorMgr', function (req, res) {
     }
 })
 
-router.get('/integratorMgrM', function (req, res) {
+router.get('/integratorMgrM', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     dbHandler.getIntegrator(req, res, (integrators) => {
         res.render('integratorMgrM', { title: '集成商列表', integrators })
     }, {})
 })
 
-router.get('/userMgrM', function (req, res) {
+router.get('/userMgrM', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     dbHandler.getAllUser(req, res, (users) => {
         res.render('userMgrM', { users })
     })
 })
 
-router.get('/orderMgrM', function (req, res) {
+router.get('/orderMgrM', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     dbHandler.getAllOrders(req, res, (orders) => {
         if (orders && orders.length > 0) {
             orders = orders.map((child, index) => {
@@ -361,7 +365,7 @@ router.get('/orderMgrM', function (req, res) {
     })
 })
 
-router.get('/orderMgr', function (req, res) {
+router.get('/orderMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     if (req.query.oid && req.query.oid.trim() != '') {
         dbHandler.getOrder(req, res, (order) => {
             // if (orders && orders.length > 0) {
@@ -382,7 +386,7 @@ router.get('/orderMgr', function (req, res) {
 })
 
 
-router.get('/customServiceMgrM', function (req, res) {
+router.get('/customServiceMgrM', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     // dbHandler.getAllOrders(req, res, (orders) => {
     dbHandler.getUserCustomQuestions(req, res, true, (questions) => {
         res.render('customServiceMgrM', { title: '', questions });
@@ -390,7 +394,7 @@ router.get('/customServiceMgrM', function (req, res) {
     // })
 })
 
-router.get('/priceServiceMgrM', function (req, res) {
+router.get('/priceServiceMgrM', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     // dbHandler.getAllOrders(req, res, (orders) => {
     dbHandler.getUserServiceQuestion(req, res, (questions) => {
         res.render('priceServiceMgrM', { title: '', questions });
@@ -398,7 +402,7 @@ router.get('/priceServiceMgrM', function (req, res) {
     // })
 })
 
-router.get('/suggestServiceMgrM', function (req, res) {
+router.get('/suggestServiceMgrM', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     // dbHandler.getAllOrders(req, res, (orders) => {
     dbHandler.getUserServiceQuestion(req, res, (questions) => {
         res.render('suggestServiceMgrM', { title: '', questions });
@@ -407,7 +411,7 @@ router.get('/suggestServiceMgrM', function (req, res) {
 })
 
 
-router.get('/customServiceMgr', function (req, res) {
+router.get('/customServiceMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     if (req.query.qid && req.query.qid.trim() != '') {
         dbHandler.getUserCustomQuestions(req, res, true, (questions) => {
             dbHandler.getUserInfo(req, res, (user) => {
@@ -420,7 +424,7 @@ router.get('/customServiceMgr', function (req, res) {
     }
 })
 
-router.get('/priceServiceMgr', function (req, res) {
+router.get('/priceServiceMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     if (req.query.qid && req.query.qid.trim() != '') {
         dbHandler.getUserServiceQuestion(req, res, (questions) => {
             dbHandler.getUserInfo(req, res, (user) => {
@@ -433,7 +437,7 @@ router.get('/priceServiceMgr', function (req, res) {
     }
 })
 
-router.get('/suggestServiceMgr', function (req, res) {
+router.get('/suggestServiceMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     if (req.query.qid && req.query.qid.trim() != '') {
         dbHandler.getUserServiceQuestion(req, res, (questions) => {
             dbHandler.getUserInfo(req, res, (user) => {
@@ -446,7 +450,7 @@ router.get('/suggestServiceMgr', function (req, res) {
     }
 })
 
-router.get('/deleteOrderMgr', function (req, res) {
+router.get('/deleteOrderMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     if (req.query.oid && req.query.oid.trim() != '') {
         dbHandler.deleteOrde(req, res, (order) => {
             // if (orders && orders.length > 0) {
@@ -458,7 +462,7 @@ router.get('/deleteOrderMgr', function (req, res) {
     }
 })
 
-router.get('/deleteManage', function (req, res) {
+router.get('/deleteManage', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     if (req.query.partsId && req.query.partsId.trim() != '') {
         dbHandler.deleteManage(req, res, (order) => {
             // if (orders && orders.length > 0) {
