@@ -29,8 +29,8 @@
     </div>
 </body>
 <script src="/js/jquery.min.js" type="text/javascript"></script>
-<script src="/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/js/swiper.min.js"></script>
+<!-- <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/js/swiper.min.js"></script> -->
 <!-- Initialize Swiper -->
 <script type="text/javascript">
     //右侧悬浮
@@ -43,7 +43,7 @@
             success: function (data) {
                 console.log(data);
                 if (data.status && data.status === 'success') {
-                    $('.userName').text(data.content)
+                    $('.userName').text(data.content || '会员')
                     // alert(data.content)
                     // location.href = '/management/integratorMgrM'
                 } else if (data.msg) {

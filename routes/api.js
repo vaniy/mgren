@@ -19,9 +19,14 @@ TITLE = 'formidable',
 var util = require('../util/util');
 
 router.get('/getUser', function (req, res, next) {
-    dbHandler.getUserInfo(req, res, (user) => {
-        res.send({ status: 'success', content: user.name })
-    })
+    if(req.cookies.user && req.cookies.user.email){
+        dbHandler.getUserInfo(req, res, (user) => {
+            res.send({ status: 'success', content: user.name })
+        })
+    }
+    else{
+        res.send({ status: 'success', content: '' })
+    }
 })
 
 router.post('/register', function (req, res, next) {
