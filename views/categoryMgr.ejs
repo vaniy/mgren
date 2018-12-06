@@ -404,6 +404,11 @@
                                             placeholder="例如：1">
                                     </div>
                                     <div class="form-group">
+                                        <label for="priority">排序</label>
+                                        <input value="<%=store.priority %>" class="form-control priority" type="text"
+                                            placeholder="例如：1">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="storeName">分类名称</label>
                                         <input value="<%=store.storeName %>" class="form-control storeName" type="text"
                                             placeholder="例如：箱式输送机">
@@ -490,18 +495,21 @@
                 e.preventDefault();
                 var storeId = $('input.storeId').val();
                 var storeName = $('input.storeName').val();
+                var priority = $('input.priority').val();
                 $.ajax({
                     url: cid && cid.trim() != '' ? '/api/updateCategory?categoryId=' + cid : '/api/createCategory',
                     type: 'POST',
                     data: cid && cid.trim() != '' ?
                         {
                             storeId,
-                            storeName
+                            storeName,
+                            priority
                         } :
                         {
                             categoryId,
                             storeId,
-                            storeName
+                            storeName,
+                            priority
                         },
                     async: false,
                     cache: false,

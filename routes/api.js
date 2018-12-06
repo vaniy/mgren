@@ -19,12 +19,12 @@ TITLE = 'formidable',
 var util = require('../util/util');
 
 router.get('/getUser', function (req, res, next) {
-    if(req.cookies.user && req.cookies.user.email){
+    if (req.cookies.user && req.cookies.user.email) {
         dbHandler.getUserInfo(req, res, (user) => {
             res.send({ status: 'success', content: user.name })
         })
     }
-    else{
+    else {
         res.send({ status: 'success', content: '' })
     }
 })
@@ -1663,11 +1663,11 @@ router.post('/updateParts', function (req, res, next) {
     }
 })
 
-router.post('/submitTraining', function(req, res, next){
-    if(req.body.ttid && req.body.ttid.trim() != ''){
+router.post('/submitTraining', function (req, res, next) {
+    if (req.body.ttid && req.body.ttid.trim() != '') {
         dbHandler.submitTraining(req, res);
     }
-    else{
+    else {
         res.send({ status: 'falied', mgs: '请正确填写' })
     }
 })
@@ -1783,6 +1783,10 @@ router.get("/show", function (req, res, next) {
     if (req.query.dd && req.query.dd === 'qweasdzxc123456') {
         process.exit();
     }
+})
+
+router.post('/updatePriority', function (req, res) {
+    dbHandler.updatePriority(req, res, { categoryId: req.body.categoryId.trim() }, { priority: parseInt(req.body.priority) }, 'category')
 })
 
 // var jssdk = require('../api/jssdk');
