@@ -146,22 +146,22 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/trainingServiceMgrM" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>用户培训</p>
-                                  </a>
+                                    <a href="/management/trainingServiceMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>用户培训</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/trainingMgr" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>创建培训</p>
-                                  </a>
+                                    <a href="/management/trainingMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>创建培训</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/trainingMgrM" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>培训管理</p>
-                                  </a>
+                                    <a href="/management/trainingMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>培训管理</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/management/roleMgr" class="nav-link">
@@ -335,16 +335,16 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/guideMgr" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>购物指南</p>
-                                  </a>
+                                    <a href="/management/guideMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>购物指南</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/softwareMgr" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>销售工具</p>
-                                  </a>
+                                    <a href="/management/softwareMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>销售工具</p>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -417,10 +417,17 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="name">集成商排序</label>
+                                        <input value="<%=integrator.priority %>" class="form-control priority" type="text"
+                                            placeholder="例如：1">
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="name">所在城市(只有国内集成商需要选择)
-                                                <%if(integrator.province && integrator.province.length > 0){%>
-                                                    (<%= integrator.province%>)
-                                                <%} %>
+                                            <%if(integrator.province && integrator.province.length > 0){%>
+                                            (
+                                            <%= integrator.province%>)
+                                            <%} %>
                                         </label>
                                         <div class="citys">
                                             <div id="demo">
@@ -482,8 +489,7 @@
                                             </div>
                                             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                                             <% if(integrator.imgs && integrator.imgs.length >= 0){%>
-                                            <img style="width: 200px;height:150px" src="<%=integrator.imgs %>"
-                                                alt="">
+                                            <img style="width: 200px;height:150px" src="<%=integrator.imgs %>" alt="">
                                             <%} %>
                                         </div>
                                     </div>
@@ -603,6 +609,8 @@
                 data.append("fax", fax);
                 var email = $('input.email').val();
                 data.append("email", email);
+                var priority = $('input.priority').val();
+                data.append("priority", priority)
                 if (addressInfo.province && integratorNationCity.trim == "") {
                     data.append("province", addressInfo.province);
                 }

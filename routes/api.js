@@ -1786,8 +1786,32 @@ router.get("/show", function (req, res, next) {
 })
 
 router.post('/updatePriority', function (req, res) {
-    dbHandler.updatePriority(req, res, { categoryId: req.body.categoryId.trim() }, { priority: parseInt(req.body.priority) }, 'category')
+    if (req.body.categoryId && req.query.isCase) {
+        dbHandler.updatePriority(req, res, { categoryId: req.body.categoryId.trim() }, { priority: parseInt(req.body.priority) }, 'caseCategory')
+    }
+    else if (req.body.categoryId) {
+        dbHandler.updatePriority(req, res, { categoryId: req.body.categoryId.trim() }, { priority: parseInt(req.body.priority) }, 'category')
+    }
+    else if (req.body.iid) {
+        dbHandler.updatePriority(req, res, { iid: req.body.iid.trim() }, { priority: parseInt(req.body.priority) }, 'integrator')
+    }
+    else {
+        res.send({ status: '失败' })
+    }
 })
+
+router.get('/loginOut', function (req, res) {
+    if (req.cookies.user && req.cookies.user.uid) {
+        res.clearCookie('user');
+        res.redirect('/')
+    }
+    else {
+        res.redirect('/')
+    }
+})
+
+
+
 
 // var jssdk = require('../api/jssdk');
 

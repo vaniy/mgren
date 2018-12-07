@@ -403,6 +403,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>订单编号</th>
                                 <th>订单状态</th>
+                                <th>下单时间</th>
                                 <th>订单金额</th>
                                 <th>用户名</th>
                                 <th>用户地址</th>
@@ -419,6 +420,9 @@
                                 </td>
                                 <td>
                                     <%=child.statusType %>
+                                </td>
+                                <td>
+                                    <%=child.inDate.toISOString() %>
                                 </td>
                                 <td>
                                     <%=child.totalAmoumt %>

@@ -23,7 +23,7 @@
 			<li>
 				<a href="/case">方案</a><span class="phone-i"><i class="glyphicon glyphicon-menu-down"></i></span>
 				<ul class="nav-down">
-					<li><a href="/integrator">查找集成伙伴</a></li>
+					<!-- <li><a href="/integrator">查找集成伙伴</a></li> -->
 				</ul>
 			</li>
 			<li><a href="/support">支持</a></li>
@@ -52,8 +52,9 @@
 				<a href="" class="dy-a">打印订单</a>
 			</div>
 			<ul class="dd-lc-list pull-left">
-				<%if(order.deliverStatusInfo && order.deliverStatusInfo.company && order.deliverStatusInfo.company.companyName){ %>
-				<li class="active"><span>2018-06-06 12:50:39</span>提交订单</li>
+				<%if(order.deliverStatusInfo && order.deliverStatusInfo.delivers && order.deliverStatusInfo.delivers.length > 0){order.deliverStatusInfo.delivers.forEach(function(child, index){ %>
+				<li class="<%=index == 0 ? 'active' : '' %>"><span><%=child.time %></span><%=child.status %></li>
+				<!-- <li><span>2018-06-06 12:50:39</span>提交订单</li>
 				<li><span>2018-06-06 12:50:39</span>提交订单</li>
 				<li><span>2018-06-06 12:50:39</span>提交订单</li>
 				<li><span>2018-06-06 12:50:39</span>提交订单</li>
@@ -61,9 +62,8 @@
 				<li><span>2018-06-06 12:50:39</span>提交订单</li>
 				<li><span>2018-06-06 12:50:39</span>提交订单</li>
 				<li><span>2018-06-06 12:50:39</span>提交订单</li>
-				<li><span>2018-06-06 12:50:39</span>提交订单</li>
-				<li class="last-lc"><span>2018-06-06 12:50:39</span>提交订单</li>
-				<%} %>
+				<li class="last-lc"><span>2018-06-06 12:50:39</span>提交订单</li> -->
+				<%})} %>
 			</ul>
 		</div>
 		<div class="table-responsive">
@@ -122,10 +122,10 @@
 							</div>
 						</td>
 						<td class="text-center">
-							<%=child.product.weight %>
+							<%=child.product.weight || '' %>
 						</td>
 						<td class="text-center">￥
-							<%=child.totalAmoumt %>
+							<%=child.totalAmoumt || '' %>
 						</td>
 					</tr>
 					<%})} %>
@@ -204,7 +204,7 @@
 				</div>
 				<div class="pull-right pull-right-r">
 					<p>
-						<%=order.discount ?  order.totalAmoumt/order.discount : order.totalAmoumt %>元</p>
+						<%=order.discount ?  order.totalAmoumt/order.discount : (order.totalAmoumt || '') %>元</p>
 					<p>
 						<%=order.discount ? order.discount*10 : '10' %>折</p>
 					<p>
@@ -213,7 +213,7 @@
 			</div>
 		</div>
 		<div class="qr-z text-right">应付金额：<span>
-				<%=order.totalAmoumt %></span>元</div>
+				<%=order.totalAmoumt || '' %></span>元</div>
 		<div class="dd-bottom clearfix">
 			<div class="col-xs-4">
 				<div class="dd-bottom-tt">收货人信息 </div>
