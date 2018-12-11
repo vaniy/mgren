@@ -40,7 +40,7 @@ router.get('/caseMgr', (req, res, next) => checkAdmin(req, res, next), (req, res
         dbHandler.getAllCaseCategory(req, res, (stores) => {
             dbHandler.getAllProduct(req, res, (products) => {
                 // dbHandler.getCase(req, res, (casee) => {
-                res.render('caseMgr', { casee: [], stores, products, title: '创建案例' })
+                res.render('caseMgr', { casee: [], stores, products, title: '创建方案' })
                 // })
                 // })
             })
