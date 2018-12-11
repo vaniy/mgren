@@ -400,26 +400,23 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th style="width: 10px">#</th>
+                                <th>排序</th>
                                 <th>分类名称</th>
                                 <th>分类编号</th>
-                                <th>排序</th>
                                 <th>分类修改</th>
                                 <th>删除分类</th>
                                 <!-- <th>商品重量</th> -->
                             </tr>
                             <%if(caseStore && caseStore.length > 0){ caseStore.forEach(function(child ,index){ %>
                             <tr>
-                                <td>
-                                    <%=index %>.</td>
+                                <td><input style="width: 40px;" class="priority" type="text" value="<%=child.priority %>"><button id="<%=child.categoryId %>"
+                                        class="submit">修改</button></td>
                                 <td>
                                     <%=child.storeName %>
                                 </td>
                                 <td>
                                     <%=child.storeId %>
                                 </td>
-                                <td><input class="priority" type="text" value="<%=child.priority %>"><button id="<%=child.categoryId %>"
-                                        class="submit">修改</button></td>
                                 <td><a href="/management/casePartsMgr?categoryId=<%=child.categoryId %>">修改详情</a></td>
                                 <td><a href="/management/deleteManage?isCase=1&categoryId=<%=child.categoryId %>">删除分类</a></td>
                             </tr>

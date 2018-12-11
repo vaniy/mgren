@@ -146,22 +146,22 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/trainingServiceMgrM" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>用户培训</p>
-                                  </a>
+                                    <a href="/management/trainingServiceMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>用户培训</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/trainingMgr" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>创建培训</p>
-                                  </a>
+                                    <a href="/management/trainingMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>创建培训</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/trainingMgrM" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>培训管理</p>
-                                  </a>
+                                    <a href="/management/trainingMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>培训管理</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/management/roleMgr" class="nav-link">
@@ -335,16 +335,16 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/guideMgr" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>购物指南</p>
-                                  </a>
+                                    <a href="/management/guideMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>购物指南</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/softwareMgr" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>销售工具</p>
-                                  </a>
+                                    <a href="/management/softwareMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>销售工具</p>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -441,6 +441,12 @@
                                         <label for="title">案例标题</label>
                                         <input value="<%=casee.title %>" class="form-control title" type="text"
                                             placeholder="例如：电商行业1">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="priority">排序</label>
+                                        <input value="<%=casee.priority ? casee.priority : '' %>" class="form-control priority"
+                                            type="text" placeholder="例如：1">
                                     </div>
                                     <div class="form-group">
                                         <label for="important">案例研究重点</label>
@@ -695,6 +701,8 @@
                 data.append("plan", plan);
                 var handle = $('input.handle').val();
                 data.append("handle", handle);
+                var priority = $('input.priority').val();
+                data.append("priority", priority);
                 // var weight = $('input.weight').val();
                 // data.append("weight", weight);
                 // var promotion = $('input.promotion').val();

@@ -400,7 +400,7 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th style="width: 10px">#</th>
+                                <th>排序</th>
                                 <th>配置分类</th>
                                 <th>配置名称</th>
                                 <th>配置规格</th>
@@ -410,8 +410,8 @@
                             </tr>
                             <%if(parts && parts.length > 0){ parts.forEach(function(child ,index){ %>
                             <tr>
-                                <td>
-                                    <%=index %>.</td>
+                                <td><input style="width: 40px;" class="priority" type="text" value="<%=child.priority %>"><button id="<%=child.partsId %>"
+                                        class="submit">修改</button></td>
                                 <td>
                                     <%=child.pName %>
                                 </td>
@@ -503,6 +503,35 @@
     <script src="/js/bootstrap-fileinput.js"></script>
     <script>
         $(function () {
+
+            $('.submit').click(function (e) {
+                e.preventDefault();
+                var priority = this.parentElement.firstElementChild.value;
+                var partsId = this.id;
+                $.ajax({
+                    url: '/api/updatePriority',
+                    type: 'POST',
+                    data: {
+                        priority,
+                        partsId,
+                    },
+                    async: false,
+                    cache: false,
+                    success: function (data) {
+                        console.log(data);
+                        if (data.status && data.status === 'success') {
+                            // alert('成功创建')
+                            // location.href = '/management'
+                        } else if (data.msg) {
+                            alert(data.msg)
+                            // console.log(data.message);
+                        }
+                    },
+                    error: function (data) {
+                        console.log(data.status);
+                    }
+                });
+            })
             // var descriptionEditor = null;
             // var structureEditor = null;
             // var configureEditor = null;

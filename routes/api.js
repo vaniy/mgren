@@ -1795,6 +1795,15 @@ router.post('/updatePriority', function (req, res) {
     else if (req.body.iid) {
         dbHandler.updatePriority(req, res, { iid: req.body.iid.trim() }, { priority: parseInt(req.body.priority) }, 'integrator')
     }
+    else if(req.body.partsId){
+        dbHandler.updatePriority(req, res, { partsId: req.body.partsId.trim() }, { priority: parseInt(req.body.priority) }, 'parts')
+    }
+    else if(req.body.pid){
+        dbHandler.updatePriority(req, res, { pid: req.body.pid.trim() }, { priority: parseInt(req.body.priority) }, 'product')
+    }
+    else if(req.body.caseId){
+        dbHandler.updatePriority(req, res, { caseId: req.body.caseId.trim() }, { priority: parseInt(req.body.priority) }, 'case')
+    }
     else {
         res.send({ status: '失败' })
     }

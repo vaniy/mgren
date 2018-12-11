@@ -418,6 +418,13 @@
                     <label for="title">商品名称</label>
                     <input value="<%=product.title %>" class="form-control title" type="text" placeholder="例如：托辊式中驱皮带机G5102">
                   </div>
+
+                  <div class="form-group">
+                    <label for="priority">排序</label>
+                    <input value="<%=product.priority ? product.priority : '' %>" class="form-control priority" type="text"
+                      placeholder="例如：1">
+                  </div>
+
                   <div class="form-group">
                     <label for="productSEO">搜索关键词（SEO）</label>
                     <input value="<%=product.productSEO %>" class="form-control productSEO" type="text" placeholder="例如：本产品XXXXXXXXX">
@@ -1135,6 +1142,8 @@
         data.append("productDesc", productDesc);
         var produtType = $('input.produtType').val();
         data.append("produtType", produtType);
+        var priority = $('input.priority').val();
+        data.append("priority", priority);
         // var identifier = $('input.identifier').val();
         // data.append("identifier", identifier);
 
