@@ -80,12 +80,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/management/categoryMgr" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>创建分类</p>
-                                    </a>
-                                </li>
+
                                 <li class="nav-item">
                                     <a href="/management/partsMgr" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -227,12 +222,7 @@
                                         <p>创建方案</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="/management/casePartsMgr" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>创建分类</p>
-                                    </a>
-                                </li>
+
                                 <li class="nav-item">
                                     <a href="/management/casePartsMgrM" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -400,9 +390,8 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th style="width: 10px">#</th>
-                                <th>集成商</th>
                                 <th style="min-width: 120px;">排序</th>
+                                <th>集成商</th>
                                 <th>所在城市</th>
                                 <th>服务区域</th>
                                 <th>email</th>
@@ -412,13 +401,11 @@
                             </tr>
                             <%if(integrators && integrators.length > 0){ integrators.forEach(function(child ,index){ %>
                             <tr>
-                                <td>
-                                    <%=index %>.</td>
+                                <td><input style="width: 40px;" class="priority" type="text" value="<%=child.priority %>"><button id="<%=child.iid %>"
+                                        class="submit">修改</button></td>
                                 <td>
                                     <%=child.integratorName %>
                                 </td>
-                                <td><input class="priority" type="text" value="<%=child.priority %>"><button id="<%=child.iid %>"
-                                        class="submit">修改</button></td>
                                 <td>
                                     <%=child.province || child.integratorNationCity %>
                                 </td>
@@ -519,8 +506,8 @@
                     success: function (data) {
                         console.log(data);
                         if (data.status && data.status === 'success') {
-                            // alert('成功创建')
-                            // location.href = '/management'
+                            alert('修改成功')
+                            location.href = '/management/integratorMgrM'
                         } else if (data.msg) {
                             alert(data.msg)
                             // console.log(data.message);
