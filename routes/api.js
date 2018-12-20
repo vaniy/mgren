@@ -250,6 +250,7 @@ router.post('/confirmOrder', function (req, res, next) {
 router.post('/uploadImages', function (req, res, next) {
     var pid = req.query.pid;
     var caseId = req.query.caseId;
+    var ttid = req.query.ttid;
     var type = req.query.command;
     var form = new formidable.IncomingForm();   //创建上传表单
     form.encoding = 'utf-8';        //设置编辑
@@ -301,6 +302,9 @@ router.post('/uploadImages', function (req, res, next) {
                 }
                 else if (caseId) {
                     avatarName = caseId + '_' + type + '_' + new Date().getTime() + '.' + extName;
+                }
+                else if (ttid) {
+                    avatarName = ttid + '_' + type + '_' + new Date().getTime() + '.' + extName;
                 }
                 else {
                     avatarName = type + '_' + new Date().getTime() + '.' + extName;
@@ -481,7 +485,7 @@ router.post('/createVideos', function (req, res, next) {
         // var tempstamp = new Date().getTime();
         // var uid = `uid_${tempstamp}`;
         let product = { inDate: new Date() };
-        product.video = '';
+        // product.video = '';
         for (var obj in fields) {
             if (obj && obj != 'null') {
                 product[obj] = fields[obj]
@@ -520,7 +524,7 @@ router.post('/createVideos', function (req, res, next) {
                 fs.unlinkSync(files[key].path);
             }
             else {
-                needChange = true;
+                // needChange = true;
                 // if (key === 'businessLicense') {
                 var avatarName = product.vid + '_' + key + '_' + '.' + extName;
                 var newPath = form.uploadDir + avatarName;
@@ -529,22 +533,22 @@ router.post('/createVideos', function (req, res, next) {
                 if (key == 'img') {
                     product.img = '/video/' + avatarName;
                 }
-                else {
-                    product.video = '/video/' + avatarName;
-                }
+                // else {
+                //     product.video = '/video/' + avatarName;
+                // }
                 console.log(newPath);
                 fs.renameSync(files[key].path, newPath);  //重命名
 
             }
         }
 
-        if (needChange) {
-            dbHandler.createVideo(req, res, product);
-            // dbHandler.createUser(user, req, res);
-        }
-        else {
-            res.send({ status: 'failed', msg: '请上传视频' });
-        }
+        // if (needChange) {
+        dbHandler.createVideo(req, res, product);
+        // dbHandler.createUser(user, req, res);
+        // }
+        // else {
+        //     res.send({ status: 'failed', msg: '请上传视频' });
+        // }
     });
 })
 
@@ -562,9 +566,9 @@ router.post('/createTraining', function (req, res, next) {
             res.send({ status: 'failed' });
             return;
         }
-        var tempstamp = new Date().getTime();
-        var ttid = `ttid_${tempstamp}`;
-        let product = { inDate: new Date(), ttid };
+        // var tempstamp = new Date().getTime();
+        // var ttid = `ttid_${tempstamp}`;
+        let product = { inDate: new Date() };
         product.img = '';
         for (var obj in fields) {
             if (obj && obj != 'null') {
@@ -1306,7 +1310,7 @@ router.post('/updateVideos', function (req, res, next) {
         // var tempstamp = new Date().getTime();
         // var uid = `uid_${tempstamp}`;
         let product = {};
-        product.video = '';
+        // product.video = '';
         for (var obj in fields) {
             if (obj && obj != 'null') {
                 product[obj] = fields[obj]
@@ -1355,9 +1359,9 @@ router.post('/updateVideos', function (req, res, next) {
                 if (key == 'img') {
                     product.img = '/video/' + avatarName;
                 }
-                else {
-                    product.video = '/video/' + avatarName;
-                }
+                // else {
+                //     product.video = '/video/' + avatarName;
+                // }
                 console.log(newPath);
                 fs.renameSync(files[key].path, newPath);  //重命名
 
@@ -1795,13 +1799,13 @@ router.post('/updatePriority', function (req, res) {
     else if (req.body.iid) {
         dbHandler.updatePriority(req, res, { iid: req.body.iid.trim() }, { priority: parseInt(req.body.priority) }, 'integrator')
     }
-    else if(req.body.partsId){
+    else if (req.body.partsId) {
         dbHandler.updatePriority(req, res, { partsId: req.body.partsId.trim() }, { priority: parseInt(req.body.priority) }, 'parts')
     }
-    else if(req.body.pid){
+    else if (req.body.pid) {
         dbHandler.updatePriority(req, res, { pid: req.body.pid.trim() }, { priority: parseInt(req.body.priority) }, 'product')
     }
-    else if(req.body.caseId){
+    else if (req.body.caseId) {
         dbHandler.updatePriority(req, res, { caseId: req.body.caseId.trim() }, { priority: parseInt(req.body.priority) }, 'case')
     }
     else {

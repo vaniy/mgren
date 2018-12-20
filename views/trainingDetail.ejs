@@ -10,7 +10,7 @@
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/swiper.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="/css/training.css">
 </head>
 
 <body>
@@ -69,10 +69,77 @@
                 </p>
             </div>
             <span>
-                <%=training.content %>
+                <%-training.content %>
             </span>
 
-            <div>
+            <form method="post" name="myform"
+                id="myform">
+                <!-- <img src="images/gendan.jpg" alt="" style="width:100%; max-width:100%;"> <br><br> <br><br> -->
+                <div id="contact_form" class="cfixed">
+                    <h4>培训报名</h4>
+                    <div id="formComponents">
+                        <dl id="form_keys_1">
+                            <dt><label>公司名称</label></dt>
+                            <dd>
+                                <fieldset>
+                                    <div> <input class="companyName" type="text" placeholder="公司名称"></div>
+                                </fieldset>
+                            </dd>
+                        </dl>
+                        <dl id="form_keys_2">
+                            <dt><label>您的职位</label></dt>
+                            <dd>
+                                <fieldset>
+                                    <div><input class="position" type="text" placeholder="您的职位"></div>
+                                </fieldset>
+                            </dd>
+                        </dl>
+                        <dl id="form_keys_3">
+                            <dt><label>您的姓名</label></dt>
+                            <dd>
+                                <fieldset>
+                                    <div><input class="name" type="text" placeholder="您的姓名"></div>
+                                </fieldset>
+                            </dd>
+                        </dl>
+                        <dl id="form_keys_4">
+                            <dt><label>联系电话</label></dt>
+                            <dd>
+                                <fieldset>
+                                    <div><input class="phone" type="text" placeholder="联系电话"></div>
+                                </fieldset>
+                            </dd>
+                        </dl>
+                        <dl id="form_keys_5">
+                            <dt><label>居住地址</label></dt>
+                            <dd>
+                                <fieldset>
+                                    <div><input class="address" type="text" placeholder="居住地址"></div>
+                                </fieldset>
+                            </dd>
+                        </dl>
+
+                        <dl class="mandatory_field">
+                            <dt>
+                                <label>您的邮箱</label>
+                            </dt>
+                            <dd><input class="email" type="text" placeholder="您的邮箱"></dd>
+                        </dl>
+                        <dl class="comment_textarea">
+                            <dt>
+                                <label>留言</label>
+                            </dt>
+                            <dd>
+                                <fieldset>
+                                    <div><textarea id="Comment" class="textarea feedBack" name="info[Comment]"></textarea></div>
+                                </fieldset>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <p class="send"><button class="submit">提交信息</button></p>
+            </form>
+            <!-- <div>
                 <p>培训报名</p>
                 <input class="companyName" type="text" placeholder="公司名称">
                 <input class="position" type="text" placeholder="您的职位">
@@ -81,8 +148,8 @@
                 <input class="email" type="text" placeholder="您的邮箱">
                 <input class="address" type="text" placeholder="居住地址">
                 <textarea class="feedBack" type="text" placeholder="留言"></textarea>
-                <button class="submit">提交信息</button>
-            </div>
+                
+            </div> -->
         </div>
     </div>
     <div class="bottom">

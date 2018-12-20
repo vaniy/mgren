@@ -427,6 +427,7 @@ router.get('/customServiceMgr', (req, res, next) => checkAdmin(req, res, next), 
 router.get('/priceServiceMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     if (req.query.qid && req.query.qid.trim() != '') {
         dbHandler.getUserServiceQuestion(req, res, (questions) => {
+
             dbHandler.getUserInfo(req, res, (user) => {
                 res.render('priceServiceMgr', { title: '', question: questions[0], name: user.name });
             }, { uid: questions[0].uid });
@@ -510,6 +511,11 @@ router.get('/deleteManage', (req, res, next) => checkAdmin(req, res, next), func
             // if (orders && orders.length > 0) {
             res.redirect('/management/trainingMgrM')
         }, 'training', { ttid: req.query.ttid.trim() })
+    }
+    else if(req.query.vid && req.query.vid.trim() != ''){
+        dbHandler.deleteManage(req, res, (p) => {
+            res.redirect('/management/videoMgrM')
+        }, 'video', { vid: req.query.vid.trim() })
     }
     else {
         res.redirect('/management')

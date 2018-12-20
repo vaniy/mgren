@@ -80,7 +80,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                
+
                                 <li class="nav-item">
                                     <a href="/management/partsMgr" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -193,7 +193,7 @@
                                         <p>售后管理</p>
                                     </a>
                                 </li>
-                                
+
                                 <li class="nav-item">
                                     <a href="/management/casePartsMgrM" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -246,12 +246,7 @@
                                         <p>视频列表</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>视频修改</p>
-                                    </a>
-                                </li>
+
                                 <li class="nav-item">
                                     <a href="/management/videoMgr" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -405,11 +400,17 @@
                                         <input value="<%=training.title%>" class="form-control title" type="text"
                                             placeholder="例如：德马优势">
                                     </div>
-                                    <div class="form-group">
+
+                                    <div class="mb-3">
+                                        <label for="content">培训内容</label>
+                                        <textarea id="content" name="content" style="width: 100%; display: none;"></textarea>
+                                    </div>
+
+                                    <!-- <div class="form-group">
                                         <label for="title">培训内容</label>
                                         <input value="<%=training.content%>" class="form-control content" type="text"
                                             placeholder="例如：德马智能物流系统在大型电商物流中心的应用案例">
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group">
                                         <label for="title">培训地点</label>
@@ -515,20 +516,41 @@
     <script src="/js/bootstrap-fileinput.js"></script>
     <script>
         $(function () {
-            var ttid = $('input.ttid').val()
+            var ttid = $('input.ttid').val();
+            var nttid = 'ttid_' + new Date().getTime();
+
+            var contentEditor = null;
+
+            ClassicEditor
+                .create(document.querySelector('#content'), {
+                    ckfinder: {
+                        uploadUrl: '/api/uploadImages?command=content&ttid=' + ttid && ttid.trim() != '' ? ttid : nttid + '&type=Files&responseType=json'
+                    }
+                })
+                .then(function (editor) {
+                    contentEditor = editor;
+                    // The editor instance
+                })
+                .catch(function (error) {
+                    console.error(error)
+                });
 
             $('.btn.btn-primary').click(function (e) {
                 e.preventDefault();
                 // debugger
                 var data = new FormData();
+                var content = contentEditor.getData();
+                data.append("content", content);
                 var title = $('input.title').val();
                 data.append("title", title);
-                var content = $('input.content').val();
-                data.append("content", content);
+                // var content = $('input.content').val();
+                // data.append("content", content);
                 var address = $('input.address').val();
                 data.append("address", address);
                 var time = $('input.time').val();
                 data.append("time", time);
+                var ttid = $('input.ttid').val();
+                data.append("ttid", ttid && ttid.trim() != '' ? ttid : nttid);
 
 
                 if (document.getElementsByClassName('img')[0].files[0]) {

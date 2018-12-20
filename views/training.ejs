@@ -63,22 +63,18 @@
                     <div class="pull-left">
                         <div class="fa-tt">
                             <%=child.title %>
-                            <%if(child.status != undefined){%>
-                            <%if(child.status == 0){%>
+                            <%if(child.status != undefined){if(child.status == 0){%>
                             <span>(待审核)</span>
                             <%}else if(child.status == 1){%>
                             <span>(通过)</span>
                             <%}else if(child.status == 2){%>
                             <span class="red">(未通过)</span>
-                            <!-- <%}else if(child.status == 2){%>
-                                    <td>已完成</td> -->
-                            <%} %>
-                            <%} %>
+                            <%}} %>
                         </div>
                         <div class="fa-p">
-                            <p>
-                                <%=child.content %>
-                            </p>
+                            <!-- <p>
+                                <%-child.content %>
+                            </p> -->
                             <p>时间：
                                 <%=child.time %>
                             </p>

@@ -1,0 +1,37 @@
+#contact_form{padding:20px; background:#f4f4f4;}
+#formComponents dl{width:100%; margin-bottom:20px;}
+
+#formComponents dl:nth-child(2n){margin-right:0;}
+
+#formComponents dl label{font-size:14px; color:#333; margin-bottom:14px; display:block;}
+
+
+#formComponents dl input{width:100%; margin:0; padding:0; border:1px solid #e6e6e6; box-sizing:border-box; font-size:14px; padding:9px 14px; color:#333; border-radius:2px;}
+#formComponents dl input:focus, #formComponents .textarea:focus{border-color:#B71C1C; outline:none;}
+#formComponents .comment_textarea{width:100%; }
+
+#formComponents .textarea{width:100%; margin:0; padding:0; border:1px solid #eee; box-sizing:border-box; font-size:14px; padding:9px 14px; color:#333; border-radius:2px; height:200px}
+
+.send{text-align:center; margin-bottom:35px;}
+.send button{width:100%; font-size:16px; color:#fff; /* IE10+ */ 
+background-image: -ms-linear-gradient(top, #C62828 0%, #B71C1C 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(top, #C62828 0%, #B71C1C 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(top, #C62828 0%, #B71C1C 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #C62828), color-stop(100, #B71C1C));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #C62828 0%, #B71C1C 100%);
+
+/* W3C Markup */ 
+background-image: linear-gradient(to bottom, #C62828 0%, #B71C1C 100%); display:inline-block; padding:10px 16px; border-radius:4px; margin:0; border:0; cursor:pointer; box-sizing:border-box;}
+
+.send {
+    text-align: center;
+    margin-bottom: 35px;
+}

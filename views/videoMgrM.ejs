@@ -246,12 +246,7 @@
                                         <p>视频列表</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>视频修改</p>
-                                    </a>
-                                </li>
+                                
                                 <li class="nav-item">
                                     <a href="/management/videoMgr" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -353,7 +348,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">配置列表</h1>
+                            <h1 class="m-0 text-dark">视频列表</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -376,6 +371,7 @@
                                 <th>视频分类</th>
                                 <th>视频标题</th>
                                 <th>视频修改</th>
+                                <th>视频删除</th>
                                 <!-- <th>商品重量</th> -->
                             </tr>
                             <%if(videos && videos.length > 0){ videos.forEach(function(child ,index){ %>
@@ -390,6 +386,7 @@
                                 </td>
                                 <!-- <td><%=child.storeId %></td> -->
                                 <td><a href="/management/videoMgr?vid=<%=child.vid %>">修改详情</a></td>
+                                <td><a href="/management/deleteManage?vid=<%=child.vid %>">删除视频</a></td>
                             </tr>
                             <%})} %>
                         </tbody>
