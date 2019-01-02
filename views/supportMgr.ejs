@@ -384,7 +384,7 @@
                                         <label for="description">支持页面</label>
 
                                         <textarea id="description" name="description" style="width: 100%; display: none;">
-                                            <%-support.support%>
+                                            <%-support && support.support ? support.support : ''%>
                                         </textarea>
                                     </div>
 

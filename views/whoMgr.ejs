@@ -384,7 +384,7 @@
                                         <label for="description">关于我们</label>
 
                                         <textarea id="description" name="description" style="width: 100%; display: none;">
-                                        <%-about.dom%>
+                                        <%-about && about.dom ? about.dom : ''%>
                                         </textarea>
                                     </div>
 
