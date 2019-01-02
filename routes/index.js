@@ -61,20 +61,20 @@ router.get('/downloadDetail', function (req, res) {
 });
 
 router.get('/support', function (req, res) {
-    dbHandler.getWebsite(req, res, (support) => {
-        res.render('support', { title: '', support });
+    dbHandler.getWebsite(req, res, (supports) => {
+        res.render('support', { title: '', support: supports[0] });
     }, 'support')
 });
 
 router.get('/about', function (req, res) {
-    dbHandler.getWebsite(req, res, (about) => {
-        res.render('about', { title: '', about });
+    dbHandler.getWebsite(req, res, (abouts) => {
+        res.render('about', { title: '', about: abouts[0] });
     }, 'about')
 });
 
 router.get('/contact', function (req, res) {
-    dbHandler.getWebsite(req, res, (contact) => {
-        res.render('contact', { title: '', contact });
+    dbHandler.getWebsite(req, res, (contacts) => {
+        res.render('contact', { title: '', contact: contacts[0] });
     }, 'contract')
 });
 
@@ -105,8 +105,8 @@ router.get('/guide', function (req, res) {
                 break;
         }
     }
-    dbHandler.getWebsite(req, res, (guide) => {
-        res.render('guide', { title: title, guide, currentType });
+    dbHandler.getWebsite(req, res, (guides) => {
+        res.render('guide', { title: title, guide: guides[0], currentType });
     }, 'guide', req.query.type ? { id: parseInt(req.query.type) } : {})
 });
 
@@ -365,10 +365,10 @@ router.get('/training', function (req, res) {
         if (req.cookies.user && req.cookies.user.uid) {
             dbHandler.getUserTraining(req, res, (userTrainings) => {
                 let outputs = Object.assign([], trainings);
-                outputs.forEach((child, index)=>{
-                    userTrainings.forEach((cld, idx)=>{
+                outputs.forEach((child, index) => {
+                    userTrainings.forEach((cld, idx) => {
                         // if
-                        if(child.ttid == cld.ttid){
+                        if (child.ttid == cld.ttid) {
                             child.status = cld.status;
                         }
                     })

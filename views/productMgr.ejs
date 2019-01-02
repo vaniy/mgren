@@ -93,21 +93,15 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link active">
-                    <i class="fa fa-circle-o nav-icon"></i>
-                    <p>创建商品</p>
-                  </a>
-                </li>
-                <li class="nav-item">
                   <a href="/management/partsMgrM" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>配置管理</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/management/productMgrM" class="nav-link">
+                  <a href="/management/productMgrM" class="nav-link active">
                     <i class="fa fa-circle-o nav-icon"></i>
-                    <p>商品管理</p>
+                    <p>商品列表</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -645,7 +639,9 @@
                     <!-- <%if(product.description){ %>
                     <%-product.description %>
                     <%} %> -->
-                    <textarea id="description" name="description" style="width: 100%; display: none;"></textarea>
+                    <textarea id="description" name="description" style="width: 100%; display: none;">
+                      <%-product.description %>
+                    </textarea>
                   </div>
 
                   <div class="mb-3">
@@ -653,7 +649,9 @@
                     <!-- <%if(product.structure){ %>
                     <%-product.structure %>
                     <%} %> -->
-                    <textarea id="structure" name="structure" style="width: 100%; display: none;"></textarea>
+                    <textarea id="structure" name="structure" style="width: 100%; display: none;">
+                      <%-product.structure %>
+                    </textarea>
                   </div>
 
 
@@ -662,7 +660,9 @@
                     <!-- <%if(product.configure){ %>
                     <%-product.configure %>
                     <%} %> -->
-                    <textarea id="configure" name="configure" style="width: 100%; display: none;"></textarea>
+                    <textarea id="configure" name="configure" style="width: 100%; display: none;">
+                      <%-product.configure %>
+                    </textarea>
                   </div>
 
 
@@ -671,7 +671,9 @@
                     <!-- <%if(product.help){ %>
                     <%-product.help %>
                     <%} %> -->
-                    <textarea id="help" name="help" style="width: 100%; display: none;"></textarea>
+                    <textarea id="help" name="help" style="width: 100%; display: none;">
+                      <%-product.help %>
+                    </textarea>
                   </div>
 
 

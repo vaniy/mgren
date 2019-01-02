@@ -277,16 +277,50 @@ router.get('/homeMgr', (req, res, next) => checkAdmin(req, res, next), function 
 })
 
 router.get('/supportMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
-    res.render('supportMgr', { title: '支持' })
+    dbHandler.getWebsite(req, res, (supports) => {
+        res.render('supportMgr', { title: '支持', support: supports[0] })
+    }, 'support')
 })
 router.get('/whoMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
-    res.render('whoMgr', { title: '关于我们' })
+    dbHandler.getWebsite(req, res, (abouts) => {
+        res.render('whoMgr', { title: '关于我们', about: abouts[0] })
+    }, 'about')
 })
 router.get('/contractMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
-    res.render('contractMgr', { title: '联系我们' })
+    dbHandler.getWebsite(req, res, (contacts) => {
+        res.render('contractMgr', { title: '联系我们', contact: contacts[0] })
+    }, 'contract')
 })
 router.get('/guideMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
-    res.render('guideMgr', { title: '购物指南' })
+    dbHandler.getWebsite(req, res, (guides) => {
+        let guides1 = '';
+        let guides2 = '';
+        let guides3 = '';
+        let guides4 = '';
+        let guides5 = '';
+        if (guides && guides.length > 0) {
+            guides.forEach(function (child) {
+                switch (child.id) {
+                    case 1:
+                        guides1 = child.dom;
+                        break;
+                    case 2:
+                        guides2 = child.dom;
+                        break;
+                    case 3:
+                        guides3 = child.dom;
+                        break;
+                    case 4:
+                        guides4 = child.dom;
+                        break;
+                    case 5:
+                        guides5 = child.dom;
+                        break;
+                }
+            })
+        }
+        res.render('guideMgr', { title: '购物指南', guides1, guides2, guides3, guides4, guides5 });
+    }, 'guide', { $or: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }] })
 })
 
 router.get('/softwareMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
@@ -512,7 +546,7 @@ router.get('/deleteManage', (req, res, next) => checkAdmin(req, res, next), func
             res.redirect('/management/trainingMgrM')
         }, 'training', { ttid: req.query.ttid.trim() })
     }
-    else if(req.query.vid && req.query.vid.trim() != ''){
+    else if (req.query.vid && req.query.vid.trim() != '') {
         dbHandler.deleteManage(req, res, (p) => {
             res.redirect('/management/videoMgrM')
         }, 'video', { vid: req.query.vid.trim() })

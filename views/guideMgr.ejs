@@ -80,19 +80,9 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                
-                                <li class="nav-item">
-                                    <a href="/management/partsMgr" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>创建配置</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/management/productMgr" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>创建商品</p>
-                                    </a>
-                                </li>
+
+
+
                                 <li class="nav-item">
                                     <a href="/management/partsMgrM" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -102,7 +92,7 @@
                                 <li class="nav-item">
                                     <a href="/management/productMgrM" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>商品管理</p>
+                                        <p>商品列表</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -141,22 +131,22 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/trainingServiceMgrM" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>用户培训</p>
-                                  </a>
+                                    <a href="/management/trainingServiceMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>用户培训</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/trainingMgr" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>创建培训</p>
-                                  </a>
+                                    <a href="/management/trainingMgr" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>创建培训</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a href="/management/trainingMgrM" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>培训管理</p>
-                                  </a>
+                                    <a href="/management/trainingMgrM" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>培训管理</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/management/roleMgr" class="nav-link">
@@ -210,19 +200,14 @@
                                         <p>方案列表</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>方案修改</p>
-                                    </a>
-                                </li>
+
                                 <li class="nav-item">
                                     <a href="/management/caseMgr" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>创建方案</p>
                                     </a>
                                 </li>
-                                
+
                                 <li class="nav-item">
                                     <a href="/management/casePartsMgrM" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -246,7 +231,7 @@
                                         <p>视频列表</p>
                                     </a>
                                 </li>
-                                
+
                                 <li class="nav-item">
                                     <a href="/management/videoMgr" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -398,7 +383,9 @@
                                     <div class="mb-3">
                                         <label for="description">购物流程</label>
 
-                                        <textarea id="description1" name="description" style="width: 100%; display: none;"></textarea>
+                                        <textarea id="description1" name="description" style="width: 100%; display: none;">
+                                            <%-guides1 %>
+                                        </textarea>
                                     </div>
 
                                     <!-- /.card-body -->
@@ -412,7 +399,9 @@
                                     <div class="mb-3">
                                         <label for="description">会员帐户</label>
 
-                                        <textarea id="description2" name="description" style="width: 100%; display: none;"></textarea>
+                                        <textarea id="description2" name="description" style="width: 100%; display: none;">
+                                            <%-guides2 %>
+                                        </textarea>
                                     </div>
 
                                     <!-- /.card-body -->
@@ -426,7 +415,9 @@
                                     <div class="mb-3">
                                         <label for="description">产品挑选</label>
 
-                                        <textarea id="description3" name="description" style="width: 100%; display: none;"></textarea>
+                                        <textarea id="description3" name="description" style="width: 100%; display: none;">
+                                            <%-guides3 %>
+                                        </textarea>
                                     </div>
 
                                     <!-- /.card-body -->
@@ -440,7 +431,9 @@
                                     <div class="mb-3">
                                         <label for="description">下载说明</label>
 
-                                        <textarea id="description4" name="description" style="width: 100%; display: none;"></textarea>
+                                        <textarea id="description4" name="description" style="width: 100%; display: none;">
+                                            <%-guides4 %>
+                                        </textarea>
                                     </div>
 
                                     <!-- /.card-body -->
@@ -454,7 +447,9 @@
                                     <div class="mb-3">
                                         <label for="description">订单修改</label>
 
-                                        <textarea id="description5" name="description" style="width: 100%; display: none;"></textarea>
+                                        <textarea id="description5" name="description" style="width: 100%; display: none;">
+                                            <%-guides5 %>
+                                        </textarea>
                                     </div>
 
                                     <!-- /.card-body -->
@@ -606,23 +601,23 @@
                 // debugger;
                 let type = -1;
                 var description = '';
-                if(this.className.indexOf('description1')){
+                if (this.className.indexOf('description1')) {
                     type = 3;
                     description = descriptionEditor1.getData();
                 }
-                else if(this.className.indexOf('description2')){
+                else if (this.className.indexOf('description2')) {
                     type = 4;
                     description = descriptionEditor2.getData();
                 }
-                else if(this.className.indexOf('description3')){
+                else if (this.className.indexOf('description3')) {
                     type = 5;
                     description = descriptionEditor3.getData();
                 }
-                else if(this.className.indexOf('description4')){
+                else if (this.className.indexOf('description4')) {
                     type = 6;
                     description = descriptionEditor4.getData();
                 }
-                else if(this.className.indexOf('description5')){
+                else if (this.className.indexOf('description5')) {
                     type = 7;
                     description = descriptionEditor5.getData();
                 }

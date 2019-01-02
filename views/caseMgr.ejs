@@ -80,13 +80,8 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                
-                                <li class="nav-item">
-                                    <a href="/management/partsMgr" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>创建配置</p>
-                                    </a>
-                                </li>
+
+
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -102,7 +97,7 @@
                                 <li class="nav-item">
                                     <a href="/management/productMgrM" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>商品管理</p>
+                                        <p>商品列表</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -210,19 +205,14 @@
                                         <p>方案列表</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>方案修改</p>
-                                    </a>
-                                </li>
+                                
                                 <li class="nav-item">
                                     <a href="/management/caseMgr" class="nav-link active">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>创建方案</p>
                                     </a>
                                 </li>
-                                
+
                                 <li class="nav-item">
                                     <a href="/management/casePartsMgrM" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -246,7 +236,7 @@
                                         <p>视频列表</p>
                                     </a>
                                 </li>
-                                
+
                                 <li class="nav-item">
                                     <a href="/management/videoMgr" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
@@ -454,7 +444,9 @@
                                         <!-- <%if(casee.background){ %>
                                         <%-casee.background %>
                                         <%} %> -->
-                                        <textarea id="background" name="background" style="width: 100%; display: none;"></textarea>
+                                        <textarea id="background" name="background" style="width: 100%; display: none;">
+                                            <%-casee.background %>
+                                        </textarea>
                                     </div>
 
 
@@ -463,7 +455,9 @@
                                         <!-- <%if(casee.solution){ %>
                                         <%-casee.solution %>
                                         <%} %> -->
-                                        <textarea id="solution" name="solution" style="width: 100%; display: none;"></textarea>
+                                        <textarea id="solution" name="solution" style="width: 100%; display: none;">
+                                            <%-casee.solution %>
+                                        </textarea>
                                     </div>
 
                                     <%if(casee.products && casee.products.length > 0){ casee.products.forEach(function(cld, inx){%>
