@@ -50,31 +50,41 @@ router.get('/', function (req, res) {
 
 router.get('/download', function (req, res) {
     dbHandler.getListPage(req, res, (stores) => {
-        res.render('download', { title: '', stores });
+        dbHandler.getBanner(req, res, (banners) => {
+            res.render('download', { title: '', imgs: banners[0] && banners[0].imgs ? banners[0].imgs : [], stores });
+        }, { id: 3 })
     })
 });
 
 router.get('/downloadDetail', function (req, res) {
     dbHandler.getSoftwares(req, res, (software) => {
-        res.render('downloadDetail', { title: '', softwares: software && software.length > 0 ? software[0].propertys : [] });
+        dbHandler.getBanner(req, res, (banners) => {
+            res.render('downloadDetail', { title: '', imgs: banners[0] && banners[0].imgs ? banners[0].imgs : [], softwares: software && software.length > 0 ? software[0].propertys : [] });
+        }, { id: 3 })
     })
 });
 
 router.get('/support', function (req, res) {
     dbHandler.getWebsite(req, res, (supports) => {
-        res.render('support', { title: '', support: supports[0] });
+        dbHandler.getBanner(req, res, (banners) => {
+            res.render('support', { title: '', imgs: banners[0] && banners[0].imgs ? banners[0].imgs : [], support: supports[0] });
+        }, { id: 3 })
     }, 'support')
 });
 
 router.get('/about', function (req, res) {
     dbHandler.getWebsite(req, res, (abouts) => {
-        res.render('about', { title: '', about: abouts[0] });
+        dbHandler.getBanner(req, res, (banners) => {
+            res.render('about', { title: '', imgs: banners[0] && banners[0].imgs ? banners[0].imgs : [], about: abouts[0] });
+        }, { id: 5 })
     }, 'about')
 });
 
 router.get('/contact', function (req, res) {
     dbHandler.getWebsite(req, res, (contacts) => {
-        res.render('contact', { title: '', contact: contacts[0] });
+        dbHandler.getBanner(req, res, (banners) => {
+            res.render('contact', { title: '', imgs: banners[0] && banners[0].imgs ? banners[0].imgs : [], contact: contacts[0] });
+        }, { id: 5 })
     }, 'contract')
 });
 
@@ -113,14 +123,16 @@ router.get('/guide', function (req, res) {
 router.get('/case', function (req, res) {
     dbHandler.getAllCaseCategory(req, res, (store) => {
         dbHandler.getCase(req, res, (casee) => {
-            let cstoreId = req.query.storeId ? req.query.storeId : (store && store.length > 0 ? store[0].storeId + '' : '');
-            let storeName = '';
-            store.forEach(function (child) {
-                if (cstoreId == child.storeId) {
-                    storeName = child.storeName
-                }
-            })
-            res.render('case', { title: '', store, casee: casee, cstoreId, storeName: storeName });
+            dbHandler.getBanner(req, res, (banners) => {
+                let cstoreId = req.query.storeId ? req.query.storeId : (store && store.length > 0 ? store[0].storeId + '' : '');
+                let storeName = '';
+                store.forEach(function (child) {
+                    if (cstoreId == child.storeId) {
+                        storeName = child.storeName
+                    }
+                })
+                res.render('case', { title: '', store, imgs: banners[0] && banners[0].imgs ? banners[0].imgs : [], casee: casee, cstoreId, storeName: storeName });
+            }, { id: 2 })
         }, { storeId: req.query.storeId ? req.query.storeId : (store && store.length > 0 ? store[0].storeId + '' : '') })
     })
 });
@@ -356,7 +368,9 @@ router.get('/video', function (req, res) {
                 }
             })
         })
-        res.render('video', { title: '', results });
+        dbHandler.getBanner(req, res, (banners) => {
+            res.render('video', { title: '', imgs: banners[0] && banners[0].imgs ? banners[0].imgs : [], results });
+        }, { id: 4 })
     })
 });
 
@@ -373,11 +387,16 @@ router.get('/training', function (req, res) {
                         }
                     })
                 })
-                res.render('training', { title: '', trainings: outputs });
+
+                dbHandler.getBanner(req, res, (banners) => {
+                    res.render('training', { title: '', imgs: banners[0] && banners[0].imgs ? banners[0].imgs : [], trainings: outputs });
+                }, { id: 4 })
             }, { uid: req.cookies.user.uid });
         }
         else {
-            res.render('training', { title: '', trainings });
+            dbHandler.getBanner(req, res, (banners) => {
+                res.render('training', { title: '', imgs: banners[0] && banners[0].imgs ? banners[0].imgs : [], trainings });
+            }, { id: 4 })
         }
     })
 });
@@ -435,13 +454,18 @@ router.get('/integrator', function (req, res) {
                 })
             }
         }
-        res.render('integrator', { title: '', integrators: outputs, provinces, currentProvince: req.query.province || '全部', isNational: req.query.isNational || 0 });
+
+        dbHandler.getBanner(req, res, (banners) => {
+            res.render('integrator', { title: '', imgs: banners[0] && banners[0].imgs ? banners[0].imgs : [], integrators: outputs, provinces, currentProvince: req.query.province || '全部', isNational: req.query.isNational || 0 });
+        }, { id: 6 })
     }, query)
 });
 
 router.get('/productlist', function (req, res) {
     dbHandler.getListPage(req, res, (store) => {
-        res.render('productlist', { title: '', store: req.query.storeId != undefined ? store.filter((x) => { return x.storeId == req.query.storeId }) : store });
+        dbHandler.getBanner(req, res, (banners) => {
+            res.render('productlist', { title: '', imgs: banners[0] && banners[0].imgs ? banners[0].imgs : [], store: req.query.storeId != undefined ? store.filter((x) => { return x.storeId == req.query.storeId }) : store });
+        }, { id: 1 })
     })
 });
 

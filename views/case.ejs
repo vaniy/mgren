@@ -41,7 +41,29 @@
 			<span class="icon-bar"></span>
 		</button>
 	</div>
+	<%if(imgs && imgs.length > 0){%>
+	<div class="banner">
+		<!-- Swiper -->
+		<div class="swiper-container swiper-container01">
+			<div class="swiper-wrapper">
+				<%if(imgs && imgs.length > 0){ imgs.forEach(function(child, index){%>
+				<div class="swiper-slide"><a href="#"><img src="<%=child %>"></a></div>
+				<%})} %>
+				<!-- <div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
+					<div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
+					<div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
+					<div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div> -->
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination swiper-pagination01"></div>
+			<!-- Add Arrows -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div>
+	</div>
+	<%}else{%>
 	<div class="cp-banner"></div>
+	<%} %>
 	<div class="container clearfix">
 		<div class="pull-left cp-left">
 			<div class="cp-left-tt">方案<span class="caret"></span></div>
@@ -60,17 +82,27 @@
 			</ul>
 		</div>
 		<div class="cp-right pull-right">
-			<div class="cp-right-tt"><%=storeName %></div>
+			<div class="cp-right-tt">
+				<%=storeName %>
+			</div>
 			<ul class="fa-list">
 				<%if(casee && casee.length > 0){ casee.forEach(function(child, index){%>
 				<li class="clearfix">
 					<div class="pull-right fa-img"><a href=""><img src="<%=child.imgs && child.imgs.length > 0 ? child.imgs[0] : 'images/fa-img.png'%>"></a></div>
 					<div class="pull-left">
-						<div class="fa-tt"><%=child.title %></div>
+						<div class="fa-tt">
+							<%=child.title %>
+						</div>
 						<div class="fa-p">
-							<p>案例研究重点：<%=child.important %></p>
-							<p>关键系统解决方案：<%=child.plan %></p>
-							<p>产品处理：<%=child.handle %></p>
+							<p>案例研究重点：
+								<%=child.important %>
+							</p>
+							<p>关键系统解决方案：
+								<%=child.plan %>
+							</p>
+							<p>产品处理：
+								<%=child.handle %>
+							</p>
 						</div>
 						<a href="/caseDetail?caseId=<%=child.caseId %>&storeId=<%=child.storeId %>" class="fa-more"><span>了解更多</span></a>
 					</div>

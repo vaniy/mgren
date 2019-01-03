@@ -328,6 +328,31 @@ router.get('/guideMgr', (req, res, next) => checkAdmin(req, res, next), function
     }, 'guide', { $or: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }] })
 })
 
+router.get('/bannerMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
+    // dbHandler.getWebsite(req, res, (contacts) => {
+    dbHandler.getBanner(req, res, (banners) => {
+        let banner1 = banners.filter((x) => {
+            return x.id == 1
+        })[0];
+        let banner2 = banners.filter((x) => {
+            return x.id == 2
+        })[0];
+        let banner3 = banners.filter((x) => {
+            return x.id == 3
+        })[0];
+        let banner4 = banners.filter((x) => {
+            return x.id == 4
+        })[0];
+        let banner5 = banners.filter((x) => {
+            return x.id == 5
+        })[0];
+        let banner6 = banners.filter((x) => {
+            return x.id == 6
+        })[0];
+        res.render('bannerMgr', { title: '联系我们', banner1, banner2, banner3, banner4, banner5, banner6 })
+    })
+    // }, 'contract')
+})
 router.get('/softwareMgr', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     dbHandler.getSoftwares(req, res, (softwares) => {
         res.render('softwareMgr', { title: '销售工具', software: softwares[0] })

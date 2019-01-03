@@ -41,7 +41,30 @@
 			<span class="icon-bar"></span>
 		</button>
 	</div>
+
+	<%if(imgs && imgs.length > 0){%>
+	<div class="banner">
+		<!-- Swiper -->
+		<div class="swiper-container swiper-container01">
+			<div class="swiper-wrapper">
+				<%if(imgs && imgs.length > 0){ imgs.forEach(function(child, index){%>
+				<div class="swiper-slide"><a href="#"><img src="<%=child %>"></a></div>
+				<%})} %>
+				<!-- <div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
+						<div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
+						<div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div>
+						<div class="swiper-slide"><a href=""><img src="images/banner.jpg"></a></div> -->
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination swiper-pagination01"></div>
+			<!-- Add Arrows -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div>
+	</div>
+	<%}else{%>
 	<div class="cp-banner"></div>
+	<%} %>
 	<div class="container clearfix">
 		<div class="pull-left cp-left">
 			<div class="cp-left-tt">产品<span class="caret"></span></div>

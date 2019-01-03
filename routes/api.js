@@ -775,6 +775,81 @@ router.post('/createService', function (req, res, next) {
     });
 })
 
+router.post('/updateBanner', function (req, res, next) {
+
+    var form = new formidable.IncomingForm();   //创建上传表单
+    form.encoding = 'utf-8';        //设置编辑
+    form.uploadDir = 'public' + HOMEPAGE_UPLOAD_FOLDER;     //设置上传目录
+    form.keepExtensions = true;     //保留后缀
+    form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+
+
+    form.parse(req, function (err, fields, files) {
+        if (err) {
+            res.send({ status: 'failed' });
+            return;
+        }
+        // var tempstamp = new Date().getTime();
+        // var qid = `qid_${tempstamp}`;
+        let common = { inDate: new Date() };
+        common.imgs = [];
+        for (var obj in fields) {
+            if (obj && obj != 'null') {
+                common[obj] = fields[obj]
+            }
+        }
+        if (common.banners) {
+            let banners = common.banners.split(',');
+            banners.forEach((child) => {
+                common.imgs.push('/home' + child.slice(child.lastIndexOf('/'), child.length));
+            })
+        }
+
+        var needChange = false;
+        if(common.imgs.length > 0){
+            needChange = true;
+        }
+        for (var key in files) {
+            var extName = '';  //后缀名
+            switch (files[key].type) {
+                case 'image/pjpeg':
+                    extName = 'jpg';
+                    break;
+                case 'image/jpeg':
+                    extName = 'jpg';
+                    break;
+                case 'image/png':
+                    extName = 'jpg';
+                    break;
+                case 'image/x-png':
+                    extName = 'jpg';
+                    break;
+            }
+            if (files[key].size == 0) {
+                fs.unlinkSync(files[key].path);
+            }
+            else {
+                needChange = true;
+                var avatarName = '';
+                avatarName = key + '.' + extName;
+                var newPath = form.uploadDir + avatarName;
+
+                common.imgs.push('/home/' + avatarName);
+                console.log(newPath);
+                fs.renameSync(files[key].path, newPath);  //重命名
+
+            }
+        }
+
+        if (needChange) {
+            dbHandler.updateBanner(req, res, common)
+        }
+        else {
+            res.send({ status: 'failed', msg: '请正确上传jpeg或者png的图片' });
+        }
+    });
+})
+
 router.post('/createIntegrator', function (req, res, next) {
 
     var form = new formidable.IncomingForm();   //创建上传表单
