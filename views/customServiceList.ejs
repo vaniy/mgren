@@ -110,17 +110,17 @@
 									<%= child.questionDes %>
 								</td>
 								<td>
-									<%= child.inDate ? child.inDate.toISOString() : '' %>
+									<%= child.inDate ? child.inDate : '' %>
 								</td>
 								<td>
-									<%= child.outDate ? child.outDate.toISOString() : '' %>
+									<%= child.outDate ? child.outDate : '' %>
 								</td>
 								<%if(child.status == 0){%>
-								<td>待回复</td>
+								<td><a href="/customServiceContact?qid=<%=child.qid %>">待回复</a></td>
 								<%}else if(child.status == 1){%>
 								<td><a href="/customServiceContact?qid=<%=child.qid %>" class="red">新回复</a></td>
 								<%}else if(child.status == 2){%>
-								<td>已完成</td>
+								<td><a href="/customServiceContact?qid=<%=child.qid %>">已完成</a></td>
 								<%} %>
 							</tr>
 							<%})} %>

@@ -90,7 +90,7 @@
 				<%if(orders && orders.length > 0){ orders.forEach(function(child){ %>
 				<div class="dd-header clearfix">
 					<div class="pull-left">
-						<%=child.inDate.toISOString() %> | 订单号：
+						<%=child.inDate %> | 订单号：
 						<%=child.oid %> | <a class="red" href="<%=status == '0' ? '/confirmOrder?oid=' +child.oid : '/orderDetail?oid='+child.oid %>">详情</a></div>
 					<div class="pull-right"><span>
 							<%=child.statusType %></span><a href="/customService?oid=<%=child.oid %>">售后服务</a></div>

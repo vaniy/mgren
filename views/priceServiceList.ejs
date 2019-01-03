@@ -68,11 +68,12 @@
 				</div>
 			</div>
 			<div class="cp-right pull-right">
-				<div class="cp-right-tt cp-right-tt-sm">售后服务</div>
+				<div class="cp-right-tt cp-right-tt-sm">询价管理</div>
 				<div class="clearfix fw-box">
 					<ul class="fw-tabs pull-left clearfix">
 						<!-- <li><a class="q" href="/customService">问题提交</a></li> -->
-						<li class="active"><a href="/customServiceList">问题列表 </a></li>
+						<li><a class="q" href="/priceService">询价提交</a></li>
+						<li class="active"><a href="/customServiceList">询价列表 </a></li>
 					</ul>
 					<!-- <div class="pull-right search-c">
 						<input type="text" class="form-control user-input" placeholder="输入商品名称，商品编号，订单号" />
@@ -102,17 +103,17 @@
 									<%= child.title %>
 								</td>
 								<td>
-									<%= child.inDate ? child.inDate.toISOString() : '' %>
+									<%= child.inDate ? child.inDate : '' %>
 								</td>
 								<td>
-									<%= child.outDate ? child.outDate.toISOString() : '' %>
+									<%= child.outDate ? child.outDate : '' %>
 								</td>
 								<%if(child.status == 0){%>
-								<td>待回复</td>
+								<td><a href="/priceServiceContact?qid=<%=child.qid %>">待回复</a></td>
 								<%}else if(child.status == 1){%>
 								<td><a href="/priceServiceContact?qid=<%=child.qid %>" class="red">新回复</a></td>
 								<%}else if(child.status == 2){%>
-								<td>已完成</td>
+								<td><a href="/priceServiceContact?qid=<%=child.qid %>">已完成</a></td>
 								<%} %>
 							</tr>
 							<%})} %>

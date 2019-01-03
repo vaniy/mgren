@@ -72,6 +72,7 @@
 				<div class="clearfix fw-box">
 					<ul class="fw-tabs pull-left clearfix">
 						<!-- <li><a class="q" href="/customService">问题提交</a></li> -->
+						<li><a class="q" href="/suggestService">建议提交</a></li>
 						<li class="active"><a href="/customServiceList">建议列表 </a></li>
 					</ul>
 					<!-- <div class="pull-right search-c">
@@ -102,17 +103,17 @@
 									<%= child.title %>
 								</td>
 								<td>
-									<%= child.inDate ? child.inDate.toISOString() : '' %>
+									<%= child.inDate ? child.inDate : '' %>
 								</td>
 								<td>
-									<%= child.outDate ? child.outDate.toISOString() : '' %>
+									<%= child.outDate ? child.outDate : '' %>
 								</td>
 								<%if(child.status == 0){%>
-								<td>待回复</td>
+								<td><a href="/suggestServiceContact?qid=<%=child.qid %>">待回复</a></td>
 								<%}else if(child.status == 1){%>
 								<td><a href="/suggestServiceContact?qid=<%=child.qid %>" class="red">新回复</a></td>
 								<%}else if(child.status == 2){%>
-								<td>已完成</td>
+								<td><a href="/suggestServiceContact?qid=<%=child.qid %>">已完成</a></td>
 								<%} %>
 							</tr>
 							<%})} %>

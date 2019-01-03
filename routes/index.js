@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoClient = require('mongodb').MongoClient;
 var mogoUrl = 'mongodb://localhost:27017/nichetest';
+var moment = require('moment');
 var BSON = require('bson');
 var dbHandler = require('../lib/dbHandler');
 var socketHandler = require('../lib/chat_server');
@@ -11,6 +12,10 @@ var formidable = require('formidable'),
     TITLE = 'formidable',
     AVATAR_UPLOAD_FOLDER = '/avatar/';
 
+
+var formatTime = function (time) {
+    return moment(time).format('YYYY-MM-DD')
+}
 
 router.get('/index', function (req, res) {
     dbHandler.getHomePage(req, res, (home) => {
@@ -269,6 +274,7 @@ router.get('/myOrder', function (req, res) {
                         }
                         return {
                             ...child,
+                            inDate: formatTime(child.inDate),
                             totalAmoumt,
                             statusType
                         }
@@ -556,6 +562,13 @@ router.get('/suggestService', function (req, res) {
 router.get('/customServiceList', function (req, res) {
     if (req.cookies && req.cookies.user) {
         dbHandler.getUserCustomQuestions(req, res, false, (questions) => {
+            questions = questions.map((child) => {
+                return {
+                    ...child,
+                    inDate: formatTime(child.inDate),
+                    outDate: formatTime(child.outDate)
+                }
+            })
             res.render('customServiceList', { title: '', questions });
         })
         // dbHandler.getUserInfo(req, res, (user) => {
@@ -569,6 +582,13 @@ router.get('/customServiceList', function (req, res) {
 router.get('/priceServiceList', function (req, res) {
     if (req.cookies && req.cookies.user) {
         dbHandler.getUserServiceQuestion(req, res, (questions) => {
+            questions = questions.map((child) => {
+                return {
+                    ...child,
+                    inDate: formatTime(child.inDate),
+                    outDate: formatTime(child.outDate)
+                }
+            })
             res.render('priceServiceList', { title: '', questions });
         }, 'priceService')
     }
@@ -580,6 +600,13 @@ router.get('/priceServiceList', function (req, res) {
 router.get('/suggestServiceList', function (req, res) {
     if (req.cookies && req.cookies.user) {
         dbHandler.getUserServiceQuestion(req, res, (questions) => {
+            questions = questions.map((child) => {
+                return {
+                    ...child,
+                    inDate: formatTime(child.inDate),
+                    outDate: formatTime(child.outDate)
+                }
+            })
             res.render('suggestServiceList', { title: '', questions });
         }, 'suggestService')
     }
