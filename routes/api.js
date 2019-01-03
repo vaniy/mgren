@@ -21,7 +21,9 @@ var util = require('../util/util');
 router.get('/getUser', function (req, res, next) {
     if (req.cookies.user && req.cookies.user.email) {
         dbHandler.getUserInfo(req, res, (user) => {
-            res.send({ status: 'success', content: user.name })
+            dbHandler.getShoppingCart(req, res, (data) => {
+                res.send({ status: 'success', content: user.name, count: data.length })
+            })
         })
     }
     else {

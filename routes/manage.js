@@ -5,6 +5,7 @@ var dbHandler = require('../lib/dbHandler');
 var viewHandler = require('../lib/viewHandler');
 var manageHandler = require('../lib/manageHandler');
 var roleConf = require('../config/roleConfig');
+var moment = require('moment');
 var formidable = require('formidable'),
     // var multiparty = require('multiparty');
     fs = require('fs'),
@@ -22,6 +23,10 @@ var checkAdmin = function (req, res, next) {
     else {
         next()
     }
+}
+
+var formatTime = function (time) {
+    return moment(time).format('YYYY-MM-DD')
 }
 
 router.get('/caseMgr', (req, res, next) => checkAdmin(req, res, next), (req, res) => {
@@ -391,6 +396,7 @@ router.get('/orderMgrM', (req, res, next) => checkAdmin(req, res, next), functio
                 }
                 return {
                     ...child,
+                    inDate: formatTime(child.inDate),
                     statusType
                 }
             })
@@ -411,7 +417,7 @@ router.get('/orderMgr', (req, res, next) => checkAdmin(req, res, next), function
                 }
             }
             // let statusOptions = 
-            res.render('orderMgr', { order, statusType, statusOptions, shippingCharges: roleConf.shippingCharge })
+            res.render('orderMgr', { order: { ...order, inDate: formatTime(order.inDate) }, statusType, statusOptions, shippingCharges: roleConf.shippingCharge })
         })
     }
     else {
@@ -423,6 +429,13 @@ router.get('/orderMgr', (req, res, next) => checkAdmin(req, res, next), function
 router.get('/customServiceMgrM', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     // dbHandler.getAllOrders(req, res, (orders) => {
     dbHandler.getUserCustomQuestions(req, res, true, (questions) => {
+        questions = questions.map((child) => {
+            return {
+                ...child,
+                inDate: formatTime(child.inDate),
+                outDate: formatTime(child.inDate)
+            }
+        })
         res.render('customServiceMgrM', { title: '', questions });
     })
     // })
@@ -431,6 +444,13 @@ router.get('/customServiceMgrM', (req, res, next) => checkAdmin(req, res, next),
 router.get('/priceServiceMgrM', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     // dbHandler.getAllOrders(req, res, (orders) => {
     dbHandler.getUserServiceQuestion(req, res, (questions) => {
+        questions = questions.map((child, index) => {
+            return {
+                ...child,
+                inDate: formatTime(child.inDate),
+                outDate: formatTime(child.inDate)
+            }
+        })
         res.render('priceServiceMgrM', { title: '', questions });
     }, 'priceService', {})
     // })
@@ -439,6 +459,13 @@ router.get('/priceServiceMgrM', (req, res, next) => checkAdmin(req, res, next), 
 router.get('/suggestServiceMgrM', (req, res, next) => checkAdmin(req, res, next), function (req, res) {
     // dbHandler.getAllOrders(req, res, (orders) => {
     dbHandler.getUserServiceQuestion(req, res, (questions) => {
+        questions = questions.map((child) => {
+            return {
+                ...child,
+                inDate: formatTime(child.inDate),
+                outDate: formatTime(child.inDate)
+            }
+        })
         res.render('suggestServiceMgrM', { title: '', questions });
     }, 'suggestService', {})
     // })
@@ -449,7 +476,7 @@ router.get('/customServiceMgr', (req, res, next) => checkAdmin(req, res, next), 
     if (req.query.qid && req.query.qid.trim() != '') {
         dbHandler.getUserCustomQuestions(req, res, true, (questions) => {
             dbHandler.getUserInfo(req, res, (user) => {
-                res.render('customServiceMgr', { title: '', question: questions[0], name: user.name });
+                res.render('customServiceMgr', { title: '', question: { ...questions[0], inDate: formatTime(questions[0].inDate) }, name: user.name });
             }, { uid: questions[0].uid });
         }, { qid: req.query.qid })
     }
@@ -463,7 +490,7 @@ router.get('/priceServiceMgr', (req, res, next) => checkAdmin(req, res, next), f
         dbHandler.getUserServiceQuestion(req, res, (questions) => {
 
             dbHandler.getUserInfo(req, res, (user) => {
-                res.render('priceServiceMgr', { title: '', question: questions[0], name: user.name });
+                res.render('priceServiceMgr', { title: '', question: { ...questions[0], inDate: formatTime(questions[0].inDate) }, name: user.name });
             }, { uid: questions[0].uid });
         }, 'priceService', { qid: req.query.qid })
     }
@@ -476,7 +503,7 @@ router.get('/suggestServiceMgr', (req, res, next) => checkAdmin(req, res, next),
     if (req.query.qid && req.query.qid.trim() != '') {
         dbHandler.getUserServiceQuestion(req, res, (questions) => {
             dbHandler.getUserInfo(req, res, (user) => {
-                res.render('suggestServiceMgr', { title: '', question: questions[0], name: user.name });
+                res.render('suggestServiceMgr', { title: '', question: { ...questions[0], inDate: formatTime(questions[0].inDate) }, name: user.name });
             }, { uid: questions[0].uid });
         }, 'suggestService', { qid: req.query.qid })
     }
